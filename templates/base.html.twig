@@ -8,7 +8,15 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+        {% block header %}{% endblock %}
+        </header>
+        <main>
         {% block body %}{% endblock %}
+        </main>
+        <footer>
+        {% block footer %}{% enblock %}
+        </footer>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
