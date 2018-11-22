@@ -11,7 +11,7 @@ class CalculateAdvantageFiscal
 {
 
 
-    public function fiscalBase($fiscalBase, $time)
+    public function fiscalAdvantage($fiscalBase, $time)
     {
         $AdvantageFiscal = 0;
         if ($fiscalBase > 300000) {

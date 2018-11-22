@@ -10,7 +10,7 @@ namespace Tests;
 
 
 use App\CalculateAdvantageFiscal;
-use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 
 class FiscalAdvantageTest extends TestCase
