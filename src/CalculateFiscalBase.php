@@ -7,12 +7,11 @@
  */
 namespace App;
 
-
 class CalculateFiscalBase
 {
 
 
-    public function FiscalBase($price, $area)
+    public function fiscalBase($price, $area)
     {
         $FiscalBase = 0;
         $meterPrice = $price / $area;
