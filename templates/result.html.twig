@@ -2,96 +2,122 @@
 
 {% block body %}
 
-    <table>
+    <div class="row bg-secondary topResult"><h1>Résultat de la simulation</h1></div>
+
+    <table class="result">
+        {#champ 1#}
         <tr>
-            {#champ 1#}
-            <td>
-                <p>Code postal</p>
+            <td class="left">
+                <p>Code postal :</p>
             </td>
             <td>
                 <p>13008</p>
             </td>
+        </tr>
 
-            {#champ 2#}
-            <td>
-                <p>Ville</p>
+        {#champ 2#}
+        <tr>
+            <td class="left">
+                <p>Ville :</p>
             </td>
             <td>
                 <p>Marseille</p>
             </td>
+        </tr>
 
-            {#champ 3#}
-            <td>
-                <p>Zone</p>
+        {#champ 3#}
+        <tr>
+            <td class="left bg-secondary">
+                <p>Zone :</p>
             </td>
-            <td>
-                <p>A</p>
+            <td class="bg-secondary">
+                <p>Zone A</p>
             </td>
+        </tr>
 
-            {#champ 4#}
-            <td>
-                <p>Année d'aquisition</p>
+        {#champ 4#}
+        <tr>
+            <td class="left">
+                <p>Année d'acquisition :</p>
             </td>
             <td>
                 <p>2018</p>
             </td>
+        </tr>
 
-            {#champ 5#}
-            <td>
-                <p>Durée</p>
+        {#champ 5#}
+        <tr>
+            <td class="left bg-secondary">
+                <p>Durée :</p>
             </td>
-            <td>
+            <td class="bg-secondary">
                 <p>9 ans</p>
             </td>
+        </tr>
 
-            {#champ 6#}
-            <td>
-                <p>Surface en m2</p>
+        {#champ 6#}
+        <tr>
+            <td class="left">
+                <p>Surface en m2 :</p>
             </td>
             <td>
                 <p>100</p>
             </td>
+        </tr>
 
-            {#champ 7#}
-            <td>
-                <p>Prix d'acquisition</p>
+        {#champ 7#}
+        <tr>
+            <td class="left">
+                <p>Prix d'acquisition :</p>
             </td>
             <td>
                 <p>950.000€</p>
             </td>
+        </tr>
 
-            {#champ 8#}
-            <td>
-                <p>Frais de notaire</p>
+        {#champ 8#}
+        <tr>
+            <td class="left">
+                <p>Frais de notaire :</p>
             </td>
             <td>
                 <p>50.000€</p>
             </td>
+        </tr>
 
-            {#champ 9#}
-            <td>
-                <p>Autres frais d'acquisition</p>
+        {#champ 9#}
+        <tr>
+            <td class="left">
+                <p>Autres frais d'acquisition :</p>
             </td>
             <td>
                 <p>2578€</p>
             </td>
+        </tr>
 
-            {#champ 10#}
-            <td>
-                <p>Montant total de l'acquisition</p>
+        {#champ 10#}
+        <tr>
+            <td class="left">
+                <p>Montant total de l'acquisition :</p>
             </td>
             <td>
                 <p>1.002.578€</p>
             </td>
+        </tr>
 
-            {#champ 11#}
-            <td>
-                <p>Votre avantage fiscal</p>
+        {#champ 11#}
+        <tr>
+            <td class="left bg-secondary">
+                <p>Votre avantage fiscal :</p>
             </td>
-            <td>
-                <p>20.000€</p>
+            <td class="bg-secondary">
+                <p>2000 €</p>
             </td>
         </tr>
     </table>
+
+    <div class="row pdf center">
+        <button type="button" class="btn btn-secondary btn-lg">Exporter en pdf</button>
+    </div>
 
 {% endblock %}
