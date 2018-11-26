@@ -12,8 +12,9 @@
        url('../../assets/fonts/BrandonGrotesque-RegularItalic.otf') format('truetype');
 }
 
-$logoutColor: #5E626C;
+$logoutColor: #6D737D;
 $IOColor: #FCA000;
+$secondaryColor: #989898;
 
 table, th, td {
   border-collapse: collapse;
@@ -120,4 +121,19 @@ nav {
   .div-deco{
     margin-left: 75vw;
   }
+}
+
+a:hover {
+  text-decoration:none;
+}
+
+.navbar.bg-dark {
+  background-image: none;
+  width: 100vw !important;
+}
+
+.navbar-collapse {
+  min-width: 100vw;
+  max-width: 100vw;
+  margin-left: -17px;
 }
