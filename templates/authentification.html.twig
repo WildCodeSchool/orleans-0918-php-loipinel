@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container authentification_container">
+        <div class="row justify-content-center authentification_row">
+            <div class="card mt-5 w-50">
+                <h1 class="card-header text-center font-weight-bold">
+                    Authentification
+                </h1>
+                <div class="card-body">
+
+                    <div class="row justify-content-center">
+                        <div class="col-8">
+                            <label for="basic-url" class="pt-4 font-weight-bold">Identifiant :</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Veuillez renseigner votre Identifiant" aria-label="Username" required>
+                            </div>
+
+                            <label for="basic-url" class="pt-2 font-weight-bold">Mot de passe :</label>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" placeholder="Veuillez renseigner votre mot de passe" aria-label="Password" autocomplete="current-password" required>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center pt-4 pb-4">
+                        <a href="#" class="btn btn-primary">CONNEXION</a>
+                    </div>
+
+                    <a title="Générer un nouveau mot de passe" href="#">Mot de passe oublié.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
