@@ -8,7 +8,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Simulator;
 use App\Form\SimulatorType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,14 +34,15 @@ class SimulatorController extends AbstractController
             ['method' => Request::METHOD_POST]
         );
 
-        $form -> handleRequest ( $request );
+        $form -> handleRequest($request);
 
-        if ( $form -> isSubmitted () && $form -> isValid ()) {
-            $data = $form -> getData ();
+        if ($form -> isSubmitted() && $form -> isValid()) {
+            $data = $form -> getData();
         }
 
         return $this->render(
-            'Form/simulator.html.twig', [
+            'Form/simulator.html.twig',
+            [
                 'simulator'=> $simulator,
                 'form' => $form->createView(),
             ]

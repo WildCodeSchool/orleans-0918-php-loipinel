@@ -8,7 +8,6 @@
 
 namespace App\Form;
 
-
 use App\Entity\Simulator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -47,8 +46,7 @@ class SimulatorType extends AbstractType
         $builder->add('notaryFees', MoneyType::class);
         $builder->add('otherFeesAcquisition', MoneyType::class);
         $builder->add('totalAmountAcquisition', MoneyType::class);
-        $builder-> getForm ();
-
+        $builder-> getForm();
     }
 
     public function configureOptions(OptionsResolver $resolver)
