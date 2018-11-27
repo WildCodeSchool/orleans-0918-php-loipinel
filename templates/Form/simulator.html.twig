@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block header %}{% endblock %}
+
+
+
+    {% block body %}
+        <h1>SIMULATEUR LOI PINEL</h1>
+        <div class="container-fluid">
+            {{ form_start(form) }}
+            <div class="form-row d-flex flex-row-reverse">
+                <div class=" form-group col-lg-6">
+
+                    {{ form_label ( form.zipCode, 'Code Postal') }}
+                    {{ form_widget ( form.zipCode ) }}
+                    {{ form_help ( form.zipCode ) }}
+
+                    {{ form_label ( form.city, 'Ville') }}
+                    {{ form_widget ( form.city ) }}
+                    {{ form_help ( form.city ) }}
+
+                    {{ form_label ( form.zone, 'Zone' ) }}
+                    {{ form_widget ( form.zone ) }}
+                    {{ form_help ( form.zone ) }}
+                </div>
+
+                <div class=" form-group col-lg-6">
+                    {{ form_label ( form.lastName, 'Nom' ) }}
+                    {{ form_widget ( form.lastName ) }}
+                    {{ form_help ( form.lastName ) }}
+
+                    {{ form_label ( form.firstName, 'Prénom' ) }}
+                    {{ form_widget ( form.firstName ) }}
+                    {{ form_help ( form.firstName ) }}
+
+                    {{ form_label ( form.address, 'Adresse' ) }}
+                    {{ form_widget ( form.address ) }}
+                    {{ form_help ( form.address ) }}
+
+                    {{ form_label ( form.acquisitionDate, 'Date d\'acquisition' ) }}
+                    {{ form_widget ( form.acquisitionDate ) }}
+                    {{ form_help ( form.acquisitionDate ) }}
+
+                    {{ form_label ( form.duration, 'Durée' ) }}
+                    {{ form_widget ( form.duration ) }}
+                    {{ form_help ( form.duration ) }}
+
+
+                    {{ form_label ( form.purchasePrice, 'Prix d\'achat' ) }}
+                    {{ form_widget ( form.purchasePrice ) }}
+                    {{ form_help ( form.purchasePrice ) }}
+
+                    {{ form_label ( form.notaryFees, 'Frais de notaire' ) }}
+                    {{ form_widget ( form.notaryFees ) }}
+                    {{ form_help ( form.notaryFees ) }}
+
+                    {{ form_label ( form.otherFeesAcquisition, 'Autres frais d\'acquisition' ) }}
+                    {{ form_widget ( form.otherFeesAcquisition ) }}
+                    {{ form_help ( form.otherFeesAcquisition ) }}
+
+                    {{ form_label ( form.totalAmountAcquisition, 'Montant total de l\'acquisition' ) }}
+                    {{ form_widget ( form.totalAmountAcquisition ) }}
+                    {{ form_help ( form.totalAmountAcquisition ) }}
+                </div>
+            </div>
+            <button type="submit" name="btnSearch">Calculer</button>
+            {{ form_end(form) }}
+
+        </div>
+    {% endblock %}
+
+{% block footer %}{% endblock %}
