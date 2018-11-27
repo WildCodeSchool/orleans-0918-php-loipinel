@@ -5,9 +5,8 @@
 {% block header %}{% endblock %}
 
 
-
     {% block body %}
-        <h1>SIMULATEUR LOI PINEL</h1>
+        <h1>Saisie des informations</h1>
         <div class="container-fluid">
             {{ form_start(form) }}
             <div class="form-row d-flex flex-row-reverse">
@@ -24,6 +23,10 @@
                     {{ form_label ( form.zone, 'Zone' ) }}
                     {{ form_widget ( form.zone ) }}
                     {{ form_help ( form.zone ) }}
+
+                    <div>
+                        <button class="endFormButtonLg col-lg-6" type="submit" name="btnSearch">Calculer</button>
+                    </div>
                 </div>
 
                 <div class=" form-group col-lg-6">
@@ -47,7 +50,6 @@
                     {{ form_widget ( form.duration ) }}
                     {{ form_help ( form.duration ) }}
 
-
                     {{ form_label ( form.purchasePrice, 'Prix d\'achat' ) }}
                     {{ form_widget ( form.purchasePrice ) }}
                     {{ form_help ( form.purchasePrice ) }}
@@ -65,10 +67,12 @@
                     {{ form_help ( form.totalAmountAcquisition ) }}
                 </div>
             </div>
-            <button type="submit" name="btnSearch">Calculer</button>
+            <div>
+                <button class="endFormButton" type="submit" name="btnSearch">Calculer</button>
+            </div>
             {{ form_end(form) }}
-
         </div>
     {% endblock %}
+
 
 {% block footer %}{% endblock %}

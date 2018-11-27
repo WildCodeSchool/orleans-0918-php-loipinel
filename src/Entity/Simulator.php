@@ -37,7 +37,7 @@ class Simulator
     /**
      * @var int
      * @Assert\NotBlank
-     * @Assert\Length(min = 5, minMessage = "Ce champs ne peux contenir moins de 5 chiffres."))
+     * @Assert\Length(min = 5)
      * @Assert\Length(max = 5, maxMessage = "Ce champs ne peux contenir plus de 5 chiffres.")
      */
     private $zipCode;
@@ -56,7 +56,6 @@ class Simulator
      * @var \DateTime
      * @Assert\NotBlank
      * @Assert\Type("\DateTime")
-     * message = "Cette valeur n'est pas valide."
      */
     private $acquisitionDate;
     /**
@@ -281,7 +280,4 @@ class Simulator
     {
         $this->totalAmountAcquisition = $totalAmountAcquisition;
     }
-
-
-
 }

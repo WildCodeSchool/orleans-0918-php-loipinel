@@ -2,19 +2,45 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/spacelab/bootswatch";
 
+
+$secondaryColor: #989898;
+
+
 h1
 {
   text-align: center;
+  background-color: $secondaryColor;
 }
 
 @media screen and (max-width: 1024px)
 {
-  button
+  .endFormButton
   {
+    width: 15vw;
+    height: 5vw;
     margin-left: 42vw;
   }
+  .endFormButtonLg
+  {
+    display: none;
+  }
 }
-button
+
+@media screen and (min-width: 1024px)
 {
-  margin-left: 20vw;
+  .endFormButtonLg
+  {
+    margin-left: 20vw;
+    margin-top: 20vw;
+    width: 8vw;
+    height: 3vw;
+  }
+  .endFormButton
+  {
+    display: none;
+  }
+  .form-row
+  {
+    margin-top: 2vw;
+  }
 }
