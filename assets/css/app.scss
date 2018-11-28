@@ -26,6 +26,9 @@ $logoutColor: #6D737D;
 $colorIO: #FCA000;
 $secondaryColor: #989898;
 
+body {
+  padding-top:80px;
+}
 .logout {
   border-color: $logoutColor;
   color: $logoutColor;
