@@ -26,10 +26,6 @@ $logoutColor: #6D737D;
 $colorIO: #FCA000;
 $secondaryColor: #989898;
 
-nav {
-  height: 8vh;
-}
-
 .logout {
   border-color: $logoutColor;
   color: $logoutColor;
@@ -43,7 +39,7 @@ nav {
   font-weight: bold;
 }
 
-.Projet {
+.projet {
   white-space: nowrap;
   font-family: Projet IO, serif;
   color: white;
@@ -53,59 +49,12 @@ nav {
   }
 }
 
-.navbarIO {
-  float: right !important;
-  text-align: right;
-  right: 1vw;
-}
-
-.adminLogout{
-  margin-left: 70vw;
-}
-
-@media (max-width:991px){
-  .adminLogout{
-    margin-left: 1vw;
-  }
-}
-
-@media (min-width:992px){
-  .adminLogout{
-    margin-left: 60vw;
-  }
-}
-
-@media (min-width:1135px){
-  .adminLogout{
-    margin-left: 65vw;
-  }
-}
-
-@media (min-width:1330px){
-  .adminLogout{
-    margin-left: 70vw;
-  }
-}
-
-@media (min-width:1600px){
-  .adminLogout{
-    margin-left: 75vw;
-  }
-}
-
 a:hover {
   text-decoration:none;
 }
 
 .navbar.bg-dark {
   background-image: none;
-  width: 100vw !important;
-}
-
-.navbar-collapse {
-  min-width: 100vw;
-  max-width: 100vw;
-  margin-left: -17px;
 }
 
 h1
