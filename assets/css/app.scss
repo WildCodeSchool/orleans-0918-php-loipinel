@@ -113,36 +113,13 @@ h1
   text-align: center;
   background-color: $secondaryColor;
 }
-
-@media screen and (max-width: 1024px)
+.btn
 {
-  .endFormButton
-  {
-    width: 15vw;
-    height: 5vw;
-    margin-left: 42vw;
-  }
-  .endFormButtonLg
-  {
-    display: none;
-  }
+  margin-left: 40vw;
+  margin-top: 2vw;
+  margin-bottom: 5vw;
 }
-
-@media screen and (min-width: 1024px)
+.simulator
 {
-  .endFormButtonLg
-  {
-    margin-left: 20vw;
-    margin-top: 20vw;
-    width: 8vw;
-    height: 3vw;
-  }
-  .endFormButton
-  {
-    display: none;
-  }
-  .form-row
-  {
-    margin-top: 2vw;
-  }
+
 }

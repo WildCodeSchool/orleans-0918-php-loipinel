@@ -16,16 +16,16 @@ class Simulator
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Length(min = 2)
-     * @Assert\Length(max = 25, maxMessage = "Ce champs ne peux contenir plus de 25 caractères.");
+     * @Assert\Length(min = 1)
+     * @Assert\Length(max = 80, maxMessage = "Ce champs ne peux contenir plus de 80 caractères.");
      */
     private $firstName;
     /**
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Length(min = 2)
-     * @Assert\Length(max = 25,  maxMessage = "Ce champs ne peux contenir plus de 25 caractères.")
+     * @Assert\Length(min = 1)
+     * @Assert\Length(max = 80,  maxMessage = "Ce champs ne peux contenir plus de 80 caractères.")
      */
     private $lastName;
     /**
@@ -74,18 +74,27 @@ class Simulator
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $notaryFees;
     /**
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $otherFeesAcquisition;
     /**
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThan(
+     *     value = 0
+     * )
      */
     private $totalAmountAcquisition;
 

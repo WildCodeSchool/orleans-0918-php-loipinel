@@ -30,15 +30,10 @@ class SimulatorController extends AbstractController
 
         $form = $this->createForm(
             SimulatorType::class,
-            $simulator,
-            ['method' => Request::METHOD_POST]
+            $simulator
         );
 
         $form -> handleRequest($request);
-
-        if ($form -> isSubmitted() && $form -> isValid()) {
-            $data = $form -> getData();
-        }
 
         return $this->render(
             'Form/simulator.html.twig',
