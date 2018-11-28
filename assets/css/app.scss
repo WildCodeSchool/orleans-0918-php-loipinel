@@ -1,1 +1,67 @@
+@import "~bootswatch/dist/spacelab/variables";
 @import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/spacelab/bootswatch";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+@font-face {
+  font-family: "Projet IO";
+  font-weight: bold;
+  src: url('../../assets/fonts/BrandonGrotesque-Bold.otf');
+  src: url('../../assets/fonts/BrandonGrotesque-Bold.otf') format('truetype'),
+       url('../../assets/fonts/BrandonGrotesque-Regular.otf') format('truetype'),
+       url('../../assets/fonts/BrandonGrotesque-BoldItalic.otf') format('truetype'),
+       url('../../assets/fonts/BrandonGrotesque-RegularItalic.otf') format('truetype');
+}
+
+@font-face {
+  font-family: "BrandonText";
+  src: url("../../assets/fonts/BrandonText-Bold.otf");
+  src: url("../../assets/fonts/BrandonText-Bold.otf") format('truetype'),
+       url("../../assets/fonts/BrandonText-Regular.otf") format('truetype'),
+       url("../../assets/fonts/BrandonText-RegularItalic.otf") format('truetype'),
+       url("../../assets/fonts/BrandonText-BoldItalic.otf") format('truetype');
+}
+
+$logoutColor: #6D737D;
+$colorIO: #FCA000;
+$secondaryColor: #989898;
+
+body {
+  padding-top:80px;
+}
+.logout {
+  border-color: $logoutColor;
+  color: $logoutColor;
+  cursor: pointer;
+}
+
+.username {
+  white-space: nowrap;
+  margin-right: 1vw;
+  color: white;
+  font-weight: bold;
+}
+
+.projet {
+  white-space: nowrap;
+  font-family: Projet IO, serif;
+  color: white;
+  font-weight: bold;
+  span {
+    color: $colorIO;
+  }
+}
+
+a:hover {
+  text-decoration:none;
+}
+
+.navbar.bg-dark {
+  background-image: none;
+}
+
+h1
+{
+  text-align: center;
+  background-color: $secondaryColor;
+}
