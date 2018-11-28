@@ -8,18 +8,18 @@
   font-weight: bold;
   src: url('../../assets/fonts/BrandonGrotesque-Bold.otf');
   src: url('../../assets/fonts/BrandonGrotesque-Bold.otf') format('truetype'),
-       url('../../assets/fonts/BrandonGrotesque-Regular.otf') format('truetype'),
-       url('../../assets/fonts/BrandonGrotesque-BoldItalic.otf') format('truetype'),
-       url('../../assets/fonts/BrandonGrotesque-RegularItalic.otf') format('truetype');
+  url('../../assets/fonts/BrandonGrotesque-Regular.otf') format('truetype'),
+  url('../../assets/fonts/BrandonGrotesque-BoldItalic.otf') format('truetype'),
+  url('../../assets/fonts/BrandonGrotesque-RegularItalic.otf') format('truetype');
 }
 
 @font-face {
   font-family: "BrandonText";
   src: url("../../assets/fonts/BrandonText-Bold.otf");
   src: url("../../assets/fonts/BrandonText-Bold.otf") format('truetype'),
-       url("../../assets/fonts/BrandonText-Regular.otf") format('truetype'),
-       url("../../assets/fonts/BrandonText-RegularItalic.otf") format('truetype'),
-       url("../../assets/fonts/BrandonText-BoldItalic.otf") format('truetype');
+  url("../../assets/fonts/BrandonText-Regular.otf") format('truetype'),
+  url("../../assets/fonts/BrandonText-RegularItalic.otf") format('truetype'),
+  url("../../assets/fonts/BrandonText-BoldItalic.otf") format('truetype');
 }
 
 $logoutColor: #6D737D;
@@ -28,6 +28,8 @@ $secondaryColor: #989898;
 
 body {
   padding-top:80px;
+  font-family: Projet IO, serif;
+  font-size: 16pt;
 }
 .logout {
   border-color: $logoutColor;
