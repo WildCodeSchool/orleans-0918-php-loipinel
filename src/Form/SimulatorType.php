@@ -22,31 +22,53 @@ class SimulatorType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName', TextType::class);
-        $builder->add('lastName', TextType::class);
-        $builder->add('address', TextType::class);
-        $builder->add('zipCode', IntegerType::class);
-        $builder->add('city', TextType::class);
-        $builder->add('zone', ChoiceType::class, array(
-            'choices' => array(
-                "A" => "a",
-                "A bis" => "a bis",
-                "B1"  => "b1" ,
-                "B2"  => "b2" ,
-                "C"  => "c" ,
-            )));
-        $builder->add('acquisitionDate', DateType::class);
-        $builder->add('duration', ChoiceType::class, array(
-            'choices' => array(
-                6 => 6,
-                9 => 9,
-                12 =>12,
-            )));
-        $builder->add('purchasePrice', MoneyType::class);
-        $builder->add('notaryFees', MoneyType::class);
-        $builder->add('otherFeesAcquisition', MoneyType::class);
-        $builder->add('totalAmountAcquisition', MoneyType::class);
-        $builder-> getForm();
+        $builder->add('firstName', TextType::class, [
+            'label' => 'Prénom',
+        ]);
+        $builder->add('lastName', TextType::class, [
+            'label' => 'Nom',
+        ]);
+        $builder->add('address', TextType::class, [
+            'label' => 'Adresse',
+        ]);
+        $builder->add('zipCode', IntegerType::class, [
+            'label' => 'Code Postal',
+        ]);
+        $builder->add('city', TextType::class, [
+            'label' => 'Ville',
+        ]);
+        $builder->add('zone', ChoiceType::class, [
+                'choices' => [
+                    "A" => "a",
+                    "A bis" => "a bis",
+                    "B1" => "b1",
+                    "B2" => "b2",
+                    "C" => "c",
+                ],
+            ]);
+        $builder->add('acquisitionDate', DateType::class, [
+            'label' => 'Date d\'acquisition',
+            ]);
+        $builder->add('duration', ChoiceType::class, [
+                'label' => 'Durée',
+                'choices' => [
+                    6 => 6,
+                    9 => 9,
+                    12 => 12,
+                ]]);
+        $builder->add('purchasePrice', MoneyType::class, [
+            'label' => 'Prix d\'achat',
+        ]);
+        $builder->add('notaryFees', MoneyType::class, [
+            'label' => 'Frais de notaire',
+        ]);
+        $builder->add('otherFeesAcquisition', MoneyType::class, [
+            'label' => 'Autres frais d\'acquisition',
+        ]);
+        $builder->add('totalAmountAcquisition', MoneyType::class, [
+            'label' => 'Montant total de l\'acquisition',
+        ]);
+        $builder->getForm();
     }
 
     public function configureOptions(OptionsResolver $resolver)
