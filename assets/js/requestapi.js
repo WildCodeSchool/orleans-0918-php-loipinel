@@ -26,6 +26,3 @@ function fillSelector(data) {
     }
 
 }
-zipcode.addEventListener("change", function() {
-
-});
