@@ -35,8 +35,9 @@ class Simulator
      */
     private $address;
     /**
-     * @var int
+     * @var string
      * @Assert\NotBlank
+     * @Assert\Regex("/[0-9]/")
      * @Assert\Length(min = 5)
      * @Assert\Length(max = 5, maxMessage = "Ce champs ne peux contenir plus de 5 chiffres.")
      */
@@ -147,17 +148,17 @@ class Simulator
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getZipCode(): ?int
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
 
     /**
-     * @param int $zipCode
+     * @param string $zipCode
      */
-    public function setZipCode(int $zipCode): void
+    public function setZipCode(string $zipCode): void
     {
         $this->zipCode = $zipCode;
     }
