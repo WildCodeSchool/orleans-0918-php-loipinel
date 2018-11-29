@@ -2,7 +2,10 @@
 
 {% block body %}
 
-    <div class="row bg-secondary topResult"><h1>Résultat de la simulation</h1></div>
+    <div class="row bg-secondary topResult">
+        <h1>Résultat de la simulation</h1>
+    </div>
+
     <table class="result">
 
         <tr>
@@ -73,7 +76,7 @@
                 <p>Prix d'acquisition :</p>
             </td>
             <td>
-                <p>{{ simulator.purchasePrice }}</p>
+                <p>{{ simulator.purchasePrice }} €</p>
             </td>
         </tr>
 
@@ -82,7 +85,7 @@
                 <p>Frais de notaire :</p>
             </td>
             <td>
-                <p>{{ simulator.notaryFees }}</p>
+                <p>{{ simulator.notaryFees }} €</p>
             </td>
         </tr>
 
@@ -91,7 +94,7 @@
                 <p>Autres frais d'acquisition :</p>
             </td>
             <td>
-                <p>{{ simulator.otherFeesAcquisition }}</p>
+                <p>{{ simulator.otherFeesAcquisition }} €</p>
             </td>
         </tr>
 
@@ -100,7 +103,7 @@
                 <p>Montant total de l'acquisition :</p>
             </td>
             <td>
-                <p>{{ simulator.totalAmountAcquisition }}</p>
+                <p>{{ simulator.totalAmountAcquisition }} €</p>
             </td>
         </tr>
 
