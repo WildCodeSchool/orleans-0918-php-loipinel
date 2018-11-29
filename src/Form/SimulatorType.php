@@ -47,6 +47,7 @@ class SimulatorType extends AbstractType
                 ],
             ]);
         $builder->add('acquisitionDate', DateType::class, [
+            'widget' => 'single_text',
             'label' => 'Date d\'acquisition',
             ]);
         $builder->add('duration', ChoiceType::class, [
