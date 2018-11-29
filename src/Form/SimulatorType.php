@@ -34,7 +34,7 @@ class SimulatorType extends AbstractType
         $builder->add('zipCode', IntegerType::class, [
             'label' => 'Code Postal',
         ]);
-        $builder->add('city', TextType::class, [
+        $builder->add('city', ChoiceType::class, [
             'label' => 'Ville',
         ]);
         $builder->add('zone', ChoiceType::class, [
