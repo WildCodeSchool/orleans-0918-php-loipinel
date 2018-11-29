@@ -67,6 +67,12 @@ class Simulator
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
+     */
+    private $surfaceArea;
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
      *
      */
     private $purchasePrice;
@@ -74,27 +80,21 @@ class Simulator
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
+     * @Assert\GreaterThan(0)
      */
     private $notaryFees;
     /**
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
+     * @Assert\GreaterThan(0)
      */
     private $otherFeesAcquisition;
     /**
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
+     * @Assert\GreaterThan(0)
      */
     private $totalAmountAcquisition;
 
@@ -224,6 +224,22 @@ class Simulator
     public function setDuration(int $duration): void
     {
         $this->duration = $duration;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSurfaceArea(): ?int
+    {
+        return $this->surfaceArea;
+    }
+
+    /**
+     * @param int $surfaceArea
+     */
+    public function setSurfaceArea(int $surfaceArea): void
+    {
+        $this->surfaceArea = $surfaceArea;
     }
 
     /**

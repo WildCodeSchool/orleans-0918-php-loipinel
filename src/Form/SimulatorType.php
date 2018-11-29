@@ -56,6 +56,9 @@ class SimulatorType extends AbstractType
                     9 => 9,
                     12 => 12,
                 ]]);
+        $builder->add('surfaceArea', IntegerType::class, [
+            'label' => 'Surface en M2',
+        ]);
         $builder->add('purchasePrice', MoneyType::class, [
             'label' => 'Prix d\'achat',
         ]);
