@@ -53,10 +53,13 @@ class SimulatorType extends AbstractType
         $builder->add('duration', ChoiceType::class, [
                 'label' => 'Durée',
                 'choices' => [
-                    6 => 6,
-                    9 => 9,
-                    12 => 12,
-                ]]);
+                    '6 ans' => 6,
+                    '9 ans' => 9,
+                    '12 ans' => 12,
+                ],
+            'multiple' => false,
+            'expanded' => true,
+            ]);
         $builder->add('surfaceArea', IntegerType::class, [
             'label' => 'Surface en M2',
         ]);
