@@ -3,115 +3,113 @@
 {% block body %}
 
     <div class="row bg-secondary topResult"><h1>Résultat de la simulation</h1></div>
-
     <table class="result">
-        {#champ 1#}
+
+        <tr>
+            <td class="left">
+                <p>Nom :</p>
+            </td>
+            <td>
+                <p>{{ simulator.lastName }}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="left">
+                <p>Prénom :</p>
+            </td>
+            <td>
+                <p>{{ simulator.firstName }}</p>
+            </td>
+        </tr>
+
         <tr>
             <td class="left">
                 <p>Code postal :</p>
             </td>
             <td>
-                <p>13008</p>
+                <p>{{ simulator.zipCode }}</p>
             </td>
         </tr>
 
-        {#champ 2#}
         <tr>
             <td class="left">
                 <p>Ville :</p>
             </td>
             <td>
-                <p>Marseille</p>
+                <p>{{ simulator.city }}</p>
             </td>
         </tr>
 
-        {#champ 3#}
         <tr>
             <td class="left bg-secondary highlight">
                 <p>Zone :</p>
             </td>
             <td class="bg-secondary highlight">
-                <p>Zone A</p>
+                <p>{{ simulator.zone }}</p>
             </td>
         </tr>
 
-        {#champ 4#}
         <tr>
             <td class="left">
                 <p>Année d'acquisition :</p>
             </td>
             <td>
-                <p>2018</p>
+                <p>{{ simulator.acquisitionDate|date('d/m/Y') }}</p>
             </td>
         </tr>
 
-        {#champ 5#}
         <tr>
             <td class="left bg-secondary highlight">
                 <p>Durée :</p>
             </td>
             <td class="bg-secondary highlight">
-                <p>9 ans</p>
+                <p>{{ simulator.duration }}</p>
             </td>
         </tr>
 
-        {#champ 6#}
-        <tr>
-            <td class="left">
-                <p>Surface en m2 :</p>
-            </td>
-            <td>
-                <p>100</p>
-            </td>
-        </tr>
-
-        {#champ 7#}
         <tr>
             <td class="left">
                 <p>Prix d'acquisition :</p>
             </td>
             <td>
-                <p>950.000€</p>
+                <p>{{ simulator.purchasePrice }}</p>
             </td>
         </tr>
 
-        {#champ 8#}
         <tr>
             <td class="left">
                 <p>Frais de notaire :</p>
             </td>
             <td>
-                <p>50.000€</p>
+                <p>{{ simulator.notaryFees }}</p>
             </td>
         </tr>
 
-        {#champ 9#}
         <tr>
             <td class="left">
                 <p>Autres frais d'acquisition :</p>
             </td>
             <td>
-                <p>2578€</p>
+                <p>{{ simulator.otherFeesAcquisition }}</p>
             </td>
         </tr>
 
-        {#champ 10#}
         <tr>
             <td class="left">
                 <p>Montant total de l'acquisition :</p>
             </td>
             <td>
-                <p>1.002.578€</p>
+                <p>{{ simulator.totalAmountAcquisition }}</p>
             </td>
         </tr>
 
-        {#champ 11#}
         <tr>
             <td class="left bg-secondary highlight">
                 <p>Votre avantage fiscal :</p>
             </td>
             <td class="bg-secondary highlight">
-                <p>20.000 €</p>
+                <p> AVANTAGE FISCAL €</p>
             </td>
         </tr>
     </table>
