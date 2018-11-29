@@ -40,6 +40,8 @@
         </div>
     </div>
 {% endblock %}
-
+{% block javascripts %}
+    {{ encore_entry_script_tags('requestApi') }}
+{% endblock %}
 
 {% block footer %}{% endblock %}
