@@ -4,7 +4,7 @@
 
 
 {% block body %}
-    <h1>Saisie des informations</h1>
+    <h1 class="bg-primary">Saisie des informations</h1>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -25,6 +25,8 @@
                 {{ form_row ( form.acquisitionDate ) }}
 
                 {{ form_row ( form.duration ) }}
+
+                {{ form_row ( form.surfaceArea ) }}
 
                 {{ form_row ( form.purchasePrice ) }}
 
