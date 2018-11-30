@@ -31,31 +31,39 @@ class SimulatorType extends AbstractType
         $builder->add('address', TextType::class, [
             'label' => 'Adresse',
         ]);
-        $builder->add('zipCode', IntegerType::class, [
+        $builder->add('zipCode', TextType::class, [
             'label' => 'Code Postal',
         ]);
-        $builder->add('city', TextType::class, [
+        $builder->add('city', ChoiceType::class, [
             'label' => 'Ville',
         ]);
+        $builder->get('city')->resetViewTransformers();
         $builder->add('zone', ChoiceType::class, [
-                'choices' => [
-                    "A" => "a",
-                    "A bis" => "a bis",
-                    "B1" => "b1",
-                    "B2" => "b2",
-                    "C" => "c",
-                ],
-            ]);
+            'choices' => [
+                "A" => "a",
+                "A bis" => "a bis",
+                "B1" => "b1",
+                "B2" => "b2",
+                "C" => "c",
+            ],
+        ]);
         $builder->add('acquisitionDate', DateType::class, [
+            'widget' => 'single_text',
             'label' => 'Date d\'acquisition',
-            ]);
+        ]);
         $builder->add('duration', ChoiceType::class, [
-                'label' => 'Durée',
-                'choices' => [
-                    6 => 6,
-                    9 => 9,
-                    12 => 12,
-                ]]);
+            'label' => 'Durée',
+            'choices' => [
+                '6 ans' => 6,
+                '9 ans' => 9,
+                '12 ans' => 12,
+            ],
+            'multiple' => false,
+            'expanded' => true,
+        ]);
+        $builder->add('surfaceArea', IntegerType::class, [
+            'label' => 'Surface en M2',
+        ]);
         $builder->add('purchasePrice', MoneyType::class, [
             'label' => 'Prix d\'achat',
         ]);

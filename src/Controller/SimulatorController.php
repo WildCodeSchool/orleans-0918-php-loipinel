@@ -13,6 +13,7 @@ use App\Form\SimulatorType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SimulatorController extends AbstractController
@@ -24,7 +25,7 @@ class SimulatorController extends AbstractController
      * @param Request $request
      * @return Response A response instance
      */
-    public function showSimulator(Request $request)
+    public function showSimulator(Request $request, SessionInterface $session)
     {
         $simulator = new Simulator();
 
@@ -35,10 +36,14 @@ class SimulatorController extends AbstractController
 
         $form -> handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $session->set('simulator', $simulator);
+            return $this->redirectToRoute('result_page');
+        }
+
         return $this->render(
             'Form/simulator.html.twig',
             [
-                'simulator'=> $simulator,
                 'form' => $form->createView(),
             ]
         );

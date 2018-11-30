@@ -35,8 +35,9 @@ class Simulator
      */
     private $address;
     /**
-     * @var int
+     * @var string
      * @Assert\NotBlank
+     * @Assert\Regex("/[0-9]/")
      * @Assert\Length(min = 5)
      * @Assert\Length(max = 5, maxMessage = "Ce champs ne peux contenir plus de 5 chiffres.")
      */
@@ -67,6 +68,12 @@ class Simulator
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
+     */
+    private $surfaceArea;
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
      *
      */
     private $purchasePrice;
@@ -74,27 +81,21 @@ class Simulator
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
+     * @Assert\GreaterThan(0)
      */
     private $notaryFees;
     /**
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
+     * @Assert\GreaterThan(0)
      */
     private $otherFeesAcquisition;
     /**
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(
-     *     value = 0
-     * )
+     * @Assert\GreaterThan(0)
      */
     private $totalAmountAcquisition;
 
@@ -147,17 +148,17 @@ class Simulator
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getZipCode(): ?int
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
 
     /**
-     * @param int $zipCode
+     * @param string $zipCode
      */
-    public function setZipCode(int $zipCode): void
+    public function setZipCode(string $zipCode): void
     {
         $this->zipCode = $zipCode;
     }
@@ -224,6 +225,22 @@ class Simulator
     public function setDuration(int $duration): void
     {
         $this->duration = $duration;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSurfaceArea(): ?int
+    {
+        return $this->surfaceArea;
+    }
+
+    /**
+     * @param int $surfaceArea
+     */
+    public function setSurfaceArea(int $surfaceArea): void
+    {
+        $this->surfaceArea = $surfaceArea;
     }
 
     /**
