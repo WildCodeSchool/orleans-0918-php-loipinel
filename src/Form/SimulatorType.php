@@ -37,6 +37,7 @@ class SimulatorType extends AbstractType
         $builder->add('city', ChoiceType::class, [
             'label' => 'Ville',
         ]);
+        $builder->get('city')->resetViewTransformers();
         $builder->add('zone', ChoiceType::class, [
             'choices' => [
                 "A" => "a",
