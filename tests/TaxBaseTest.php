@@ -15,16 +15,16 @@ class TaxBaseTest extends TestCase
 {
     public function testBaseUnderMax()
     {
-        $op = new TaxBase();
-        $this->assertEquals(400000, $op->taxBase(400000, 100));
-        $this->assertEquals(210000, $op->taxBase(210000, 70));
-        $this->assertEquals(250000, $op->taxBase(250000, 100));
+        $taxBaseResult = new TaxBase();
+        $this->assertEquals(400000, $taxBaseResult->taxBase(400000, 100));
+        $this->assertEquals(210000, $taxBaseResult->taxBase(210000, 70));
+        $this->assertEquals(250000, $taxBaseResult->taxBase(250000, 100));
     }
     public function testBaseOverMax()
     {
-        $op = new TaxBase();
-        $this->assertEquals(550000, $op->taxBase(1000000, 100));
-        $this->assertEquals(412500, $op->taxBase(487500, 75));
-        $this->assertEquals(275000, $op->taxBase(350000, 50));
+        $taxBaseResult = new TaxBase();
+        $this->assertEquals(550000, $taxBaseResult->taxBase(1000000, 100));
+        $this->assertEquals(412500, $taxBaseResult->taxBase(487500, 75));
+        $this->assertEquals(275000, $taxBaseResult->taxBase(350000, 50));
     }
 }
