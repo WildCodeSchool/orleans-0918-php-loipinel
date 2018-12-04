@@ -8,7 +8,7 @@
 namespace Tests;
 
 use App\Service\CalculationTaxBenefit;
-use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class taxBenefitTest extends TestCase
 {
