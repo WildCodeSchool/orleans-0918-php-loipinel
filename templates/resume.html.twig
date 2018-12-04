@@ -5,7 +5,7 @@
             <p>Nom :</p>
         </td>
         <td>
-            <p>{{ simulator.lastName }}</p>
+            <p>{{ app.session.get('simulator').lastName }}</p>
         </td>
     </tr>
 
@@ -14,7 +14,7 @@
             <p>Prénom :</p>
         </td>
         <td>
-            <p>{{ simulator.firstName }}</p>
+            <p>{{ app.session.get('simulator').firstName }}</p>
         </td>
     </tr>
 
@@ -23,7 +23,7 @@
             <p>Adresse :</p>
         </td>
         <td>
-            <p>{{ simulator.address }}</p>
+            <p>{{ app.session.get('simulator').address }}</p>
         </td>
     </tr>
 
@@ -32,7 +32,7 @@
             <p>Code postal :</p>
         </td>
         <td>
-            <p>{{ simulator.zipCode }}</p>
+            <p>{{ app.session.get('simulator').zipCode }}</p>
         </td>
     </tr>
 
@@ -41,7 +41,7 @@
             <p>Ville :</p>
         </td>
         <td>
-            <p>{{ simulator.city }}</p>
+            <p>{{ app.session.get('simulator').city }}</p>
         </td>
     </tr>
 
@@ -50,7 +50,7 @@
             <p>Zone :</p>
         </td>
         <td class="bg-secondary highlight">
-            <p>{{ simulator.zone }}</p>
+            <p>{{ app.session.get('simulator').zone }}</p>
         </td>
     </tr>
 
@@ -59,7 +59,7 @@
             <p>Année d'acquisition :</p>
         </td>
         <td>
-            <p>{{ simulator.acquisitionDate|date('d/m/Y') }}</p>
+            <p>{{ app.session.get('simulator').acquisitionDate|date('d/m/Y') }}</p>
         </td>
     </tr>
 
@@ -68,7 +68,7 @@
             <p>Durée :</p>
         </td>
         <td class="bg-secondary highlight">
-            <p>{{ simulator.duration }} ans</p>
+            <p>{{ app.session.get('simulator').duration }} ans</p>
         </td>
     </tr>
 
@@ -77,7 +77,7 @@
             <p>Surface :</p>
         </td>
         <td>
-            <p>{{ simulator.surfaceArea }} m2</p>
+            <p>{{ app.session.get('simulator').surfaceArea }} m2</p>
         </td>
     </tr>
 
@@ -86,7 +86,7 @@
             <p>Prix d'acquisition :</p>
         </td>
         <td>
-            <p>{{ simulator.purchasePrice }} €</p>
+            <p>{{ app.session.get('simulator').purchasePrice }} €</p>
         </td>
     </tr>
 
@@ -95,7 +95,7 @@
             <p>Frais de notaire :</p>
         </td>
         <td>
-            <p>{{ simulator.notaryFees }} €</p>
+            <p>{{ app.session.get('simulator').notaryFees }} €</p>
         </td>
     </tr>
 
@@ -104,7 +104,7 @@
             <p>Autres frais d'acquisition :</p>
         </td>
         <td>
-            <p>{{ simulator.otherFeesAcquisition }} €</p>
+            <p>{{ app.session.get('simulator').otherFeesAcquisition }} €</p>
         </td>
     </tr>
 
@@ -113,7 +113,7 @@
             <p>Montant total de l'acquisition :</p>
         </td>
         <td>
-            <p>{{ simulator.totalAmountAcquisition }} €</p>
+            <p>{{ app.session.get('simulator').totalAmountAcquisition }} €</p>
         </td>
     </tr>
 

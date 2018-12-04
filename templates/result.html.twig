@@ -7,7 +7,7 @@
     {{ include('resume.html.twig') }}
 
     <div class="row pdf justify-content-center">
-        <button type="button" class="btn btn-primary btn-lg">Exporter en pdf</button>
+        <a href="{{ path('pdf_export') }}" type="submit" class="btn btn-primary btn-lg">Exporter en pdf</a>
     </div>
 
 {% endblock %}
