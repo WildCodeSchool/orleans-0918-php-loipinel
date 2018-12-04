@@ -20,7 +20,6 @@ class ResultPageController extends AbstractController
         $result = $calculationTaxBenefit->taxBenefit($base, $simulator->getDuration());
 
         return $this->render('result.html.twig', [
-            'simulator' => $simulator,
             'result' => $result,
         ]);
     }
