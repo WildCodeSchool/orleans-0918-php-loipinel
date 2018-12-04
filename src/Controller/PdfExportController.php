@@ -21,8 +21,11 @@ class PdfExportController extends AbstractController
         $html = $this->renderView('resume.html.twig');
 
         return new PdfResponse(
-            $knpSnappyPdf->getOutputFromHtml($html),
-            'file.pdf'
+            $knpSnappyPdf->getOutputFromHtml($html, array(
+                'encoding' => 'utf-8',
+            )),
+            'simulation.pdf'
+
         );
     }
 }
