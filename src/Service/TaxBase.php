@@ -1,23 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wilder
- * Date: 03/12/18
- * Time: 17:42
- */
 
 namespace App\Service;
 
 class TaxBase
 {
-    public function taxBase($price, $area)
+    const MAXIMUM_PRICE_PER_SQUARE_METER = 5500;
+
+    /**
+     * @param int $price
+     * @param int $area
+     * @return int
+     */
+    public function taxBase(int $price, int $area) : int
     {
         $taxBase = 0;
-        $meterPrice = $price / $area;
-        if ($meterPrice > 5500) {
-            $meterPrice = 5500;
+        $meterSquarePrice = $price / $area;
+        if ($meterSquarePrice > self::MAXIMUM_PRICE_PER_SQUARE_METER) {
+            $meterSquarePrice = 5500;
         }
-        $taxBase = $meterPrice * $area;
+        $taxBase = $meterSquarePrice * $area;
         return $taxBase;
     }
 }
