@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -12,16 +13,15 @@ class PdfExportController extends AbstractController
 {
     /**
      * @Route("/export-pdf", name="pdf_export")
-     * @param SessionInterface $session
      * @return PdfResponse
      */
-    public function pdfAction(SessionInterface $session)
+    public function pdfAction(Pdf $knpSnappyPdf)
     {
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig');
 
         return new PdfResponse(
-            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            $knpSnappyPdf->getOutputFromHtml($html),
             'file.pdf'
         );
     }
