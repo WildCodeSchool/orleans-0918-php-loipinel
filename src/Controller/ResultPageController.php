@@ -15,8 +15,8 @@ class ResultPageController extends AbstractController
     public function index(SessionInterface $session, TaxBenefit $taxBase, TaxBenefit $taxBenefit)
     {
         $simulator = $session->get('simulator');
-        $base = $taxBase->taxBase($simulator->getPurchasePrice(), $simulator->getSurfaceArea());
-        $result = $taxBenefit->taxBenefit($base, $simulator->getDuration());
+        $base = $taxBase->getTaxBase($simulator->getPurchasePrice(), $simulator->getSurfaceArea());
+        $result = $taxBenefit->getTaxBenefit($base, $simulator->getDuration());
 
         return $this->render('result.html.twig', [
             'result' => $result,

@@ -21,7 +21,7 @@ class TaxBenefit
      * @param int $area
      * @return int
      */
-    public function taxBase(int $price, int $area) : int
+    public function getTaxBase(int $price, int $area) : int
     {
         $taxBase = 0;
         $meterSquarePrice = $price / $area;
@@ -37,7 +37,7 @@ class TaxBenefit
      * @param int $time
      * @return int
      */
-    public function taxBenefit(int $taxBase, int $time) : int
+    public function getTaxBenefit(int $taxBase, int $time) : int
     {
         $taxBenefit = 0;
         if ($taxBase > self::MAXIMUM_TAX_BASE) {
