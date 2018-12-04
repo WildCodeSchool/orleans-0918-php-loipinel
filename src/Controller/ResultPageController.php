@@ -13,9 +13,11 @@ class ResultPageController extends AbstractController
      */
     public function index(SessionInterface $session)
     {
+        $user = $this->getUser();
         $simulator = $session->get('simulator');
         return $this->render('result.html.twig', [
             'simulator' => $simulator,
+            'user' => $user,
         ]);
     }
 }
