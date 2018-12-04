@@ -16,8 +16,6 @@ class TaxBenefit
     const RATE_FOR_A_PERIOD_OF_NINE_YEARS = 0.18;
     const RATE_FOR_A_PERIOD_OF_TWELVE_YEARS = 0.21;
 
-    private $time;
-
     /**
      * @param int $price
      * @param int $area
@@ -53,21 +51,5 @@ class TaxBenefit
             $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_TWELVE_YEARS;
         }
         return $taxBenefit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
-
-    /**
-     * @param mixed $time
-     */
-    public function setTime($time): void
-    {
-        $this->time = $time;
     }
 }
