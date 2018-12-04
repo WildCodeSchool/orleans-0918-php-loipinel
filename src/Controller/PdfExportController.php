@@ -25,7 +25,6 @@ class PdfExportController extends AbstractController
                 'encoding' => 'utf-8',
             )),
             'simulation.pdf'
-
         );
     }
 }
