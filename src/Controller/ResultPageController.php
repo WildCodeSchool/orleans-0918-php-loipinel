@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\RealEstateProperty;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,14 +13,21 @@ class ResultPageController extends AbstractController
     /**
      * @Route("/resultat", name="result_page")
      */
-    public function index(SessionInterface $session, TaxBenefit $taxBase, TaxBenefit $taxBenefit)
+    public function index(SessionInterface $session, TaxBenefit $taxBase)
     {
         $simulator = $session->get('simulator');
-        $base = $taxBase->getTaxBase($simulator->getPurchasePrice(), $simulator->getSurfaceArea());
-        $result = $taxBenefit->getTaxBenefit($base, $simulator->getDuration());
+
+        $realEstate = new RealEstateProperty();
+        $realEstate->setPurchasePrice($simulator->getPurchasePrice());
+        $realEstate->setSurfaceArea($simulator->getSurfaceArea());
+
+        $taxBase->setRealEstate($realEstate);
+
+        $base = $taxBase->getTaxBase();
+        //$result = $taxBenefit->getTaxBenefit($base, $simulator->getDuration());
 
         return $this->render('result.html.twig', [
-            'result' => $result,
+            'base' => $base,
         ]);
     }
 }

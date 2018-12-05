@@ -1,12 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wilder
- * Date: 04/12/18
- * Time: 16:36
- */
 
 namespace App\Service;
+
+use App\Entity\RealEstateProperty;
 
 class TaxBenefit
 {
@@ -17,39 +13,97 @@ class TaxBenefit
     const RATE_FOR_A_PERIOD_OF_TWELVE_YEARS = 0.21;
 
     /**
-     * @param int $price
-     * @param int $area
+     * Durée de la location en année
+     *
+     * @var int
+     */
+    private $rentalPeriod;
+
+
+    /**
+     * @var RealEstateProperty
+     */
+    private $realEstate;
+
+
+    /**
+     * Calcule la base fiscale du bien
+     *
      * @return int
      */
-    public function getTaxBase(int $price, int $area) : int
+    public function getTaxBase() : int
     {
-        $taxBase = 0;
-        $meterSquarePrice = $price / $area;
+        $meterSquarePrice = $this->getRealEstate()->getPurchasePrice() / $this->getRealEstate()->getSurfaceArea();
         if ($meterSquarePrice > self::MAXIMUM_PRICE_PER_SQUARE_METER) {
-            $meterSquarePrice = 5500;
+            $meterSquarePrice = self::MAXIMUM_PRICE_PER_SQUARE_METER;
         }
-        $taxBase = $meterSquarePrice * $area;
-        return $taxBase;
+        return $meterSquarePrice * $this->realEstate->getSurfaceArea();
     }
 
     /**
-     * @param int $taxBase
-     * @param int $time
+     * Calcule l'avantage fiscal en se basant sur la base fiscale et la durée
+     *
      * @return int
      */
-    public function getTaxBenefit(int $taxBase, int $time) : int
+    public function getTaxBenefit() : int
     {
         $taxBenefit = 0;
-        if ($taxBase > self::MAXIMUM_TAX_BASE) {
-            $taxBase = 300000;
+
+        if ($this->getTaxBase() > self::MAXIMUM_TAX_BASE) {
+            $taxBase = self::MAXIMUM_TAX_BASE;
         }
-        if ($time == 6) {
-            $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_SIX_YEARS;
-        } elseif ($time == 9) {
-            $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_NINE_YEARS;
-        } else {
-            $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_TWELVE_YEARS;
+
+        switch ($this->getRentalPeriod()) {
+            case 6:
+                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_SIX_YEARS;
+                break;
+            case 9:
+                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_NINE_YEARS;
+                break;
+            case 12:
+                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_TWELVE_YEARS;
+                break;
+            default:
+                throw new \LogicException("Only 6, 9, 12 accepted.");
+                break;
         }
+
         return $taxBenefit;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRentalPeriod(): int
+    {
+        return $this->rentalPeriod;
+    }
+
+    /**
+     * @param int $rentalPeriod
+     * @return TaxBenefit
+     */
+    public function setRentalPeriod(int $rentalPeriod): TaxBenefit
+    {
+        $this->rentalPeriod = $rentalPeriod;
+        return $this;
+    }
+
+    /**
+     * @return RealEstateProperty
+     */
+    public function getRealEstate(): RealEstateProperty
+    {
+        return $this->realEstate;
+    }
+
+    /**
+     * @param RealEstateProperty $realEstate
+     * @return TaxBenefit
+     */
+    public function setRealEstate(RealEstateProperty $realEstate): TaxBenefit
+    {
+        $this->realEstate = $realEstate;
+        return $this;
     }
 }
