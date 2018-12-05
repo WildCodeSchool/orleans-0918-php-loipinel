@@ -41,55 +41,6 @@ class TaxBenefit
     }
 
     /**
-     * Calcule l'avantage fiscal en se basant sur la base fiscale et la durée
-     *
-     * @return int
-     */
-    public function getTaxBenefit() : int
-    {
-        $taxBenefit = 0;
-
-        if ($this->getTaxBase() > self::MAXIMUM_TAX_BASE) {
-            $taxBase = self::MAXIMUM_TAX_BASE;
-        }
-
-        switch ($this->getRentalPeriod()) {
-            case 6:
-                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_SIX_YEARS;
-                break;
-            case 9:
-                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_NINE_YEARS;
-                break;
-            case 12:
-                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_TWELVE_YEARS;
-                break;
-            default:
-                throw new \LogicException("Only 6, 9, 12 accepted.");
-                break;
-        }
-
-        return $taxBenefit;
-    }
-
-    /**
-     * @return int
-     */
-    public function getRentalPeriod(): int
-    {
-        return $this->rentalPeriod;
-    }
-
-    /**
-     * @param int $rentalPeriod
-     * @return TaxBenefit
-     */
-    public function setRentalPeriod(int $rentalPeriod): TaxBenefit
-    {
-        $this->rentalPeriod = $rentalPeriod;
-        return $this;
-    }
-
-    /**
      * @return RealEstateProperty
      */
     public function getRealEstate(): RealEstateProperty
