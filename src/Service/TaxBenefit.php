@@ -7,18 +7,6 @@ use App\Entity\RealEstateProperty;
 class TaxBenefit
 {
     const MAXIMUM_PRICE_PER_SQUARE_METER = 5500;
-    const MAXIMUM_TAX_BASE = 300000;
-    const RATE_FOR_A_PERIOD_OF_SIX_YEARS = 0.12;
-    const RATE_FOR_A_PERIOD_OF_NINE_YEARS = 0.18;
-    const RATE_FOR_A_PERIOD_OF_TWELVE_YEARS = 0.21;
-
-    /**
-     * Durée de la location en année
-     *
-     * @var int
-     */
-    private $rentalPeriod;
-
 
     /**
      * @var RealEstateProperty
