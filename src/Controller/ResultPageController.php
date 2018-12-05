@@ -24,7 +24,6 @@ class ResultPageController extends AbstractController
         $taxBase->setRealEstate($realEstate);
 
         $base = $taxBase->calculateTaxBase();
-        //$result = $taxBenefit->getTaxBenefit($base, $simulator->getDuration());
 
         return $this->render('result.html.twig', [
             'base' => $base,
