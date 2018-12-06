@@ -101,5 +101,10 @@ a:hover {
 h1
 {
   text-align: center;
-  background-color: $secondaryColor;
+}
+
+.pdfTitle {
+  h1 {
+    font-weight: bold;
+  }
 }
