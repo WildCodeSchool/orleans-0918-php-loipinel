@@ -8,9 +8,9 @@
         <ul class="navbar-nav  mr-auto mt-2 mt-lg-0 ">
         </ul>
         <ul class="navbar-nav">
-            {% if user.email is defined %}
+            {% if app.user.email is defined %}
             <li>
-                <span class="nav-link username">{{ user.email }}</span>
+                <span class="nav-link username">{{ app.user.email }}</span>
             </li>
             <li>
                 <a href="{{ path('app_logout') }}" class="btn btn-outline-dark logout nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
