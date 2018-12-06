@@ -4,10 +4,10 @@
 
     <h1 class="bg-primary topResult">Résultat de la simulation</h1>
 
-    {{ include('resume.html.twig') }}
+    {{ include('resultTable.html.twig') }}
 
     <div class="row pdf justify-content-center">
-        <a href="{{ path('pdf_export') }}" type="submit" class="btn btn-primary btn-lg">Exporter en pdf</a>
+        <a href="{{ path('pdf_export') }}" class="btn btn-primary btn-lg">Exporter en pdf</a>
     </div>
 
 {% endblock %}
