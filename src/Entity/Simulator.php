@@ -8,6 +8,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Simulator
@@ -256,6 +257,9 @@ class Simulator
      */
     public function setSurfaceArea(float $surfaceArea): void
     {
+        if ($surfaceArea <= 0) {
+            throw new Exception('La surface ne peut être égale à 0');
+        }
         $this->surfaceArea = $surfaceArea;
     }
 
