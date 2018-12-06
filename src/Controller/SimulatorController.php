@@ -36,8 +36,6 @@ class SimulatorController extends AbstractController
 
         $form -> handleRequest($request);
 
-        /* creating simulator session then redirect to
-        result page if form is submitted and valid */
         if ($form->isSubmitted() && $form->isValid()) {
             $session->set('simulator', $simulator);
             return $this->redirectToRoute('result_page');
