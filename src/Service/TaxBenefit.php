@@ -17,7 +17,7 @@ class TaxBenefit
     /**
      * Calcule la base fiscale du bien
      *
-     * @return int
+     * @return float
      */
     public function calculateTaxBase() : float
     {

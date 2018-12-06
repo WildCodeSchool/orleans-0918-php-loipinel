@@ -12,7 +12,6 @@ use App\Entity\Simulator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -62,8 +61,9 @@ class SimulatorType extends AbstractType
             'multiple' => false,
             'expanded' => true,
         ]);
-        $builder->add('surfaceArea', IntegerType::class, [
+        $builder->add('surfaceArea', NumberType::class , [
             'label' => 'Surface en M2',
+            'scale' => 2,
         ]);
         $builder->add('purchasePrice', MoneyType::class, [
             'label' => 'Prix d\'achat',

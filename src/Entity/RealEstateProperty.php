@@ -5,7 +5,7 @@ namespace App\Entity;
 class RealEstateProperty
 {
     /**
-     * @var int
+     * @var float
      */
     private $surfaceArea;
     /**
@@ -14,15 +14,15 @@ class RealEstateProperty
     private $purchasePrice;
 
     /**
-     * @return int
+     * @return float
      */
-    public function getSurfaceArea(): int
+    public function getSurfaceArea(): float
     {
         return $this->surfaceArea;
     }
 
     /**
-     * @param int $surfaceArea
+     * @param float $surfaceArea
      */
     public function setSurfaceArea(int $surfaceArea): void
     {
