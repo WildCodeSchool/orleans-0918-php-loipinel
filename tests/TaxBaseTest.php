@@ -26,6 +26,18 @@ class TaxBaseTest extends TestCase
         $realEstateProperty->setPurchasePrice(250000);
         $taxBenefit->setRealEstate($realEstateProperty);
         $this->assertEquals(250000, $taxBenefit->calculateTaxBase());
+
+        $realEstateProperty->setSurfaceArea(100.00);
+        $realEstateProperty->setPurchasePrice(250000);
+        $taxBenefit->setRealEstate($realEstateProperty);
+        $this->assertEquals(250000, $taxBenefit->calculateTaxBase());
+
+        $realEstateProperty->setSurfaceArea(25.75);
+        $realEstateProperty->setPurchasePrice(125000);
+        $taxBenefit->setRealEstate($realEstateProperty);
+        $this->assertEquals(125000, $taxBenefit->calculateTaxBase());
+
+
     }
 
 
@@ -47,5 +59,16 @@ class TaxBaseTest extends TestCase
         $realEstateProperty->setPurchasePrice(350000);
         $taxBenefit->setRealEstate($realEstateProperty);
         $this->assertEquals(275000, $taxBenefit->calculateTaxBase());
+
+        $realEstateProperty->setSurfaceArea(50.00);
+        $realEstateProperty->setPurchasePrice(350000);
+        $taxBenefit->setRealEstate($realEstateProperty);
+        $this->assertEquals(275000, $taxBenefit->calculateTaxBase());
+
+        $realEstateProperty->setSurfaceArea(30.78);
+        $realEstateProperty->setPurchasePrice(350000);
+        $taxBenefit->setRealEstate($realEstateProperty);
+        $this->assertEquals(169290, $taxBenefit->calculateTaxBase());
+
    }
 }

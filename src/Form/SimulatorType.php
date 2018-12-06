@@ -67,15 +67,19 @@ class SimulatorType extends AbstractType
         ]);
         $builder->add('purchasePrice', MoneyType::class, [
             'label' => 'Prix d\'achat',
+            'grouping' => true,
         ]);
         $builder->add('notaryFees', MoneyType::class, [
             'label' => 'Frais de notaire',
+            'grouping' => true,
         ]);
         $builder->add('otherFeesAcquisition', MoneyType::class, [
             'label' => 'Autres frais d\'acquisition',
+            'grouping' => true,
         ]);
         $builder->add('totalAmountAcquisition', MoneyType::class, [
             'label' => 'Montant total de l\'acquisition',
+            'grouping' => true,
         ]);
         $builder->getForm();
     }

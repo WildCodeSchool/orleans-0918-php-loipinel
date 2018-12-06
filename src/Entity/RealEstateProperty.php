@@ -24,7 +24,7 @@ class RealEstateProperty
     /**
      * @param float $surfaceArea
      */
-    public function setSurfaceArea(int $surfaceArea): void
+    public function setSurfaceArea(float $surfaceArea): void
     {
         $this->surfaceArea = $surfaceArea;
     }
