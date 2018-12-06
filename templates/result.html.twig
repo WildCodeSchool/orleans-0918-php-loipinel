@@ -84,7 +84,7 @@
                 <p>Surface :</p>
             </td>
             <td>
-                <p>{{ app.session.get('simulator').surfaceArea }} m2</p>
+                <p>{{ app.session.get('simulator').surfaceArea|number_format(2, ',', ' ') }} m2</p>
             </td>
         </tr>
 
@@ -93,7 +93,7 @@
                 <p>Prix d'acquisition :</p>
             </td>
             <td>
-                <p>{{ app.session.get('simulator').purchasePrice }} €</p>
+                <p>{{ app.session.get('simulator').purchasePrice|number_format(2, ',', ' ') }} €</p>
             </td>
         </tr>
 
@@ -102,7 +102,7 @@
                 <p>Frais de notaire :</p>
             </td>
             <td>
-                <p>{{ app.session.get('simulator').notaryFees }} €</p>
+                <p>{{ app.session.get('simulator').notaryFees|number_format(2, ',', ' ') }} €</p>
             </td>
         </tr>
 
@@ -111,7 +111,7 @@
                 <p>Autres frais d'acquisition :</p>
             </td>
             <td>
-                <p>{{ app.session.get('simulator').otherFeesAcquisition }} €</p>
+                <p>{{ app.session.get('simulator').otherFeesAcquisition|number_format(2, ',', ' ') }} €</p>
             </td>
         </tr>
 
@@ -120,7 +120,7 @@
                 <p>Montant total de l'acquisition :</p>
             </td>
             <td>
-                <p>{{app.session.get('simulator').totalAmountAcquisition }} €</p>
+                <p>{{app.session.get('simulator').totalAmountAcquisition|number_format(2, ',', ' ') }} €</p>
             </td>
         </tr>
 
@@ -129,7 +129,7 @@
                 <p>Votre base fiscale :</p>
             </td>
             <td class="bg-secondary highlight">
-                <p> {{ base }} €</p>
+                <p> {{ base|number_format(2, ',', ' ') }} €</p>
             </td>
         </tr>
     </table>
