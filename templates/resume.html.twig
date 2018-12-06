@@ -1,0 +1,8 @@
+{% extends 'layoutPdf.html.twig' %}
+
+{% block body %}
+
+    <div class="row justify-content-center pdfTitle"> <h1>Résultat de la simulation</h1> </div>
+
+    {{ include('resultTable.html.twig') }}
+{% endblock %}

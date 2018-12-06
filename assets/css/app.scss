@@ -33,8 +33,6 @@ body {
   color: black;
 }
 
-
-
 table, th, td {
   border-collapse: collapse;
   border: 1px solid black;
@@ -58,6 +56,7 @@ table {
 .pdf {
   margin-top: 5vh;
   max-width: 100vw;
+  margin-bottom: 5vh;
 }
 
 .highlight {
@@ -102,5 +101,10 @@ a:hover {
 h1
 {
   text-align: center;
-  background-color: $secondaryColor;
+}
+
+.pdfTitle {
+  h1 {
+    font-weight: bold;
+  }
 }
