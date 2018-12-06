@@ -75,6 +75,7 @@ class Simulator
     /**
      * @var float
      * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
      * @Assert\Type("float")
      */
     private $surfaceArea;
@@ -82,6 +83,7 @@ class Simulator
     /**
      * @var int
      * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
      * @Assert\Type("int")
      *
      */
