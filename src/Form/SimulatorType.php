@@ -61,7 +61,7 @@ class SimulatorType extends AbstractType
             'multiple' => false,
             'expanded' => true,
         ]);
-        $builder->add('surfaceArea', NumberType::class , [
+        $builder->add('surfaceArea', NumberType::class, [
             'label' => 'Surface en M2',
             'scale' => 2,
         ]);
