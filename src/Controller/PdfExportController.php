@@ -25,7 +25,6 @@ class PdfExportController extends AbstractController
 
         return new PdfResponse(
             $knpSnappyPdf->getOutputFromHtml($html, array(
-//                'encoding' => 'utf-8',
                 'user-style-sheet' => [
                     './build/app.css',
                 ],
