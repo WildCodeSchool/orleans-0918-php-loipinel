@@ -35,11 +35,7 @@ class ResultPageController extends AbstractController
         $lastName = $simulator->getLastName();
 
         return new PdfResponse(
-            $knpSnappyPdf->getOutputFromHtml($html, [
-                    'user-style-sheet' => [
-                        './build/app.css',
-                    ],]
-            ),
+            $knpSnappyPdf->getOutputFromHtml($html, ['user-style-sheet' => ['./build/app.css',],]),
             $lastName . '_' . date("d-m-Y") . '.pdf'
         );
     }
