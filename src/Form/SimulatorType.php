@@ -40,11 +40,11 @@ class SimulatorType extends AbstractType
         $builder->get('city')->resetViewTransformers();
         $builder->add('zone', ChoiceType::class, [
             'choices' => [
-                "A" => "A",
-                "A bis" => "A bis",
-                "B1" => "B1",
-                "B2" => "B2",
-                "C" => "C",
+                "A" => "a",
+                "A bis" => "a bis",
+                "B1" => "b1",
+                "B2" => "b2",
+                "C" => "c",
             ],
         ]);
         $builder->add('acquisitionDate', DateType::class, [
