@@ -65,9 +65,9 @@ class Simulator
      */
     private $duration;
     /**
-     * @var int
+     * @var float
      * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\Type("float")
      */
     private $surfaceArea;
     /**

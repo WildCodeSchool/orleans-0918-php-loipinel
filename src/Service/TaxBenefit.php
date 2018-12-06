@@ -19,7 +19,7 @@ class TaxBenefit
      *
      * @return int
      */
-    public function calculateTaxBase() : int
+    public function calculateTaxBase() : float
     {
         $meterSquarePrice = $this->getRealEstate()->getPurchasePrice() / $this->getRealEstate()->getSurfaceArea();
         if ($meterSquarePrice > self::MAXIMUM_PRICE_PER_SQUARE_METER) {
