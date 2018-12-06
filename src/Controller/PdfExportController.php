@@ -12,6 +12,8 @@ class PdfExportController extends AbstractController
 {
     /**
      * @Route("/export-pdf", name="pdf_export")
+     * @param Pdf $knpSnappyPdf
+     * @param SessionInterface $session
      * @return PdfResponse
      */
     public function pdfAction(Pdf $knpSnappyPdf, SessionInterface $session)
@@ -23,9 +25,12 @@ class PdfExportController extends AbstractController
 
         return new PdfResponse(
             $knpSnappyPdf->getOutputFromHtml($html, array(
-                'encoding' => 'utf-8',
+//                'encoding' => 'utf-8',
+                'user-style-sheet' => [
+                    './build/app.css',
+                ],
             )),
-            $lastName . '-' . date("d_m_Y") . '.pdf'
+            $lastName . '_' . date("d-m-Y") . '.pdf'
         );
     }
 }
