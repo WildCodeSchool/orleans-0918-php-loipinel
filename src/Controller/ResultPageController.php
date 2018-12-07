@@ -18,7 +18,7 @@ class ResultPageController extends AbstractController
      * @param Simulator $simulator
      * @return float
      */
-    private function baseCalculation(TaxBenefit $taxBase,Simulator $simulator) :float
+    private function baseCalculation(TaxBenefit $taxBase, Simulator $simulator) :float
     {
         $realEstate = new RealEstateProperty();
         $realEstate->setPurchasePrice($simulator->getPurchasePrice());
