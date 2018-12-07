@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\RealEstateProperty;
+use App\Entity\Simulator;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +14,22 @@ use App\Service\TaxBenefit;
 class ResultPageController extends AbstractController
 {
     /**
+     * @param TaxBenefit $taxBase
+     * @param Simulator $simulator
+     * @return float
+     */
+    private function baseCalculation(TaxBenefit $taxBase,Simulator $simulator) :float
+    {
+        $realEstate = new RealEstateProperty();
+        $realEstate->setPurchasePrice($simulator->getPurchasePrice());
+        $realEstate->setSurfaceArea($simulator->getSurfaceArea());
+
+        $taxBase->setRealEstate($realEstate);
+
+        return $taxBase->calculateTaxBase();
+    }
+
+    /**
      * @Route("/resultat", name="result_page")
      */
     public function index(SessionInterface $session, TaxBenefit $taxBase)
@@ -20,13 +37,7 @@ class ResultPageController extends AbstractController
         $user = $this->getUser();
         $simulator = $session->get('simulator');
 
-        $realEstate = new RealEstateProperty();
-        $realEstate->setPurchasePrice($simulator->getPurchasePrice());
-        $realEstate->setSurfaceArea($simulator->getSurfaceArea());
-
-        $taxBase->setRealEstate($realEstate);
-
-        $base = $taxBase->calculateTaxBase();
+        $base = $this->baseCalculation($taxBase, $simulator);
 
         return $this->render('result.html.twig', [
             'base' => $base,
@@ -41,11 +52,14 @@ class ResultPageController extends AbstractController
      * @param SessionInterface $session
      * @return PdfResponse
      */
-    public function pdfAction(Pdf $knpSnappyPdf, SessionInterface $session)
+    public function pdfAction(Pdf $knpSnappyPdf, SessionInterface $session, TaxBenefit $taxBase)
     {
-        /* creating the pdf from html page */
-        $html = $this->renderView('resume.html.twig');
         $simulator = $session->get('simulator');
+
+        $base = $this->baseCalculation($taxBase, $simulator);
+
+        /* creating the pdf from html page */
+        $html = $this->renderView('resume.html.twig', ['base' => $base,]);
         $lastName = $simulator->getLastName();
 
         return new PdfResponse(
