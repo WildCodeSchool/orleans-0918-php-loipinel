@@ -8,12 +8,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/simulator">Simulateur</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Gestion des utilisateurs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Gestion des données</a>
-            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/user">Gestion des utilisateurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Gestion des données</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
