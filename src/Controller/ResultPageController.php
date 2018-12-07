@@ -2,22 +2,34 @@
 
 namespace App\Controller;
 
+use App\Entity\RealEstateProperty;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\TaxBenefit;
 
 class ResultPageController extends AbstractController
 {
     /**
      * @Route("/resultat", name="result_page")
      */
-    public function index(SessionInterface $session)
+    public function index(SessionInterface $session, TaxBenefit $taxBase)
     {
         $user = $this->getUser();
         $simulator = $session->get('simulator');
+
+        $realEstate = new RealEstateProperty();
+        $realEstate->setPurchasePrice($simulator->getPurchasePrice());
+        $realEstate->setSurfaceArea($simulator->getSurfaceArea());
+
+        $taxBase->setRealEstate($realEstate);
+
+        $base = $taxBase->calculateTaxBase();
+
         return $this->render('result.html.twig', [
+            'base' => $base,
             'simulator' => $simulator,
             'user' => $user,
         ]);
