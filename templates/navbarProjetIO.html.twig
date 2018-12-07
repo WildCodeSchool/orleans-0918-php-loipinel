@@ -8,12 +8,18 @@
         <ul class="navbar-nav  mr-auto mt-2 mt-lg-0 ">
         </ul>
         <ul class="navbar-nav">
+            {% if app.user.email is defined %}
             <li>
-                <span class="nav-link username"> Super Admin</span>
+                <span class="nav-link username">{{ app.user.email }}</span>
             </li>
             <li>
-                <a href="#" class="btn btn-outline-dark logout nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                <a href="{{ path('app_logout') }}" class="btn btn-outline-dark logout nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
             </li>
+            {% else %}
+            <li>
+                <a href="{{ path('app_login') }}" class="btn btn-outline-dark logout nav-link"><i class="fas fa-sign-out-alt"></i> Connexion</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
