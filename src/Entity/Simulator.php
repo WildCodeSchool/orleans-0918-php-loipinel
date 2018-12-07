@@ -244,7 +244,6 @@ class Simulator
 
     /**
      * @return float
-     * @Assert\GreaterThan(0)
      */
     public function getSurfaceArea(): ?float
     {
@@ -253,7 +252,6 @@ class Simulator
 
     /**
      * @param float $surfaceArea
-     * @Assert\GreaterThan(0)
      */
     public function setSurfaceArea(float $surfaceArea): void
     {
