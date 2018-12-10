@@ -43,14 +43,15 @@ class TaxBenefit
      *
      * @return int
      */
-    public function calculateTaxBenefit() : int
+    public function calculateTaxBenefit() : float
     {
         $taxBenefit = 0;
 
         if ($this->calculateTaxBase() > self::MAXIMUM_TAX_BASE) {
             $taxBase = self::MAXIMUM_TAX_BASE;
+        } else {
+            $taxBase = $this->calculateTaxBase();
         }
-
         switch ($this->getRentalPeriod()) {
             case 6:
                 $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_SIX_YEARS;
