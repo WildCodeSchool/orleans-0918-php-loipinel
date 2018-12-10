@@ -24,6 +24,8 @@
 $logoutColor: #6D737D;
 $colorIO: #FCA000;
 $secondaryColor: #989898;
+$trashColor: #FF0000;
+
 
 body {
   padding-top:60px;
@@ -98,12 +100,16 @@ a:hover {
 h1
 {
   text-align: center;
-
 }
 
 .pdfTitle {
   h1 {
     font-weight: bold;
   }
+}
 
+a {
+  .fa-trash-alt {
+    color: $trashColor;
+  }
 }

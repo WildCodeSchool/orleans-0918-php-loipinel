@@ -3,16 +3,16 @@
 {% block title %}Liste des utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>Liste des utilisateurs</h1>
+    <h1 class="bg-primary">Liste des utilisateurs</h1>
 
     <div class="container-fluid">
     <table class="table">
         <thead>
             <tr>
                 <th>E-mail</th>
-                <th>Rôles</th>
                 <th>Nom</th>
                 <th>Prénom</th>
+                <th>Rôles</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,9 +20,9 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.email }}</td>
-                <td>{{ user.roles.0 }}{% if user.roles.1 is defined %} / {{ user.roles.1 }}{% endif %}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.firstName }}</td>
+                <td>{{ user.roles.0 }}{% if user.roles.1 is defined %} / {{ user.roles.1 }}{% endif %}</td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}"><i class="fas fa-list"></i></a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}"><i class="fas fa-user-edit"></i></a>
