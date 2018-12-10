@@ -71,4 +71,44 @@ class TaxBaseTest extends TestCase
         $this->assertEquals(169290, $taxBenefit->calculateTaxBase());
 
    }
+
+    public function testTaxBenefitInLimit()
+    {
+        $realEstateProperty = new RealEstateProperty();
+        $realEstateProperty->setSurfaceArea(12);
+        $realEstateProperty->setPurchasePrice(300000);
+        $taxBenefitResult = new TaxBenefit();
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $this->assertEquals(63000, $taxBenefit->calculateTaxBenefit());
+
+        $realEstateProperty->setSurfaceArea(9);
+        $realEstateProperty->setPurchasePrice(300000);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $this->assertEquals(54000, $taxBenefit->calculateTaxBenefit());
+
+        $realEstateProperty->setSurfaceArea(6);
+        $realEstateProperty->setPurchasePrice(300000);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $this->assertEquals(36000, $taxBenefit->calculateTaxBenefit());
+    }
+
+    public function testTaxBenefitOverLimit()
+    {
+        $realEstateProperty = new RealEstateProperty();
+        $realEstateProperty->setSurfaceArea(12);
+        $realEstateProperty->setPurchasePrice(600000);
+        $taxBenefitResult = new TaxBenefit();
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $this->assertEquals(63000, $taxBenefit->calculateTaxBenefit());
+
+        $realEstateProperty->setSurfaceArea(9);
+        $realEstateProperty->setPurchasePrice(750000);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $this->assertEquals(54000, $taxBenefit->calculateTaxBenefit());
+
+        $realEstateProperty->setSurfaceArea(6);
+        $realEstateProperty->setPurchasePrice(320000);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $this->assertEquals(36000, $taxBenefit->calculateTaxBenefit());
+    }
 }
