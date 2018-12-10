@@ -16,7 +16,6 @@ class ResultPageController extends AbstractController
     /**
      * @param TaxBenefit $taxBenefit
      * @param Simulator $simulator
-     * @return void
      */
     private function injectRealEstate(TaxBenefit $taxBenefit, Simulator $simulator) : void
     {
@@ -28,6 +27,9 @@ class ResultPageController extends AbstractController
     }
 
     /**
+     * @param SessionInterface $session
+     * @param TaxBenefit $taxBenefit
+     * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/resultat", name="result_page")
      */
     public function index(SessionInterface $session, TaxBenefit $taxBenefit)
