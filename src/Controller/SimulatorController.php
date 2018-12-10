@@ -18,9 +18,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SimulatorController extends AbstractController
 {
+    const INELLIGIBLEAREA = 'C';
+
     /**
      * Show all row from category's entity
-     *
      * @Route("/simulator", name="simulator_show")
      * @param Request $request
      * @return Response A response instance
@@ -34,7 +35,7 @@ class SimulatorController extends AbstractController
             $simulator
         );
 
-        $form -> handleRequest($request);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $session->set('simulator', $simulator);
@@ -47,5 +48,23 @@ class SimulatorController extends AbstractController
                 'form' => $form->createView(),
             ]
         );
+    }
+
+    /**
+     * @Route("/area/{date}/{cityCode}")
+     * @param $cityCode
+     * @param $date
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getArea(string $cityCode, string $date): Response
+    {
+        $res=date_parse($date);
+        $selectYear = $res['year'];
+        $json = file_get_contents('../Data/pinel.json');
+        $result = json_decode($json, true);
+        $inseeCodes = $result['years'][$selectYear]['insee'];
+        $area = $inseeCodes[$cityCode] ?? self::INELLIGIBLEAREA;
+        return $this->json($area);
+
     }
 }
