@@ -25,6 +25,13 @@ class TaxBenefit
     private $rentalPeriod;
 
     /**
+     * @var float
+     */
+    private $taxBase;
+
+
+
+    /**
      * Calcule la base fiscale du bien
      *
      * @return float
@@ -47,10 +54,12 @@ class TaxBenefit
     {
         $taxBenefit = 0;
 
-        if ($this->calculateTaxBase() > self::MAXIMUM_TAX_BASE) {
+        $this->setTaxBase($this->calculateTaxBase());
+
+        if ($this->taxBase > self::MAXIMUM_TAX_BASE) {
             $taxBase = self::MAXIMUM_TAX_BASE;
         } else {
-            $taxBase = $this->calculateTaxBase();
+            $taxBase = $this->taxBase;
         }
         switch ($this->getRentalPeriod()) {
             case 6:
@@ -103,6 +112,24 @@ class TaxBenefit
     public function setRealEstate(RealEstateProperty $realEstate): TaxBenefit
     {
         $this->realEstate = $realEstate;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTaxBase(): float
+    {
+        return $this->taxBase;
+    }
+
+    /**
+     * @param float $taxBase
+     * @return TaxBenefit
+     */
+    public function setTaxBase(float $taxBase): TaxBenefit
+    {
+        $this->taxBase = $taxBase;
         return $this;
     }
 }
