@@ -16,6 +16,7 @@ class ResultPageController extends AbstractController
     /**
      * @param TaxBenefit $taxBenefit
      * @param Simulator $simulator
+     * @return void
      */
     private function injectRealEstate(TaxBenefit $taxBenefit, Simulator $simulator) : void
     {
