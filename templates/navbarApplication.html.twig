@@ -1,19 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light font-weight-bold">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">SIMULATEUR</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/simulator">Simulateur</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Gestion des utilisateurs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Gestion des données</a>
-            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/user">Gestion des utilisateurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Gestion des données</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
