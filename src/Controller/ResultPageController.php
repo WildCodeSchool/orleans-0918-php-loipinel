@@ -40,10 +40,10 @@ class ResultPageController extends AbstractController
 
         $this->injectRealEstate($taxBenefit, $simulator);
         $taxBenefit->setRentalPeriod($simulator->getDuration());
-        $taxBenefit->calculateTaxBenefit();
+        $resultTaxBenefit = $taxBenefit->calculateTaxBenefit();
 
         return $this->render('result.html.twig', [
-            'taxBenefit' => $taxBenefit,
+            'resultTaxBenefit' => $resultTaxBenefit,
             'simulator' => $simulator,
             'user' => $user,
         ]);
@@ -61,10 +61,10 @@ class ResultPageController extends AbstractController
 
         $this->injectRealEstate($taxBenefit, $simulator);
         $taxBenefit->setRentalPeriod($simulator->getDuration());
-        $taxBenefit->calculateTaxBenefit();
+        $resultTaxBenefit = $taxBenefit->calculateTaxBenefit();
 
         /* creating the pdf from html page */
-        $html = $this->renderView('resume.html.twig', ['taxBenefit' => $taxBenefit,]);
+        $html = $this->renderView('resume.html.twig', ['resultTaxBenefit' => $resultTaxBenefit,]);
         $lastName = $simulator->getLastName();
 
         return new PdfResponse(
