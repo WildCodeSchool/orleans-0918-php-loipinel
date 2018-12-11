@@ -64,10 +64,11 @@ class TaxBenefit
         } else {
             $taxBase = $this->taxBase;
         }
-        if (in_array($this->getRentalPeriod(), array_keys(self::TABLE_OF_RATES_BY_DURATION))) {
+        $datesOfRatesByDuration = array_keys(self::TABLE_OF_RATES_BY_DURATION);
+        if (in_array($this->getRentalPeriod(), $datesOfRatesByDuration)) {
             $taxBenefit = $taxBase * self::TABLE_OF_RATES_BY_DURATION[$this->getRentalPeriod()];
         } else {
-            throw new \LogicException("Only 6, 9, 12 accepted.");
+            throw new \LogicException("Only $datesOfRatesByDuration[0], $datesOfRatesByDuration[1], $datesOfRatesByDuration[2] accepted.");
         }
 
         return $taxBenefit;
