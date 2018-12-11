@@ -22,7 +22,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.firstName }}</td>
-                <td>{{ user.roles.0 }}{% if user.roles.1 is defined %} / {{ user.roles.1 }}{% endif %}</td>
+                <td>{% for role in user.roles %} /{{ role }}{% endfor %}</td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}"><i class="fas fa-list"></i></a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}"><i class="fas fa-user-edit"></i></a>
@@ -38,5 +38,5 @@
     </table>
     </div>
 
-    <a class="btn btn-secondary" href="{{ path('user_new') }}">Ajouter un utilisateur</a>
+    <a class="btn btn-secondary" href="{{ path('user_new') }}"><i class="fas fa-user-plus"></i> Ajouter un utilisateur</a>
 {% endblock %}
