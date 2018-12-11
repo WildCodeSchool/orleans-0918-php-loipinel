@@ -65,6 +65,5 @@ class SimulatorController extends AbstractController
         $inseeCodes = $result['years'][$selectYear]['insee'];
         $area = $inseeCodes[$cityCode] ?? self::INELLIGIBLEAREA;
         return $this->json($area);
-
     }
 }

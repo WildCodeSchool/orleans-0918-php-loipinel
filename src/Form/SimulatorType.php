@@ -42,9 +42,7 @@ class SimulatorType extends AbstractType
             'label' => 'Ville',
         ]);
         $builder->get('city')->resetViewTransformers();
-        $builder->add('zone', TextType::class
-        );
-
+        $builder->add('zone', TextType::class);
         $builder->add('duration', ChoiceType::class, [
             'label' => 'Durée',
             'choices' => [
