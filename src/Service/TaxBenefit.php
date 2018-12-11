@@ -65,10 +65,10 @@ class TaxBenefit
             $taxBase = $this->taxBase;
         }
         $datesOfRatesByDuration = array_keys(self::TABLE_OF_RATES_BY_DURATION);
-        if (array_key_exists ( $this->getRentalPeriod(),  self::TABLE_OF_RATES_BY_DURATION )) {
+        if (array_key_exists($this->getRentalPeriod(), self::TABLE_OF_RATES_BY_DURATION)) {
             $taxBenefit = $taxBase * self::TABLE_OF_RATES_BY_DURATION[$this->getRentalPeriod()];
         } else {
-            throw new \LogicException("Only " .implode(", ",$datesOfRatesByDuration)." accepted.");
+            throw new \LogicException("Only " . implode(", ",$datesOfRatesByDuration) . " accepted.");
         }
 
         return $taxBenefit;
