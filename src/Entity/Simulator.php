@@ -8,6 +8,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Simulator
@@ -20,6 +21,7 @@ class Simulator
      * @Assert\Length(max = 80, maxMessage = "Ce champs ne peux contenir plus de 80 caractères.");
      */
     private $firstName;
+
     /**
      * @var string
      * @Assert\NotBlank
@@ -28,12 +30,14 @@ class Simulator
      * @Assert\Length(max = 80,  maxMessage = "Ce champs ne peux contenir plus de 80 caractères.")
      */
     private $lastName;
+
     /**
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
      */
     private $address;
+
     /**
      * @var string
      * @Assert\NotBlank
@@ -42,41 +46,50 @@ class Simulator
      * @Assert\Length(max = 5, maxMessage = "Ce champs ne peux contenir plus de 5 chiffres.")
      */
     private $zipCode;
+
     /**
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
      */
     private $city;
+
     /**
      * @var string
      * @Assert\NotBlank
      */
     private $zone;
+
     /**
      * @var \DateTime
      * @Assert\NotBlank
      * @Assert\Type("\DateTime")
      */
     private $acquisitionDate;
+
     /**
      * @var int
      * @Assert\Type("int")
      */
     private $duration;
+
     /**
-     * @var int
+     * @var float
      * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     * @Assert\Type("float")
      */
     private $surfaceArea;
+
     /**
      * @var int
      * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
      * @Assert\Type("int")
      *
      */
     private $purchasePrice;
+
     /**
      * @var int
      * @Assert\NotBlank
@@ -84,6 +97,7 @@ class Simulator
      * @Assert\GreaterThan(0)
      */
     private $notaryFees;
+
     /**
      * @var int
      * @Assert\NotBlank
@@ -91,6 +105,7 @@ class Simulator
      * @Assert\GreaterThan(0)
      */
     private $otherFeesAcquisition;
+
     /**
      * @var int
      * @Assert\NotBlank
@@ -228,18 +243,21 @@ class Simulator
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getSurfaceArea(): ?int
+    public function getSurfaceArea(): ?float
     {
         return $this->surfaceArea;
     }
 
     /**
-     * @param int $surfaceArea
+     * @param float $surfaceArea
      */
-    public function setSurfaceArea(int $surfaceArea): void
+    public function setSurfaceArea(float $surfaceArea): void
     {
+        if ($surfaceArea <= 0) {
+            throw new Exception('La surface ne peut être égale à 0');
+        }
         $this->surfaceArea = $surfaceArea;
     }
 

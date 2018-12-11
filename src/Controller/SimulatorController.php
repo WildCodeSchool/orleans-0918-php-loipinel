@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Entity\Simulator;
+use App\Entity\User;
 use App\Form\SimulatorType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +29,7 @@ class SimulatorController extends AbstractController
      */
     public function showSimulator(Request $request, SessionInterface $session)
     {
+        $user = $this->getUser();
         $simulator = new Simulator();
 
         $form = $this->createForm(
@@ -46,6 +48,7 @@ class SimulatorController extends AbstractController
             'Form/simulator.html.twig',
             [
                 'form' => $form->createView(),
+                'user' => $user,
             ]
         );
     }

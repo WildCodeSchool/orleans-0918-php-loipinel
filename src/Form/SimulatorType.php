@@ -12,8 +12,8 @@ use App\Entity\Simulator;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -53,20 +53,25 @@ class SimulatorType extends AbstractType
             'multiple' => false,
             'expanded' => true,
         ]);
-        $builder->add('surfaceArea', IntegerType::class, [
+        $builder->add('surfaceArea', NumberType::class, [
             'label' => 'Surface en M2',
+            'scale' => 2,
         ]);
         $builder->add('purchasePrice', MoneyType::class, [
             'label' => 'Prix d\'achat',
+            'grouping' => true,
         ]);
         $builder->add('notaryFees', MoneyType::class, [
             'label' => 'Frais de notaire',
+            'grouping' => true,
         ]);
         $builder->add('otherFeesAcquisition', MoneyType::class, [
             'label' => 'Autres frais d\'acquisition',
+            'grouping' => true,
         ]);
         $builder->add('totalAmountAcquisition', MoneyType::class, [
             'label' => 'Montant total de l\'acquisition',
+            'grouping' => true,
         ]);
         $builder->getForm();
     }

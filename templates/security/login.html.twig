@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block header %}{% include 'navbarProjetIO.html.twig' %}{%  endblock %}
+
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="container align-self-center">
+        <div class="row justify-content-center my-5">
+            <div class="card w-50 my-5">
+                <h1 class="card-header text-center">
+                    Authentification
+                </h1>
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <label for="inputEmail" class="pt-4">Identifiant :</label>
+                            <div class="input-group mb-3">
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+                            </div>
+
+                            <label for="inputPassword" class="pt-2">Mot de passe :</label>
+                            <div class="input-group mb-3">
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-4 pb-4">
+                        <button class="btn btn-lg btn-primary" type="submit">CONNEXION</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+</form>
+{% endblock %}
