@@ -64,7 +64,7 @@ class TaxBenefit
         } else {
             $taxBase = $this->taxBase;
         }
-        if (in_array($this->getRentalPeriod(), $date = [6,9,12])) {
+        if (in_array($this->getRentalPeriod(), array_keys(self::TABLE_OF_RATES_BY_DURATION))) {
             $taxBenefit = $taxBase * self::TABLE_OF_RATES_BY_DURATION[$this->getRentalPeriod()];
         } else {
             throw new \LogicException("Only 6, 9, 12 accepted.");
