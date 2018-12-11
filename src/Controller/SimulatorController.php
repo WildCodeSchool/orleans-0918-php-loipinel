@@ -11,6 +11,7 @@ namespace App\Controller;
 use App\Entity\Simulator;
 use App\Entity\User;
 use App\Form\SimulatorType;
+use App\Service\DataJson;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,16 +56,16 @@ class SimulatorController extends AbstractController
 
     /**
      * @Route("/area/{date}/{cityCode}")
-     * @param $cityCode
-     * @param $date
+     * @param string $cityCode
+     * @param string $date
+     * @param DataJson $service
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getArea(string $cityCode, string $date): Response
+    public function getArea(string $cityCode, string $date, DataJson $service): Response
     {
         $res=date_parse($date);
         $selectYear = $res['year'];
-        $json = file_get_contents('../Data/pinel.json');
-        $result = json_decode($json, true);
+        $result = $service->jsonReading();
         $inseeCodes = $result['years'][$selectYear]['insee'];
         $area = $inseeCodes[$cityCode] ?? self::INELLIGIBLEAREA;
         return $this->json($area);
