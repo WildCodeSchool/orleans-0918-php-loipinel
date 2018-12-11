@@ -8,9 +8,11 @@ class TaxBenefit
 {
     const MAXIMUM_PRICE_PER_SQUARE_METER = 5500;
     const MAXIMUM_TAX_BASE = 300000;
-    const RATE_FOR_A_PERIOD_OF_SIX_YEARS = 0.12;
-    const RATE_FOR_A_PERIOD_OF_NINE_YEARS = 0.18;
-    const RATE_FOR_A_PERIOD_OF_TWELVE_YEARS = 0.21;
+    const TABLE_OF_RATES_BY_DURATION = [
+        6 => 0.12,
+        9 => 0.18,
+        12 => 0.21,
+    ];
 
     /**
      * @var RealEstateProperty
@@ -25,6 +27,7 @@ class TaxBenefit
     private $rentalPeriod;
 
     /**
+     * Base fiscale
      * @var float
      */
     private $taxBase;
@@ -61,19 +64,10 @@ class TaxBenefit
         } else {
             $taxBase = $this->taxBase;
         }
-        switch ($this->getRentalPeriod()) {
-            case 6:
-                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_SIX_YEARS;
-                break;
-            case 9:
-                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_NINE_YEARS;
-                break;
-            case 12:
-                $taxBenefit = $taxBase * self::RATE_FOR_A_PERIOD_OF_TWELVE_YEARS;
-                break;
-            default:
-                throw new \LogicException("Only 6, 9, 12 accepted.");
-                break;
+        if (in_array($this->getRentalPeriod(), $date = [6,9,12])) {
+            $taxBenefit = $taxBase * self::TABLE_OF_RATES_BY_DURATION[$this->getRentalPeriod()];
+        } else {
+            throw new \LogicException("Only 6, 9, 12 accepted.");
         }
 
         return $taxBenefit;
