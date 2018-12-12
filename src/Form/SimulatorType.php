@@ -121,6 +121,10 @@ class SimulatorType extends AbstractType
             'label' => 'Prix d\'achat',
             'grouping' => true,
         ]);
+        $builder->add('parkingAmount', MoneyType::class, [
+            'label' => 'Montant du parking',
+            'grouping' => true,
+        ]);
         $builder->add('notaryFees', MoneyType::class, [
             'label' => 'Frais de notaire',
             'grouping' => true,
@@ -133,6 +137,44 @@ class SimulatorType extends AbstractType
             'label' => 'Montant total de l\'acquisition',
             'grouping' => true,
         ]);
+        $builder->add('monthlyRent', MoneyType::class, [
+            'label' => 'Loyer mensuel',
+            'grouping' => true,
+        ]);
+
+
+        $builder->add('borrowedAmount', MoneyType::class, [
+            'label' => "Montant emprunté",
+            'grouping' => true,
+        ]);
+        $builder->add('inflow', MoneyType::class, [
+            'label' => 'Apport',
+            'grouping' => true,
+        ]);
+        $builder->add('fundingPeriod', NumberType::class, [
+            'label' => "Durée du financement",
+        ]);
+        $builder->add('adi', NumberType::class, [
+            'label' => "A.D.I.",
+        ]);
+
+
+        $builder->add('managementFees', NumberType::class, [
+            'label' => "Frais de gestion",
+        ]);
+        $builder->add('rentalFee', NumberType::class, [
+            'label' => "Honoraires de location",
+        ]);
+        $builder->add('rentInsurance', NumberType::class, [
+            'label' => "Assurance du loyer",
+        ]);
+        $builder->add('coownershipCharges', NumberType::class, [
+            'label' => "Charges de copropriété",
+        ]);
+        $builder->add('propertyTax', NumberType::class, [
+            'label' => "Taxe foncière",
+        ]);
+
         $builder->getForm();
     }
 
