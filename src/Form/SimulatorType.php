@@ -49,6 +49,7 @@ class SimulatorType extends AbstractType
 
 
         $builder->add('familySituation', ChoiceType::class, [
+            'label' => 'Situation familiale',
             'choices' => [
                 "célibataire" => "célibataire",
                 "en concubinage" => "en concubinage",
@@ -85,7 +86,9 @@ class SimulatorType extends AbstractType
             'label' => "Impôt sur le revenu",
         ]);
 
-
+        $builder->add('zipCode', TextType::class, [
+            'label' => 'Code Postal',
+        ]);
         $builder->add('city', ChoiceType::class, [
             'label' => 'Ville',
         ]);
@@ -171,7 +174,7 @@ class SimulatorType extends AbstractType
         $builder->add('coownershipCharges', NumberType::class, [
             'label' => "Charges de copropriété",
         ]);
-        $builder->add('propertyTax', NumberType::class, [
+        $builder->add('propertyTax', MoneyType::class, [
             'label' => "Taxe foncière",
         ]);
 

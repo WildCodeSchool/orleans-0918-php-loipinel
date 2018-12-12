@@ -136,6 +136,22 @@ class Simulator
     /**
      * @var string
      * @Assert\NotBlank
+     * @Assert\Regex("/[0-9]/")
+     * @Assert\Length(min = 5)
+     * @Assert\Length(max = 5, maxMessage = "Ce champ ne peux contenir plus de 5 chiffres.")
+     */
+    private $zipCode;
+
+    /**
+     * @var string
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     */
+    private $city;
+
+    /**
+     * @var string
+     * @Assert\NotBlank
      */
     private $zone;
 
@@ -329,33 +345,33 @@ class Simulator
     /**
      * @return string
      */
-    public function getAddress(): ?string
+    public function getCustomerAddress(): ?string
     {
-        return $this->address;
+        return $this->customerAddress;
     }
 
     /**
-     * @param string $address
+     * @param string $customerAddress
      */
-    public function setAddress(string $address): void
+    public function setCustomerAddress(string $customerAddress): void
     {
-        $this->address = $address;
+        $this->customerAddress = $customerAddress;
     }
 
     /**
      * @return string
      */
-    public function getZipCode(): ?string
+    public function getCustomerZipCode(): ?string
     {
-        return $this->zipCode;
+        return $this->customerZipCode;
     }
 
     /**
-     * @param string $zipCode
+     * @param string $customerZipCode
      */
-    public function setZipCode(string $zipCode): void
+    public function setCustomerZipCode(string $customerZipCode): void
     {
-        $this->zipCode = $zipCode;
+        $this->customerZipCode = $customerZipCode;
     }
 
     /**
@@ -524,38 +540,6 @@ class Simulator
     /**
      * @return string
      */
-    public function getCustomerAddress(): ?string
-    {
-        return $this->customerAddress;
-    }
-
-    /**
-     * @param string $customerAddress
-     */
-    public function setCustomerAddress(string $customerAddress): void
-    {
-        $this->customerAddress = $customerAddress;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCustomerZipCode(): ?string
-    {
-        return $this->customerZipCode;
-    }
-
-    /**
-     * @param string $customerZipCode
-     */
-    public function setCustomerZipCode(string $customerZipCode): void
-    {
-        $this->customerZipCode = $customerZipCode;
-    }
-
-    /**
-     * @return string
-     */
     public function getCustomerCity(): ?string
     {
         return $this->customerCity;
@@ -642,9 +626,9 @@ class Simulator
     }
 
     /**
-     * @param int $numberofTaxShares
+     * @param int $numberOfTaxShares
      */
-    public function setNumberofTaxShares(int $numberOfTaxShares): void
+    public function setNumberOfTaxShares(int $numberOfTaxShares): void
     {
         $this->numberOfTaxShares = $numberOfTaxShares;
     }
@@ -871,5 +855,21 @@ class Simulator
     public function setPropertyTax(int $propertyTax): void
     {
         $this->propertyTax = $propertyTax;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZipCode(): ?string
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * @param string $zipCode
+     */
+    public function setZipCode(string $zipCode): void
+    {
+        $this->zipCode = $zipCode;
     }
 }
