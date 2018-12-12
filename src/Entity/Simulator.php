@@ -17,7 +17,8 @@ class Simulator
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Choice({"Monsieur", "Madame", "M./Mme", "M./M.", "Mme/Mme"})
+     * @Assert\Choice(choices={"Monsieur", "Madame", "M./Mme", "M./M.", "Mme/Mme"}, message="Veuillez sélectionner
+     * un genre parmi ceux proposés")
      */
     private $civility;
 
@@ -26,7 +27,7 @@ class Simulator
      * @Assert\NotBlank
      * @Assert\Type("string")
      * @Assert\Length(min = 1)
-     * @Assert\Length(max = 80, maxMessage = "Ce champs ne peux contenir plus de 80 caractères.")
+     * @Assert\Length(max = 80, maxMessage = "Ce champ ne peux contenir plus de 80 caractères.")
      */
     private $firstName;
 
@@ -35,7 +36,7 @@ class Simulator
      * @Assert\NotBlank
      * @Assert\Type("string")
      * @Assert\Length(min = 1)
-     * @Assert\Length(max = 80,  maxMessage = "Ce champs ne peux contenir plus de 80 caractères.")
+     * @Assert\Length(max = 80,  maxMessage = "Ce champ ne peux contenir plus de 80 caractères.")
      */
     private $lastName;
 
@@ -51,7 +52,7 @@ class Simulator
      * @Assert\NotBlank
      * @Assert\Regex("/[0-9]/")
      * @Assert\Length(min = 5)
-     * @Assert\Length(max = 5, maxMessage = "Ce champs ne peux contenir plus de 5 chiffres.")
+     * @Assert\Length(max = 5, maxMessage = "Ce champ ne peux contenir plus de 5 chiffres.")
      */
     private $customerZipCode;
 
@@ -67,7 +68,8 @@ class Simulator
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Choice({"célibataire", "en concubinage", "mariés", "pacsés", "divorcé(e)"})
+     * @Assert\Choice(choices={"célibataire", "en concubinage", "mariés", "pacsés", "divorcé(e)"},
+     *     message="Veuillez sélectionner une situation familiale parmi celles proposées")
      */
     private $familySituation;
 
@@ -80,25 +82,24 @@ class Simulator
     private $numberOfChildren;
 
     /**
-     * @var int
+     * @var float
      * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
-    private $numberofTaxShares;
+    private $numberOfTaxShares;
 
     /**
-     * @var int
+     * @var float
      * @Assert\NotBlank
      * @Assert\GreaterThan(0)
-     * @Assert\Type("int")
+     * @Assert\Type("float")
      */
     private $salaryDeclared;
 
     /**
      * @var int
      * @Assert\NotBlank
-     * @Assert\GreaterThan(0)
      * @Assert\Type("int")
      */
     private $landIncomes;
@@ -106,7 +107,6 @@ class Simulator
     /**
      * @var int
      * @Assert\NotBlank
-     * @Assert\GreaterThan(0)
      * @Assert\Type("int")
      */
     private $bic;
@@ -114,7 +114,6 @@ class Simulator
     /**
      * @var int
      * @Assert\NotBlank
-     * @Assert\GreaterThan(0)
      * @Assert\Type("int")
      */
     private $bnc;
@@ -122,7 +121,6 @@ class Simulator
     /**
      * @var int
      * @Assert\NotBlank
-     * @Assert\GreaterThan(0)
      * @Assert\Type("int")
      */
     private $ba;
@@ -130,7 +128,6 @@ class Simulator
     /**
      * @var int
      * @Assert\NotBlank
-     * @Assert\GreaterThan(0)
      * @Assert\Type("int")
      */
     private $incomeTax;
@@ -190,7 +187,6 @@ class Simulator
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
      */
     private $otherFeesAcquisition;
 
@@ -222,7 +218,6 @@ class Simulator
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
      */
     private $inflow;
 
@@ -238,39 +233,38 @@ class Simulator
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
      */
     private $adi;
     // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 
     /**
-     * @var int
+     * @var float
      * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
     private $managementFees;
 
     /**
-     * @var int
+     * @var float
      * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
     private $rentalFee;
 
     /**
-     * @var int
+     * @var float
      * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
     private $rentInsurance;
 
     /**
-     * @var int
+     * @var float
      * @Assert\NotBlank
-     * @Assert\Type("int")
+     * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
     private $coownershipCharges;
