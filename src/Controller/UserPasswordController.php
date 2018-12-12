@@ -2,12 +2,17 @@
 
 namespace App\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\UpdatePasswordType;
 
+/**
+ * @Route("/admin/user")
+ * @IsGranted("ROLE_USER")
+ */
 class UserPasswordController extends AbstractController
 {
     /**
