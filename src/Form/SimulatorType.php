@@ -23,6 +23,7 @@ class SimulatorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('civility', ChoiceType::class, [
+            'label' => 'Civilité',
             'choices' => [
                 "Monsieur" => "Monsieur",
                 "Madame" => "Madame",

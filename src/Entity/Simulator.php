@@ -522,17 +522,17 @@ class Simulator
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getRentInsurance(): ?int
+    public function getRentInsurance(): ?float
     {
         return $this->rentInsurance;
     }
 
     /**
-     * @param int $rentInsurance
+     * @param float $rentInsurance
      */
-    public function setRentInsurance(int $rentInsurance): void
+    public function setRentInsurance(float $rentInsurance): void
     {
         $this->rentInsurance = $rentInsurance;
     }
@@ -618,33 +618,33 @@ class Simulator
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getNumberOfTaxShares(): ?int
+    public function getNumberOfTaxShares(): ?float
     {
         return $this->numberOfTaxShares;
     }
 
     /**
-     * @param int $numberOfTaxShares
+     * @param float $numberOfTaxShares
      */
-    public function setNumberOfTaxShares(int $numberOfTaxShares): void
+    public function setNumberOfTaxShares(float $numberOfTaxShares): void
     {
         $this->numberOfTaxShares = $numberOfTaxShares;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getSalaryDeclared(): ?int
+    public function getSalaryDeclared(): ?float
     {
         return $this->salaryDeclared;
     }
 
     /**
-     * @param int $salaryDeclared
+     * @param float $salaryDeclared
      */
-    public function setSalaryDeclared(int $salaryDeclared): void
+    public function setSalaryDeclared(float $salaryDeclared): void
     {
         $this->salaryDeclared = $salaryDeclared;
     }
@@ -794,17 +794,17 @@ class Simulator
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getManagementFees(): ?int
+    public function getManagementFees(): ?float
     {
         return $this->managementFees;
     }
 
     /**
-     * @param int $managementFees
+     * @param float $managementFees
      */
-    public function setManagementFees(int $managementFees): void
+    public function setManagementFees(float $managementFees): void
     {
         $this->managementFees = $managementFees;
     }
@@ -812,31 +812,31 @@ class Simulator
     /**
      * @return int
      */
-    public function getRentalFee(): ?int
+    public function getRentalFee(): ?float
     {
         return $this->rentalFee;
     }
 
     /**
-     * @param int $rentalFee
+     * @param float $rentalFee
      */
-    public function setRentalFee(int $rentalFee): void
+    public function setRentalFee(float $rentalFee): void
     {
         $this->rentalFee = $rentalFee;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getCoownershipCharges(): ?int
+    public function getCoownershipCharges(): ?float
     {
         return $this->coownershipCharges;
     }
 
     /**
-     * @param int $coownershipCharges
+     * @param float $coownershipCharges
      */
-    public function setCoownershipCharges(int $coownershipCharges): void
+    public function setCoownershipCharges(float $coownershipCharges): void
     {
         $this->coownershipCharges = $coownershipCharges;
     }
