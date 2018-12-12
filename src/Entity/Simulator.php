@@ -17,8 +17,16 @@ class Simulator
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
+     * @Assert\Choice({"Monsieur", "Madame", "M./Mme", "M./M.", "Mme/Mme"})
+     */
+    private $civility;
+
+    /**
+     * @var string
+     * @Assert\NotBlank
+     * @Assert\Type("string")
      * @Assert\Length(min = 1)
-     * @Assert\Length(max = 80, maxMessage = "Ce champs ne peux contenir plus de 80 caractères.");
+     * @Assert\Length(max = 80, maxMessage = "Ce champs ne peux contenir plus de 80 caractères.")
      */
     private $firstName;
 
@@ -36,7 +44,7 @@ class Simulator
      * @Assert\NotBlank
      * @Assert\Type("string")
      */
-    private $address;
+    private $customerAddress;
 
     /**
      * @var string
@@ -45,15 +53,89 @@ class Simulator
      * @Assert\Length(min = 5)
      * @Assert\Length(max = 5, maxMessage = "Ce champs ne peux contenir plus de 5 chiffres.")
      */
-    private $zipCode;
+    private $customerZipCode;
 
     /**
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
      */
-    private $city;
+    private $customerCity;
+    // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 
+    /**
+     * @var string
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     * @Assert\Choice({"célibataire", "en concubinage", "mariés", "pacsés", "divorcé(e)"})
+     */
+    private $familySituation;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * * @Assert\Regex("/[0-9]{1,2}/")
+     */
+    private $numberOfChildren;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $numberofTaxShares;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
+     * @Assert\Type("int")
+     */
+    private $salaryDeclared;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
+     * @Assert\Type("int")
+     */
+    private $landIncomes;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
+     * @Assert\Type("int")
+     */
+    private $bic;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
+     * @Assert\Type("int")
+     */
+    private $bnc;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
+     * @Assert\Type("int")
+     */
+    private $ba;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\GreaterThan(0)
+     * @Assert\Type("int")
+     */
+    private $incomeTax;
+
+    // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
     /**
      * @var string
      * @Assert\NotBlank
@@ -86,9 +168,15 @@ class Simulator
      * @Assert\NotBlank
      * @Assert\GreaterThan(0)
      * @Assert\Type("int")
-     *
      */
     private $purchasePrice;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     */
+    private $parkingAmount;
 
     /**
      * @var int
@@ -113,6 +201,89 @@ class Simulator
      * @Assert\GreaterThan(0)
      */
     private $totalAmountAcquisition;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $monthlyRent;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $borrowedAmount;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $inflow;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $fundingPeriod;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $adi;
+    // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $managementFees;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $rentalFee;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $rentInsurance;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $coownershipCharges;
+
+    /**
+     * @var int
+     * @Assert\NotBlank
+     * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
+     */
+    private $propertyTax;
+
+    // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 
     /**
      * @return string
@@ -323,5 +494,389 @@ class Simulator
     public function setTotalAmountAcquisition(int $totalAmountAcquisition): void
     {
         $this->totalAmountAcquisition = $totalAmountAcquisition;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRentInsurance(): int
+    {
+        return $this->rentInsurance;
+    }
+
+    /**
+     * @param int $rentInsurance
+     */
+    public function setRentInsurance(int $rentInsurance): void
+    {
+        $this->rentInsurance = $rentInsurance;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomerAddress(): string
+    {
+        return $this->customerAddress;
+    }
+
+    /**
+     * @param string $customerAddress
+     */
+    public function setCustomerAddress(string $customerAddress): void
+    {
+        $this->customerAddress = $customerAddress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomerZipCode(): string
+    {
+        return $this->customerZipCode;
+    }
+
+    /**
+     * @param string $customerZipCode
+     */
+    public function setCustomerZipCode(string $customerZipCode): void
+    {
+        $this->customerZipCode = $customerZipCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCivility(): string
+    {
+        return $this->civility;
+    }
+
+    /**
+     * @param string $civility
+     */
+    public function setCivility(string $civility): void
+    {
+        $this->civility = $civility;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomerCity(): string
+    {
+        return $this->customerCity;
+    }
+
+    /**
+     * @param string $customerCity
+     */
+    public function setCustomerCity(string $customerCity): void
+    {
+        $this->customerCity = $customerCity;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFamilySituation(): string
+    {
+        return $this->familySituation;
+    }
+
+    /**
+     * @param string $familySituation
+     */
+    public function setFamilySituation(string $familySituation): void
+    {
+        $this->familySituation = $familySituation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfChildren(): int
+    {
+        return $this->numberOfChildren;
+    }
+
+    /**
+     * @param int $numberOfChildren
+     */
+    public function setNumberOfChildren(int $numberOfChildren): void
+    {
+        $this->numberOfChildren = $numberOfChildren;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMonthlyRent(): int
+    {
+        return $this->monthlyRent;
+    }
+
+    /**
+     * @param int $monthlyRent
+     */
+    public function setMonthlyRent(int $monthlyRent): void
+    {
+        $this->monthlyRent = $monthlyRent;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBorrowedAmount(): int
+    {
+        return $this->borrowedAmount;
+    }
+
+    /**
+     * @param int $borrowedAmount
+     */
+    public function setBorrowedAmount(int $borrowedAmount): void
+    {
+        $this->borrowedAmount = $borrowedAmount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberofTaxShares(): int
+    {
+        return $this->numberofTaxShares;
+    }
+
+    /**
+     * @param int $numberofTaxShares
+     */
+    public function setNumberofTaxShares(int $numberofTaxShares): void
+    {
+        $this->numberofTaxShares = $numberofTaxShares;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSalaryDeclared(): int
+    {
+        return $this->salaryDeclared;
+    }
+
+    /**
+     * @param int $salaryDeclared
+     */
+    public function setSalaryDeclared(int $salaryDeclared): void
+    {
+        $this->salaryDeclared = $salaryDeclared;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLandIncomes(): int
+    {
+        return $this->landIncomes;
+    }
+
+    /**
+     * @param int $landIncomes
+     */
+    public function setLandIncomes(int $landIncomes): void
+    {
+        $this->landIncomes = $landIncomes;
+    }
+
+    /**
+     * @return int
+     */
+    public function getInflow(): int
+    {
+        return $this->inflow;
+    }
+
+    /**
+     * @param int $inflow
+     */
+    public function setInflow(int $inflow): void
+    {
+        $this->inflow = $inflow;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBic(): int
+    {
+        return $this->bic;
+    }
+
+    /**
+     * @param int $bic
+     */
+    public function setBic(int $bic): void
+    {
+        $this->bic = $bic;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBnc(): int
+    {
+        return $this->bnc;
+    }
+
+    /**
+     * @param int $bnc
+     */
+    public function setBnc(int $bnc): void
+    {
+        $this->bnc = $bnc;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBa(): int
+    {
+        return $this->ba;
+    }
+
+    /**
+     * @param int $ba
+     */
+    public function setBa(int $ba): void
+    {
+        $this->ba = $ba;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIncomeTax(): int
+    {
+        return $this->incomeTax;
+    }
+
+    /**
+     * @param int $incomeTax
+     */
+    public function setIncomeTax(int $incomeTax): void
+    {
+        $this->incomeTax = $incomeTax;
+    }
+
+    /**
+     * @return int
+     */
+    public function getParkingAmount(): int
+    {
+        return $this->parkingAmount;
+    }
+
+    /**
+     * @param int $parkingAmount
+     */
+    public function setParkingAmount(int $parkingAmount): void
+    {
+        $this->parkingAmount = $parkingAmount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFundingPeriod(): int
+    {
+        return $this->fundingPeriod;
+    }
+
+    /**
+     * @param int $fundingPeriod
+     */
+    public function setFundingPeriod(int $fundingPeriod): void
+    {
+        $this->fundingPeriod = $fundingPeriod;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAdi(): int
+    {
+        return $this->adi;
+    }
+
+    /**
+     * @param int $adi
+     */
+    public function setAdi(int $adi): void
+    {
+        $this->adi = $adi;
+    }
+
+    /**
+     * @return int
+     */
+    public function getManagementFees(): int
+    {
+        return $this->managementFees;
+    }
+
+    /**
+     * @param int $managementFees
+     */
+    public function setManagementFees(int $managementFees): void
+    {
+        $this->managementFees = $managementFees;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRentalFee(): int
+    {
+        return $this->rentalFee;
+    }
+
+    /**
+     * @param int $rentalFee
+     */
+    public function setRentalFee(int $rentalFee): void
+    {
+        $this->rentalFee = $rentalFee;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCoownershipCharges(): int
+    {
+        return $this->coownershipCharges;
+    }
+
+    /**
+     * @param int $coownershipCharges
+     */
+    public function setCoownershipCharges(int $coownershipCharges): void
+    {
+        $this->coownershipCharges = $coownershipCharges;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPropertyTax(): int
+    {
+        return $this->propertyTax;
+    }
+
+    /**
+     * @param int $propertyTax
+     */
+    public function setPropertyTax(int $propertyTax): void
+    {
+        $this->propertyTax = $propertyTax;
     }
 }
