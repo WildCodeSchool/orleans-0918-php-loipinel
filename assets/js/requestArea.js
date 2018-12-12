@@ -3,7 +3,6 @@ let city = document.getElementById('simulator_city');
 
 function request(){
     if(acquisitionDate.value && city.value ){
-        console.log(city.value);
         let date = $('#simulator_acquisitionDate').val();
         let cityCode = $('#simulator_city').val();
         $('#simulator_zone').empty();
