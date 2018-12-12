@@ -24,6 +24,8 @@
 $logoutColor: #6D737D;
 $colorIO: #FCA000;
 $secondaryColor: #989898;
+$trashColor: #FF0000;
+
 
 body {
   padding-top:60px;
@@ -82,7 +84,6 @@ table {
   white-space: nowrap;
   font-family: Projet IO, serif;
   color: white;
-  font-weight: bold;
   span {
     color: $colorIO;
   }
@@ -104,6 +105,12 @@ h1
 .pdfTitle {
   h1 {
     font-weight: bold;
+  }
+}
+
+a {
+  .fa-trash-alt {
+    color: $trashColor;
   }
 }
 
