@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SimulatorController extends AbstractController
 {
-    const INELLIGIBLEAREA = 'C';
+    const INELLIGIBLE_AREA = 'C';
 
     /**
      * Show all row from category's entity
@@ -67,7 +67,7 @@ class SimulatorController extends AbstractController
         $selectYear = $res['year'];
         $result = $service->jsonReading();
         $inseeCodes = $result['years'][$selectYear]['insee'];
-        $area = $inseeCodes[$cityCode] ?? self::INELLIGIBLEAREA;
+        $area = $inseeCodes[$cityCode] ?? self::INELLIGIBLE_AREA;
         return $this->json($area);
     }
 }
