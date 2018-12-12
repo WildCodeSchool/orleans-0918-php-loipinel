@@ -66,8 +66,17 @@ class SimulatorController extends AbstractController
         $res=date_parse($date);
         $selectYear = $res['year'];
         $result = $service->jsonReading();
-        $inseeCodes = $result['years'][$selectYear]['insee'];
-        $area = $inseeCodes[$cityCode] ?? self::INELLIGIBLE_AREA;
+        if(key_exists($selectYear, $result['years'])){
+            $inseeCodes = $result['years'][$selectYear]['insee'];
+            if (key_exists($cityCode,$inseeCodes)){
+                $area = $inseeCodes[$cityCode];
+            }else{
+                $area = self::INELLIGIBLE_AREA;
+            }
+
+        }else{
+            $area = 'Données indisponibles pour l\'année renseignée';
+        }
         return $this->json($area);
     }
 }
