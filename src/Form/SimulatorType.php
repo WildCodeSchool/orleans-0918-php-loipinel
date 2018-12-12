@@ -22,29 +22,81 @@ class SimulatorType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('civility', ChoiceType::class, [
+            'choices' => [
+                "Monsieur" => "Monsieur",
+                "Madame" => "Madame",
+                "M./Mme" => "M./Mme",
+                "M./M." => "M./M.",
+                "Mme/Mme" => "Mme/Mme",
+            ],
+        ]);
         $builder->add('firstName', TextType::class, [
             'label' => 'Prénom',
         ]);
         $builder->add('lastName', TextType::class, [
             'label' => 'Nom',
         ]);
-        $builder->add('address', TextType::class, [
+        $builder->add('customerAddress', TextType::class, [
             'label' => 'Adresse',
         ]);
-        $builder->add('zipCode', TextType::class, [
+        $builder->add('customerZipCode', TextType::class, [
             'label' => 'Code Postal',
         ]);
+        $builder->add('customerCity', TextType::class, [
+            'label' => 'Ville',
+        ]);
+
+
+        $builder->add('familySituation', ChoiceType::class, [
+            'choices' => [
+                "célibataire" => "célibataire",
+                "en concubinage" => "en concubinage",
+                "mariés" => "mariés",
+                "pacsés" => "pacsés",
+                "divorcé(e)" => "divorcé(e)",
+            ],
+        ]);
+        $builder->add('numberOfChildren', TextType::class, [
+            'label' => "Nombre d'enfants",
+        ]);
+        $builder->add('numberOfTaxShares', TextType::class, [
+            'label' => "Nombre de parts fiscales",
+        ]);
+        $builder->add('salaryDeclared', TextType::class, [
+            'label' => "Salaire déclaré",
+        ]);
+        $builder->add('landIncomes', TextType::class, [
+            'label' => "Revenus fonciers",
+        ]);
+        $builder->add('numberOfTaxShares', TextType::class, [
+            'label' => "Nombre de parts fiscales",
+        ]);
+        $builder->add('bic', TextType::class, [
+            'label' => "B.I.C.",
+        ]);
+        $builder->add('bnc', TextType::class, [
+            'label' => "B.N.C.",
+        ]);
+        $builder->add('ba', TextType::class, [
+            'label' => "B.A.",
+        ]);
+        $builder->add('incomeTax', TextType::class, [
+            'label' => "Impôt sur le revenu",
+        ]);
+
+
         $builder->add('city', ChoiceType::class, [
             'label' => 'Ville',
         ]);
         $builder->get('city')->resetViewTransformers();
         $builder->add('zone', ChoiceType::class, [
             'choices' => [
-                "A" => "a",
-                "A bis" => "a bis",
-                "B1" => "b1",
-                "B2" => "b2",
-                "C" => "c",
+                "A" => "A",
+                "A bis" => "A bis",
+                "B1" => "B1",
+                "B2" => "B2",
+                "C" => "B",
             ],
         ]);
         $builder->add('acquisitionDate', DateType::class, [
