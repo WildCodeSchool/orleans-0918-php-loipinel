@@ -63,18 +63,17 @@ class SimulatorController extends AbstractController
      */
     public function getArea(string $cityCode, string $date, DataJson $service): Response
     {
-        $res=date_parse($date);
+        $res = date_parse($date);
         $selectYear = $res['year'];
         $result = $service->jsonReading();
-        if(key_exists($selectYear, $result['years'])){
+        if (key_exists($selectYear, $result['years'])) {
             $inseeCodes = $result['years'][$selectYear]['insee'];
-            if (key_exists($cityCode,$inseeCodes)){
+            if (key_exists($cityCode, $inseeCodes)) {
                 $area = $inseeCodes[$cityCode];
-            }else{
+            } else {
                 $area = self::INELLIGIBLE_AREA;
             }
-
-        }else{
+        } else {
             $area = 'Données indisponibles pour l\'année renseignée';
         }
         return $this->json($area);
