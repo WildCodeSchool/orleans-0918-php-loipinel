@@ -278,6 +278,21 @@ class Simulator
     private $propertyTax;
 
     // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+    /**
+     * @return string
+     */
+    public function getCivility(): ?string
+    {
+        return $this->civility;
+    }
+
+    /**
+     * @param string $civility
+     */
+    public function setCivility(string $civility): void
+    {
+        $this->civility = $civility;
+    }
 
     /**
      * @return string
@@ -493,7 +508,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getRentInsurance(): int
+    public function getRentInsurance(): ?int
     {
         return $this->rentInsurance;
     }
@@ -509,7 +524,7 @@ class Simulator
     /**
      * @return string
      */
-    public function getCustomerAddress(): string
+    public function getCustomerAddress(): ?string
     {
         return $this->customerAddress;
     }
@@ -525,7 +540,7 @@ class Simulator
     /**
      * @return string
      */
-    public function getCustomerZipCode(): string
+    public function getCustomerZipCode(): ?string
     {
         return $this->customerZipCode;
     }
@@ -541,23 +556,7 @@ class Simulator
     /**
      * @return string
      */
-    public function getCivility(): string
-    {
-        return $this->civility;
-    }
-
-    /**
-     * @param string $civility
-     */
-    public function setCivility(string $civility): void
-    {
-        $this->civility = $civility;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCustomerCity(): string
+    public function getCustomerCity(): ?string
     {
         return $this->customerCity;
     }
@@ -573,7 +572,7 @@ class Simulator
     /**
      * @return string
      */
-    public function getFamilySituation(): string
+    public function getFamilySituation(): ?string
     {
         return $this->familySituation;
     }
@@ -589,7 +588,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getNumberOfChildren(): int
+    public function getNumberOfChildren(): ?int
     {
         return $this->numberOfChildren;
     }
@@ -605,7 +604,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getMonthlyRent(): int
+    public function getMonthlyRent(): ?int
     {
         return $this->monthlyRent;
     }
@@ -621,7 +620,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getBorrowedAmount(): int
+    public function getBorrowedAmount(): ?int
     {
         return $this->borrowedAmount;
     }
@@ -637,23 +636,23 @@ class Simulator
     /**
      * @return int
      */
-    public function getNumberofTaxShares(): int
+    public function getNumberOfTaxShares(): ?int
     {
-        return $this->numberofTaxShares;
+        return $this->numberOfTaxShares;
     }
 
     /**
      * @param int $numberofTaxShares
      */
-    public function setNumberofTaxShares(int $numberofTaxShares): void
+    public function setNumberofTaxShares(int $numberOfTaxShares): void
     {
-        $this->numberofTaxShares = $numberofTaxShares;
+        $this->numberOfTaxShares = $numberOfTaxShares;
     }
 
     /**
      * @return int
      */
-    public function getSalaryDeclared(): int
+    public function getSalaryDeclared(): ?int
     {
         return $this->salaryDeclared;
     }
@@ -669,7 +668,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getLandIncomes(): int
+    public function getLandIncomes(): ?int
     {
         return $this->landIncomes;
     }
@@ -685,7 +684,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getInflow(): int
+    public function getInflow(): ?int
     {
         return $this->inflow;
     }
@@ -701,7 +700,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getBic(): int
+    public function getBic(): ?int
     {
         return $this->bic;
     }
@@ -717,7 +716,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getBnc(): int
+    public function getBnc(): ?int
     {
         return $this->bnc;
     }
@@ -733,7 +732,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getBa(): int
+    public function getBa(): ?int
     {
         return $this->ba;
     }
@@ -749,7 +748,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getIncomeTax(): int
+    public function getIncomeTax(): ?int
     {
         return $this->incomeTax;
     }
@@ -765,7 +764,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getParkingAmount(): int
+    public function getParkingAmount(): ?int
     {
         return $this->parkingAmount;
     }
@@ -781,7 +780,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getFundingPeriod(): int
+    public function getFundingPeriod(): ?int
     {
         return $this->fundingPeriod;
     }
@@ -797,7 +796,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getAdi(): int
+    public function getAdi(): ?int
     {
         return $this->adi;
     }
@@ -813,7 +812,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getManagementFees(): int
+    public function getManagementFees(): ?int
     {
         return $this->managementFees;
     }
@@ -829,7 +828,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getRentalFee(): int
+    public function getRentalFee(): ?int
     {
         return $this->rentalFee;
     }
@@ -845,7 +844,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getCoownershipCharges(): int
+    public function getCoownershipCharges(): ?int
     {
         return $this->coownershipCharges;
     }
@@ -861,7 +860,7 @@ class Simulator
     /**
      * @return int
      */
-    public function getPropertyTax(): int
+    public function getPropertyTax(): ?int
     {
         return $this->propertyTax;
     }
