@@ -1,0 +1,42 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <h1 class="bg-primary">Liste des utilisateurs</h1>
+
+    <div class="container-fluid">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>E-mail</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Rôles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.roles|join(', ') }}</td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}"><i class="fas fa-list"></i></a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}"><i class="fas fa-user-edit"></i></a>
+                    <a href="{{ path('user_delete', {'id': user.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun utilisateur</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <a class="btn btn-secondary" href="{{ path('user_new') }}"><i class="fas fa-user-plus"></i> Ajouter un utilisateur</a>
+{% endblock %}
