@@ -10,7 +10,7 @@
         <ul class="navbar-nav">
             {% if app.user.email is defined %}
             <li>
-                <a href="{{ path('password-edit') }}"><span class="nav-link username">{{ app.user.email }}</span></a>
+                <a href="{{ path('password-change') }}"><span class="nav-link username">{{ app.user.email }}</span></a>
             </li>
             <li>
                 <a href="{{ path('app_logout') }}" class="btn btn-outline-dark logout nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>

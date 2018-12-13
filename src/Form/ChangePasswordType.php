@@ -9,29 +9,28 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UpdatePasswordType extends AbstractType
+class ChangePasswordType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('password', PasswordType::class, [
-                'label' => 'mot de passe actuel',
-                'mapped' => false
+                'label' => 'Mot de passe actuel',
             ])
             ->add('newPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent être identiques',
                 'options' => [
-                    'label' => 'nouveau mot de passe',
+                    'label' => 'Nouveau mot de passe',
                     'attr' => [
                         'class' => 'password-field'
-                    ]
+                    ],
                 ],
                 'required' => true,
             ])
-            ->add('submit', SubmitType::class, [
+            ->add('Changer le mot de passe', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-primary btn-block'
+                    'class' => 'btn btn-primary text-align-center'
                 ]
             ])
         ;
