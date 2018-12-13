@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Simulator
 {
+    // ***************************************************Etat Civil***************************************************
     /**
      * @var string
      * @Assert\NotBlank
@@ -62,8 +63,8 @@ class Simulator
      * @Assert\Type("string")
      */
     private $customerCity;
-    // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 
+    // ***************************************************Fiscalité***************************************************
     /**
      * @var string
      * @Assert\NotBlank
@@ -132,7 +133,7 @@ class Simulator
      */
     private $incomeTax;
 
-    // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+    // ***************************************************Investissement***********************************************
     /**
      * @var string
      * @Assert\NotBlank
@@ -222,6 +223,7 @@ class Simulator
      */
     private $monthlyRent;
 
+    // ***************************************************Financement*************************************************
     /**
      * @var int
      * @Assert\NotBlank
@@ -251,8 +253,8 @@ class Simulator
      * @Assert\Type("int")
      */
     private $adi;
-    // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 
+    // ***************************************************Frais***************************************************
     /**
      * @var float
      * @Assert\NotBlank
@@ -293,7 +295,8 @@ class Simulator
      */
     private $propertyTax;
 
-    // DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+    // ***************************************************GETTER & SETTER**********************************************
+    // ***************************************************Etat Civil***************************************************
     /**
      * @return string
      */
@@ -377,6 +380,168 @@ class Simulator
     /**
      * @return string
      */
+    public function getCustomerCity(): ?string
+    {
+        return $this->customerCity;
+    }
+
+    /**
+     * @param string $customerCity
+     */
+    public function setCustomerCity(string $customerCity): void
+    {
+        $this->customerCity = $customerCity;
+    }
+
+    // ***************************************************Fiscalité***************************************************
+    /**
+     * @return string
+     */
+    public function getFamilySituation(): ?string
+    {
+        return $this->familySituation;
+    }
+
+    /**
+     * @param string $familySituation
+     */
+    public function setFamilySituation(string $familySituation): void
+    {
+        $this->familySituation = $familySituation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfChildren(): ?int
+    {
+        return $this->numberOfChildren;
+    }
+
+    /**
+     * @param int $numberOfChildren
+     */
+    public function setNumberOfChildren(int $numberOfChildren): void
+    {
+        $this->numberOfChildren = $numberOfChildren;
+    }
+
+    /**
+     * @return float
+     */
+    public function getNumberOfTaxShares(): ?float
+    {
+        return $this->numberOfTaxShares;
+    }
+
+    /**
+     * @param float $numberOfTaxShares
+     */
+    public function setNumberOfTaxShares(float $numberOfTaxShares): void
+    {
+        $this->numberOfTaxShares = $numberOfTaxShares;
+    }
+
+    /**
+     * @return float
+     */
+    public function getSalaryDeclared(): ?float
+    {
+        return $this->salaryDeclared;
+    }
+
+    /**
+     * @param float $salaryDeclared
+     */
+    public function setSalaryDeclared(float $salaryDeclared): void
+    {
+        $this->salaryDeclared = $salaryDeclared;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLandIncomes(): ?int
+    {
+        return $this->landIncomes;
+    }
+
+    /**
+     * @param int $landIncomes
+     */
+    public function setLandIncomes(int $landIncomes): void
+    {
+        $this->landIncomes = $landIncomes;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBic(): ?int
+    {
+        return $this->bic;
+    }
+
+    /**
+     * @param int $bic
+     */
+    public function setBic(int $bic): void
+    {
+        $this->bic = $bic;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBnc(): ?int
+    {
+        return $this->bnc;
+    }
+
+    /**
+     * @param int $bnc
+     */
+    public function setBnc(int $bnc): void
+    {
+        $this->bnc = $bnc;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBa(): ?int
+    {
+        return $this->ba;
+    }
+
+    /**
+     * @param int $ba
+     */
+    public function setBa(int $ba): void
+    {
+        $this->ba = $ba;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIncomeTax(): ?int
+    {
+        return $this->incomeTax;
+    }
+
+    /**
+     * @param int $incomeTax
+     */
+    public function setIncomeTax(int $incomeTax): void
+    {
+        $this->incomeTax = $incomeTax;
+    }
+
+// ***************************************************Investissement***********************************************
+    /**
+     * @return string
+     */
     public function getCity(): ?string
     {
         return $this->city;
@@ -393,10 +558,27 @@ class Simulator
     /**
      * @return string
      */
+    public function getZipCode(): ?string
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * @param string $zipCode
+     */
+    public function setZipCode(string $zipCode): void
+    {
+        $this->zipCode = $zipCode;
+    }
+
+    /**
+     * @return string
+     */
     public function getZone(): ?string
     {
         return $this->zone;
     }
+
 
     /**
      * @param string $zone
@@ -476,6 +658,22 @@ class Simulator
     /**
      * @return int
      */
+    public function getParkingAmount(): ?int
+    {
+        return $this->parkingAmount;
+    }
+
+    /**
+     * @param int $parkingAmount
+     */
+    public function setParkingAmount(int $parkingAmount): void
+    {
+        $this->parkingAmount = $parkingAmount;
+    }
+
+    /**
+     * @return int
+     */
     public function getNotaryFees(): ?int
     {
         return $this->notaryFees;
@@ -522,70 +720,6 @@ class Simulator
     }
 
     /**
-     * @return float
-     */
-    public function getRentInsurance(): ?float
-    {
-        return $this->rentInsurance;
-    }
-
-    /**
-     * @param float $rentInsurance
-     */
-    public function setRentInsurance(float $rentInsurance): void
-    {
-        $this->rentInsurance = $rentInsurance;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCustomerCity(): ?string
-    {
-        return $this->customerCity;
-    }
-
-    /**
-     * @param string $customerCity
-     */
-    public function setCustomerCity(string $customerCity): void
-    {
-        $this->customerCity = $customerCity;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFamilySituation(): ?string
-    {
-        return $this->familySituation;
-    }
-
-    /**
-     * @param string $familySituation
-     */
-    public function setFamilySituation(string $familySituation): void
-    {
-        $this->familySituation = $familySituation;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNumberOfChildren(): ?int
-    {
-        return $this->numberOfChildren;
-    }
-
-    /**
-     * @param int $numberOfChildren
-     */
-    public function setNumberOfChildren(int $numberOfChildren): void
-    {
-        $this->numberOfChildren = $numberOfChildren;
-    }
-
-    /**
      * @return int
      */
     public function getMonthlyRent(): ?int
@@ -601,6 +735,7 @@ class Simulator
         $this->monthlyRent = $monthlyRent;
     }
 
+    // ***************************************************Financement*************************************************
     /**
      * @return int
      */
@@ -618,54 +753,6 @@ class Simulator
     }
 
     /**
-     * @return float
-     */
-    public function getNumberOfTaxShares(): ?float
-    {
-        return $this->numberOfTaxShares;
-    }
-
-    /**
-     * @param float $numberOfTaxShares
-     */
-    public function setNumberOfTaxShares(float $numberOfTaxShares): void
-    {
-        $this->numberOfTaxShares = $numberOfTaxShares;
-    }
-
-    /**
-     * @return float
-     */
-    public function getSalaryDeclared(): ?float
-    {
-        return $this->salaryDeclared;
-    }
-
-    /**
-     * @param float $salaryDeclared
-     */
-    public function setSalaryDeclared(float $salaryDeclared): void
-    {
-        $this->salaryDeclared = $salaryDeclared;
-    }
-
-    /**
-     * @return int
-     */
-    public function getLandIncomes(): ?int
-    {
-        return $this->landIncomes;
-    }
-
-    /**
-     * @param int $landIncomes
-     */
-    public function setLandIncomes(int $landIncomes): void
-    {
-        $this->landIncomes = $landIncomes;
-    }
-
-    /**
      * @return int
      */
     public function getInflow(): ?int
@@ -679,86 +766,6 @@ class Simulator
     public function setInflow(int $inflow): void
     {
         $this->inflow = $inflow;
-    }
-
-    /**
-     * @return int
-     */
-    public function getBic(): ?int
-    {
-        return $this->bic;
-    }
-
-    /**
-     * @param int $bic
-     */
-    public function setBic(int $bic): void
-    {
-        $this->bic = $bic;
-    }
-
-    /**
-     * @return int
-     */
-    public function getBnc(): ?int
-    {
-        return $this->bnc;
-    }
-
-    /**
-     * @param int $bnc
-     */
-    public function setBnc(int $bnc): void
-    {
-        $this->bnc = $bnc;
-    }
-
-    /**
-     * @return int
-     */
-    public function getBa(): ?int
-    {
-        return $this->ba;
-    }
-
-    /**
-     * @param int $ba
-     */
-    public function setBa(int $ba): void
-    {
-        $this->ba = $ba;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIncomeTax(): ?int
-    {
-        return $this->incomeTax;
-    }
-
-    /**
-     * @param int $incomeTax
-     */
-    public function setIncomeTax(int $incomeTax): void
-    {
-        $this->incomeTax = $incomeTax;
-    }
-
-    /**
-     * @return int
-     */
-    public function getParkingAmount(): ?int
-    {
-        return $this->parkingAmount;
-    }
-
-    /**
-     * @param int $parkingAmount
-     */
-    public function setParkingAmount(int $parkingAmount): void
-    {
-        $this->parkingAmount = $parkingAmount;
     }
 
     /**
@@ -791,6 +798,23 @@ class Simulator
     public function setAdi(int $adi): void
     {
         $this->adi = $adi;
+    }
+
+    // ***************************************************Frais***************************************************
+    /**
+     * @return float
+     */
+    public function getRentInsurance(): ?float
+    {
+        return $this->rentInsurance;
+    }
+
+    /**
+     * @param float $rentInsurance
+     */
+    public function setRentInsurance(float $rentInsurance): void
+    {
+        $this->rentInsurance = $rentInsurance;
     }
 
     /**
@@ -855,21 +879,5 @@ class Simulator
     public function setPropertyTax(int $propertyTax): void
     {
         $this->propertyTax = $propertyTax;
-    }
-
-    /**
-     * @return string
-     */
-    public function getZipCode(): ?string
-    {
-        return $this->zipCode;
-    }
-
-    /**
-     * @param string $zipCode
-     */
-    public function setZipCode(string $zipCode): void
-    {
-        $this->zipCode = $zipCode;
     }
 }
