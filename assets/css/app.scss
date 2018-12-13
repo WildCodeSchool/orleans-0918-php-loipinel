@@ -24,9 +24,10 @@
 $logoutColor: #6D737D;
 $colorIO: #FCA000;
 $secondaryColor: #989898;
+$cardText: #FFFFFF;
 
 body {
-  padding-top:60px;
+  padding-top: 60px;
   font-family: BrandonText, serif;
   font-size: 16pt;
   color: black;
@@ -42,10 +43,7 @@ table, th, td {
   height: 5vh;
   max-width: 100vw;
   margin-bottom: 7vh;
-  h1 {
-    color: black;
-    font-weight: bold;
-  }
+  color: white;
 }
 
 table {
@@ -101,10 +99,8 @@ h1
   text-align: center;
 }
 
-.pdfTitle {
-  h1 {
-    font-weight: bold;
-  }
+div.pdfResult {
+  color: white;
 }
 
 /* DATE PICKER FOR CHROME*/
@@ -141,4 +137,12 @@ input[type="date"]::-webkit-inner-spin-button {
 
 input[type="date"]::-webkit-clear-button {
   z-index: 1;
+}
+
+.card-body.card_result {
+  color: $cardText;
+}
+
+div.card-header {
+  font-size: 1.2em;
 }
