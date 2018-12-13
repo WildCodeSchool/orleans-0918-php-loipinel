@@ -16,6 +16,9 @@ class UserPasswordController extends AbstractController
 {
     /**
      * @Route("/change-password", name="password-change")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function change(Request $request, UserPasswordEncoderInterface $encoder)
     {
@@ -38,7 +41,7 @@ class UserPasswordController extends AbstractController
 
                 return $this->redirectToRoute('simulator_show');
             } else {
-                echo('et c\'est un échec');     //message flash error plus tard
+                $this->addFlash('danger', 'Mot de passe actuel incorrect');
             }
         }
 
