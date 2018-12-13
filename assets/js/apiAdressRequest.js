@@ -13,6 +13,10 @@ zipcode.addEventListener('input', function (e) {
 function fillSelector(data, postalCode) {
 
     let selectElt = document.getElementById('simulator_city');
+    let newOptionElt = document.createElement('option');
+    newOptionElt.innerText = 'Veuillez sélectionner une commune';
+    newOptionElt.value='';
+    selectElt.appendChild(newOptionElt);
     let cities=[];
     for (cityData of data) {
         if (!cities.hasOwnProperty(cityData.properties.citycode) && (cityData.properties.citycode !== postalCode)){

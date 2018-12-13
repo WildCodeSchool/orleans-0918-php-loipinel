@@ -71,4 +71,50 @@ class TaxBaseTest extends TestCase
         $this->assertEquals(169290, $taxBenefit->calculateTaxBase());
 
    }
+
+    public function testTaxBenefitInLimit()
+    {
+        $realEstateProperty = new RealEstateProperty();
+        $realEstateProperty->setSurfaceArea(25.75);
+        $realEstateProperty->setPurchasePrice(125000);
+        $taxBenefitResult = new TaxBenefit();
+        $taxBenefitResult->setRentalPeriod(12);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $this->assertEquals(26250, $taxBenefitResult->calculateTaxBenefit());
+
+        $realEstateProperty->setSurfaceArea(25.75);
+        $realEstateProperty->setPurchasePrice(125000);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $taxBenefitResult->setRentalPeriod(9);
+        $this->assertEquals(22500, $taxBenefitResult->calculateTaxBenefit());
+
+        $realEstateProperty->setSurfaceArea(25.75);
+        $realEstateProperty->setPurchasePrice(125000);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $taxBenefitResult->setRentalPeriod(6);
+        $this->assertEquals(15000, $taxBenefitResult->calculateTaxBenefit());
+    }
+
+    public function testTaxBenefitOverLimit()
+    {
+        $realEstateProperty = new RealEstateProperty();
+        $realEstateProperty->setSurfaceArea(100);
+        $realEstateProperty->setPurchasePrice(1000000);
+        $taxBenefitResult = new TaxBenefit();
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $taxBenefitResult->setRentalPeriod(12);
+        $this->assertEquals(63000, $taxBenefitResult->calculateTaxBenefit());
+
+        $realEstateProperty->setSurfaceArea(100);
+        $realEstateProperty->setPurchasePrice(1000000);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $taxBenefitResult->setRentalPeriod(9);
+        $this->assertEquals(54000, $taxBenefitResult->calculateTaxBenefit());
+
+        $realEstateProperty->setSurfaceArea(100);
+        $realEstateProperty->setPurchasePrice(1000000);
+        $taxBenefitResult->setRealEstate($realEstateProperty);
+        $taxBenefitResult->setRentalPeriod(6);
+        $this->assertEquals(36000, $taxBenefitResult->calculateTaxBenefit());
+    }
 }
