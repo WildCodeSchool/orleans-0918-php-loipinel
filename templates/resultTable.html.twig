@@ -1,130 +1,78 @@
 <div class="container">
-    <table class="table">
-
-        <tr>
-            <td>
-                <p>Nom :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').lastName }}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Prénom :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').firstName }}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Adresse :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').address }}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Code postal :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').zipCode }}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Ville :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').city }}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="bg-secondary highlight">
-                <p>Zone :</p>
-            </td>
-            <td class="bg-secondary highlight">
-                <p>{{ app.session.get('simulator').zone }}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Année d'acquisition :</p>
-            </td>
-            <td>
-                <p>{{app.session.get('simulator').acquisitionDate|date('d/m/Y') }}</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="bg-secondary highlight">
-                <p>Durée :</p>
-            </td>
-            <td class="bg-secondary highlight">
-                <p>{{ app.session.get('simulator').duration }} ans</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Surface :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').surfaceArea|number_format(2, ',', ' ') }} m2</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Prix d'acquisition :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').purchasePrice|number_format(2, ',', ' ') }} €</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Frais de notaire :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').notaryFees|number_format(2, ',', ' ') }} €</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Autres frais d'acquisition :</p>
-            </td>
-            <td>
-                <p>{{ app.session.get('simulator').otherFeesAcquisition|number_format(2, ',', ' ') }} €</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p>Montant total de l'acquisition :</p>
-            </td>
-            <td>
-                <p>{{app.session.get('simulator').totalAmountAcquisition|number_format(2, ',', ' ') }} €</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="bg-secondary highlight">
-                <p>Votre base fiscale :</p>
-            </td>
-            <td class="bg-secondary highlight">
-                <p> {{ base|number_format(2, ',', ' ') }} €</p>
-            </td>
-        </tr>
-    </table>
+    <div class="row mb-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center bg-light">Client</div>
+                <div class="card-body card_result bg-primary">
+                    <p class="card-text">{{ app.session.get('simulator').civility }} {{ app.session.get('simulator').lastName }} {{ app.session.get('simulator').firstName }}</p>
+                    <p class="card-text">{{ app.session.get('simulator').customerAddress }}</p>
+                    <p class="card-text">{{ app.session.get('simulator').customerZipCode }} {{ app.session.get('simulator').customerCity }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center bg-light">Fiscalité</div>
+                <div class="card-body card_result bg-primary">
+                    <p class="card-text">Situation familiale : {{ app.session.get('simulator').familySituation }}</p>
+                    <p class="card-text">Nombre d'enfants : {{ app.session.get('simulator').numberOfChildren }}</p>
+                    <p class="card-text">Nombre de parts fiscales : {{ app.session.get('simulator').numberOfTaxShares|number_format(1, ',', ' ') }}</p>
+                    <p class="card-text">Salaire déclaré : {{ app.session.get('simulator').salaryDeclared|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Revenu foncier : {{ app.session.get('simulator').landIncomes|number_format(0, ',', ' ') }} €</p>
+                    <p class="card-text">BIC : {{ app.session.get('simulator').bic }} €</p>
+                    <p class="card-text">BNC : {{ app.session.get('simulator').bnc }} €</p>
+                    <p class="card-text">BA : {{ app.session.get('simulator').ba }} €</p>
+                    <p class="card-text">Impôts sur le revenu : {{ app.session.get('simulator').incomeTax }} €</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center bg-light">Investissement</div>
+                <div class="card-body card_result bg-primary">
+                    <p class="card-text">Adresse du bien : {{ app.session.get('simulator').zipCode }} {{ app.session.get('simulator').city }}</p>
+                    <span class="badge badge-light">Zone {{ app.session.get('simulator').zone }}</span>
+                    <p class="card-text">Date d'acquisition : {{ app.session.get('simulator').acquisitionDate|date('d/m/Y') }}</p>
+                    <p class="card-text">Surface du bien : {{ app.session.get('simulator').surfaceArea|number_format(2, ',', ' ') }} m<sup>2</sup></p>
+                    <p class="card-text">Prix d'acquisition : {{ app.session.get('simulator').purchasePrice|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Montant du parking : {{ app.session.get('simulator').parkingAmount|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Loyer mensuel : {{ app.session.get('simulator').monthlyRent|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Apport : {{ app.session.get('simulator').inflow|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Durée du financement : {{ app.session.get('simulator').fundingPeriod|number_format(0, ',', ' ') }} mois </p>
+                    <p class="card-text">A.D.I. : {{ app.session.get('simulator').adi|number_format(2, ',', ' ') }} €</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center">Votre avantage fiscal</div>
+                <div class="card-body bg-light">
+                    <p class="card-text">Amortissement sur {{ app.session.get('simulator').duration }} ans : {{ resultTaxBenefit|number_format(2, ',', ' ') }} €</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header text-center bg-light">Frais</div>
+                <div class="card-body card_result bg-primary">
+                    <p class="card-text">Frais de gestion : {{ app.session.get('simulator').managementFees|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Frais de notaire : {{ app.session.get('simulator').notaryFees|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Honoraires de location : {{ app.session.get('simulator').rentalFee|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Assurance du loyer : {{ app.session.get('simulator').rentInsurance|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Charges de copropriété : {{ app.session.get('simulator').coownershipCharges|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Taxe Foncière : {{ app.session.get('simulator').propertyTax|number_format(0, ',', ' ') }} €</p>
+                    <p class="card-text">Autres frais d'acquisition : {{ app.session.get('simulator').otherFeesAcquisition|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Montant total de l'acquisition : {{ app.session.get('simulator').totalAmountAcquisition|number_format(2, ',', ' ') }} €</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
