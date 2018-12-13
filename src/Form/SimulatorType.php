@@ -31,6 +31,10 @@ class SimulatorType extends AbstractType
         $builder->add('address', TextType::class, [
             'label' => 'Adresse',
         ]);
+        $builder->add('acquisitionDate', DateType::class, [
+            'widget' => 'single_text',
+            'label' => 'Date d\'acquisition',
+        ]);
         $builder->add('zipCode', TextType::class, [
             'label' => 'Code Postal',
         ]);
@@ -38,19 +42,7 @@ class SimulatorType extends AbstractType
             'label' => 'Ville',
         ]);
         $builder->get('city')->resetViewTransformers();
-        $builder->add('zone', ChoiceType::class, [
-            'choices' => [
-                "A" => "a",
-                "A bis" => "a bis",
-                "B1" => "b1",
-                "B2" => "b2",
-                "C" => "c",
-            ],
-        ]);
-        $builder->add('acquisitionDate', DateType::class, [
-            'widget' => 'single_text',
-            'label' => 'Date d\'acquisition',
-        ]);
+        $builder->add('zone', TextType::class);
         $builder->add('duration', ChoiceType::class, [
             'label' => 'Durée',
             'choices' => [

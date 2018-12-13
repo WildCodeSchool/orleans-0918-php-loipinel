@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+ {% extends 'layout.html.twig' %}
 
 {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
 
@@ -18,11 +18,11 @@
 
                 {{ form_row ( form.zipCode ) }}
 
-                {{ form_row ( form.city ) }}
-
-                {{ form_row ( form.zone ) }}
+                {{ form_row ( form.city) }}
 
                 {{ form_row ( form.acquisitionDate ) }}
+
+                {{ form_row ( form.zone ) }}
 
                 {{ form_row ( form.duration ) }}
 
@@ -46,6 +46,7 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('requestApi') }}
+    {{ encore_entry_script_tags('requestArea') }}
 {% endblock %}
 
 {% block footer %}{% endblock %}
