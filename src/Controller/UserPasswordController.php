@@ -39,6 +39,8 @@ class UserPasswordController extends AbstractController
                 $em->persist($user);
                 $em->flush();
 
+                $this->addFlash('success', 'Votre mot de passe a bien été enregistré');
+
                 return $this->redirectToRoute('simulator_show');
             } else {
                 $this->addFlash('danger', 'Mot de passe actuel incorrect');
