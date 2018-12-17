@@ -106,12 +106,6 @@ class Simulator
      */
     private $otherFeesAcquisition;
 
-    /**
-     * @var int
-     * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
-     */
-    private $totalAmountAcquisition;
 
     /**
      * @return string
@@ -306,21 +300,5 @@ class Simulator
     public function setOtherFeesAcquisition(int $otherFeesAcquisition): void
     {
         $this->otherFeesAcquisition = $otherFeesAcquisition;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotalAmountAcquisition(): ?int
-    {
-        return $this->totalAmountAcquisition;
-    }
-
-    /**
-     * @param int $totalAmountAcquisition
-     */
-    public function setTotalAmountAcquisition(int $totalAmountAcquisition): void
-    {
-        $this->totalAmountAcquisition = $totalAmountAcquisition;
     }
 }

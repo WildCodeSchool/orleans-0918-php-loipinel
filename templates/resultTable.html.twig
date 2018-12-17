@@ -114,8 +114,7 @@
                 <p>Montant total de l'acquisition :</p>
             </td>
             <td>
-                <p> {% set totalAmount = 0 %}
-                    {% set totalAmount = app.session.get('simulator').purchasePrice + app.session.get('simulator').notaryFees + app.session.get('simulator').otherFeesAcquisition %}
+                <p>{% set totalAmount = app.session.get('simulator').purchasePrice + app.session.get('simulator').notaryFees + app.session.get('simulator').otherFeesAcquisition %}
                     {{ totalAmount|number_format(2, ',', ' ') }} €</p>
             </td>
         </tr>
