@@ -28,7 +28,8 @@ class ChangePasswordType extends AbstractType
                 ],
                 'required' => true,
             ])
-            ->add('Changer le mot de passe', SubmitType::class, [
+            ->add('changePassword', SubmitType::class, [
+                'label' => 'Changer le mot de passe',
                 'attr' => [
                     'class' => 'btn btn-primary text-align-center'
                 ]
