@@ -108,7 +108,6 @@ class Simulator
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
      * @Assert\GreaterThan(0)
      */
