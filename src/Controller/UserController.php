@@ -41,9 +41,9 @@ class UserController extends AbstractController
     {
         $user = new User();
         $form = $this->get('form.factory')->createBuilder(FormType::class, $user)
-            ->add('email',      TextType::class)
-            ->add('password',      PasswordType::class)
-            ->add('roles',      CollectionType::class, [
+            ->add('email', TextType::class)
+            ->add('password', PasswordType::class)
+            ->add('roles', CollectionType::class, [
                 'label' => ' ',
                 'entry_type' => ChoiceType::class,
                 'entry_options' => [
@@ -51,7 +51,7 @@ class UserController extends AbstractController
                     'choices' => [
                     'Utilisateur' => 'ROLE_USER',
                     'Administrateur' => 'ROLE_ADMIN',
-                ]]])
+                    ]]])
             ->getForm();
         $form->handleRequest($request);
 
