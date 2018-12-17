@@ -25,7 +25,7 @@ class Fiscality
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * * @Assert\Regex("/[0-9]{1,2}/")
+     * @Assert\GreaterThan(0)
      */
     private $numberOfChildren;
 

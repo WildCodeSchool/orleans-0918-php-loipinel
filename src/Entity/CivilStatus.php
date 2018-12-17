@@ -50,7 +50,7 @@ class CivilStatus
      * @var string
      * @Assert\NotBlank
      * @Assert\Regex("/[0-9]/")
-     * @Assert\Length(min = 5)
+     * @Assert\Length(min = 5, maxMessage = "Ce champ ne peux contenir moins de 5 chiffres.")
      * @Assert\Length(max = 5, maxMessage = "Ce champ ne peux contenir plus de 5 chiffres.")
      */
     private $customerZipCode;
