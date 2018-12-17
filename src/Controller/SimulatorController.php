@@ -8,8 +8,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Finances;
 use App\Entity\Simulator;
 use App\Entity\User;
+use App\Form\FinancesType;
 use App\Form\SimulatorType;
 use App\Service\DataJson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -46,7 +48,7 @@ class SimulatorController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $session->set('simulator', $simulator);
-            return $this->redirectToRoute('result_page');
+            return $this->redirectToRoute('finances');
         }
 
         return $this->render(
@@ -81,5 +83,37 @@ class SimulatorController extends AbstractController
             $area = 'Données indisponibles pour l\'année renseignée';
         }
         return $this->json($area);
+    }
+
+    /**
+     * @Route("/finances", name="finances")
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
+     */
+    public function showFinances(Request $request, SessionInterface $session): Response
+    {
+        $user = $this->getUser();
+        $finances = new Finances();
+
+        $form = $this->createForm(
+            FinancesType::class,
+            $finances
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $session->set('finances', $finances);
+            return $this->redirectToRoute('result_page');
+        }
+
+        return $this->render(
+            'Form/finances.html.twig',
+            [
+                'form' => $form->createView(),
+                'user' => $user,
+            ]
+        );
     }
 }

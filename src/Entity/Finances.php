@@ -179,18 +179,20 @@ class Finances
      */
     private $propertyTax;
 
+    // ***************************************************Getter/Setters***********************************************
+    // ***************************************************Investissement***********************************************
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    // ***************************************************Getter/Setters***********************************************
-    // ***************************************************Investissement***********************************************
-
     /**
      * @return string
      */
-    public function getZipCode(): string
+    public function getZipCode(): ?string
     {
         return $this->zipCode;
     }
@@ -206,7 +208,7 @@ class Finances
     /**
      * @return string
      */
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }
@@ -222,7 +224,7 @@ class Finances
     /**
      * @return string
      */
-    public function getZone(): string
+    public function getZone(): ?string
     {
         return $this->zone;
     }
@@ -238,7 +240,7 @@ class Finances
     /**
      * @return \DateTime
      */
-    public function getAcquisitionDate(): \DateTime
+    public function getAcquisitionDate(): ?\DateTime
     {
         return $this->acquisitionDate;
     }
@@ -254,7 +256,7 @@ class Finances
     /**
      * @return int
      */
-    public function getDuration(): int
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
@@ -270,7 +272,7 @@ class Finances
     /**
      * @return float
      */
-    public function getSurfaceArea(): float
+    public function getSurfaceArea(): ?float
     {
         return $this->surfaceArea;
     }
@@ -286,7 +288,7 @@ class Finances
     /**
      * @return int
      */
-    public function getPurchasePrice(): int
+    public function getPurchasePrice(): ?int
     {
         return $this->purchasePrice;
     }
@@ -302,7 +304,7 @@ class Finances
     /**
      * @return int
      */
-    public function getParkingAmount(): int
+    public function getParkingAmount(): ?int
     {
         return $this->parkingAmount;
     }
@@ -318,7 +320,7 @@ class Finances
     /**
      * @return int
      */
-    public function getNotaryFees(): int
+    public function getNotaryFees(): ?int
     {
         return $this->notaryFees;
     }
@@ -334,7 +336,7 @@ class Finances
     /**
      * @return int
      */
-    public function getOtherFeesAcquisition(): int
+    public function getOtherFeesAcquisition(): ?int
     {
         return $this->otherFeesAcquisition;
     }
@@ -350,7 +352,7 @@ class Finances
     /**
      * @return int
      */
-    public function getTotalAmountAcquisition(): int
+    public function getTotalAmountAcquisition(): ?int
     {
         return $this->totalAmountAcquisition;
     }
@@ -366,7 +368,7 @@ class Finances
     /**
      * @return int
      */
-    public function getMonthlyRent(): int
+    public function getMonthlyRent(): ?int
     {
         return $this->monthlyRent;
     }
@@ -384,7 +386,7 @@ class Finances
     /**
      * @return int
      */
-    public function getBorrowedAmount(): int
+    public function getBorrowedAmount(): ?int
     {
         return $this->borrowedAmount;
     }
@@ -400,7 +402,7 @@ class Finances
     /**
      * @return int
      */
-    public function getInflow(): int
+    public function getInflow(): ?int
     {
         return $this->inflow;
     }
@@ -416,7 +418,7 @@ class Finances
     /**
      * @return int
      */
-    public function getFundingPeriod(): int
+    public function getFundingPeriod(): ?int
     {
         return $this->fundingPeriod;
     }
@@ -432,7 +434,7 @@ class Finances
     /**
      * @return int
      */
-    public function getAdi(): int
+    public function getAdi(): ?int
     {
         return $this->adi;
     }
@@ -450,7 +452,7 @@ class Finances
     /**
      * @return float
      */
-    public function getManagementFees(): float
+    public function getManagementFees(): ?float
     {
         return $this->managementFees;
     }
@@ -466,7 +468,7 @@ class Finances
     /**
      * @return float
      */
-    public function getRentalFee(): float
+    public function getRentalFee(): ?float
     {
         return $this->rentalFee;
     }
@@ -482,7 +484,7 @@ class Finances
     /**
      * @return float
      */
-    public function getRentInsurance(): float
+    public function getRentInsurance(): ?float
     {
         return $this->rentInsurance;
     }
@@ -498,7 +500,7 @@ class Finances
     /**
      * @return float
      */
-    public function getCoownershipCharges(): float
+    public function getCoownershipCharges(): ?float
     {
         return $this->coownershipCharges;
     }
@@ -514,7 +516,7 @@ class Finances
     /**
      * @return int
      */
-    public function getPropertyTax(): int
+    public function getPropertyTax(): ?int
     {
         return $this->propertyTax;
     }
