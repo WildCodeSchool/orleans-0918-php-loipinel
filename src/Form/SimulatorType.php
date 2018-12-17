@@ -69,10 +69,6 @@ class SimulatorType extends AbstractType
             'label' => 'Autres frais d\'acquisition',
             'grouping' => true,
         ]);
-        $builder->add('totalAmountAcquisition', MoneyType::class, [
-            'label' => 'Montant total de l\'acquisition',
-            'grouping' => true,
-        ]);
         $builder->getForm();
     }
 
