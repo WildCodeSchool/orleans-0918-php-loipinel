@@ -32,8 +32,16 @@ class UserFixtures extends Fixture
         $user1->setPassword($this->encoder->encodePassword($user1, 'projetadmin'));
         $user1->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
 
+        $user2 = new User();
+        $user2->setEmail('user@projet.fr');
+        $user2->setLastName('PROJET ADMIN');
+        $user2->setFirstName('Tom');
+        $user2->setPassword($this->encoder->encodePassword($user2, 'projetadmin'));
+        $user2->setRoles(['ROLE_USER']);
+
         $manager->persist($user);
         $manager->persist($user1);
+        $manager->persist($user2);
         $manager->flush();
     }
 }
