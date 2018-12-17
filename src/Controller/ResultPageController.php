@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Finances;
 use App\Entity\RealEstateProperty;
-use App\Entity\Simulator;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -19,14 +19,14 @@ class ResultPageController extends AbstractController
 {
     /**
      * @param TaxBenefit $taxBenefit
-     * @param Simulator $simulator
+     * @param Finances $finances
      * @return void
      */
-    private function injectRealEstate(TaxBenefit $taxBenefit, Simulator $simulator) : void
+    private function injectRealEstate(TaxBenefit $taxBenefit, Finances $finances) : void
     {
         $realEstate = new RealEstateProperty();
-        $realEstate->setPurchasePrice($simulator->getPurchasePrice());
-        $realEstate->setSurfaceArea($simulator->getSurfaceArea());
+        $realEstate->setPurchasePrice($finances->getPurchasePrice());
+        $realEstate->setSurfaceArea($finances->getSurfaceArea());
 
         $taxBenefit->setRealEstate($realEstate);
     }
@@ -40,15 +40,15 @@ class ResultPageController extends AbstractController
     public function index(SessionInterface $session, TaxBenefit $taxBenefit)
     {
         $user = $this->getUser();
-        $simulator = $session->get('simulator');
+        $finances = $session->get('finances');
 
-        $this->injectRealEstate($taxBenefit, $simulator);
-        $taxBenefit->setRentalPeriod($simulator->getDuration());
+        $this->injectRealEstate($taxBenefit, $finances);
+        $taxBenefit->setRentalPeriod($finances->getDuration());
         $resultTaxBenefit = $taxBenefit->calculateTaxBenefit();
 
         return $this->render('result.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
-            'simulator' => $simulator,
+            'finances' => $finances,
             'user' => $user,
         ]);
     }
@@ -61,15 +61,15 @@ class ResultPageController extends AbstractController
      */
     public function pdfAction(Pdf $knpSnappyPdf, SessionInterface $session, TaxBenefit $taxBenefit)
     {
-        $simulator = $session->get('simulator');
+        $finances = $session->get('finances');
 
-        $this->injectRealEstate($taxBenefit, $simulator);
-        $taxBenefit->setRentalPeriod($simulator->getDuration());
+        $this->injectRealEstate($taxBenefit, $finances);
+        $taxBenefit->setRentalPeriod($finances->getDuration());
         $resultTaxBenefit = $taxBenefit->calculateTaxBenefit();
 
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig', ['resultTaxBenefit' => $resultTaxBenefit,]);
-        $lastName = $simulator->getLastName();
+        $lastName = $finances->getLastName();
 
         return new PdfResponse(
             $knpSnappyPdf->getOutputFromHtml($html, ['user-style-sheet' => ['./build/app.css',],]),

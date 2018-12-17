@@ -29,30 +29,30 @@ class SimulatorController extends AbstractController
     const INELLIGIBLE_AREA = 'C';
 
     /**
-     * Show all row from category's entity
-     * @Route("/simulator", name="simulator_show")
+     * @Route("/finances", name="finances")
      * @param Request $request
-     * @return Response A response instance
+     * @param SessionInterface $session
+     * @return Response
      */
-    public function showSimulator(Request $request, SessionInterface $session)
+    public function showFinances(Request $request, SessionInterface $session): Response
     {
         $user = $this->getUser();
-        $simulator = new Simulator();
+        $finances = new Finances();
 
         $form = $this->createForm(
-            SimulatorType::class,
-            $simulator
+            FinancesType::class,
+            $finances
         );
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $session->set('simulator', $simulator);
-            return $this->redirectToRoute('finances');
+            $session->set('finances', $finances);
+            return $this->redirectToRoute('result_page');
         }
 
         return $this->render(
-            'Form/simulator.html.twig',
+            'Form/finances.html.twig',
             [
                 'form' => $form->createView(),
                 'user' => $user,
@@ -83,37 +83,5 @@ class SimulatorController extends AbstractController
             $area = 'Données indisponibles pour l\'année renseignée';
         }
         return $this->json($area);
-    }
-
-    /**
-     * @Route("/finances", name="finances")
-     * @param Request $request
-     * @param SessionInterface $session
-     * @return Response
-     */
-    public function showFinances(Request $request, SessionInterface $session): Response
-    {
-        $user = $this->getUser();
-        $finances = new Finances();
-
-        $form = $this->createForm(
-            FinancesType::class,
-            $finances
-        );
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $session->set('finances', $finances);
-            return $this->redirectToRoute('result_page');
-        }
-
-        return $this->render(
-            'Form/finances.html.twig',
-            [
-                'form' => $form->createView(),
-                'user' => $user,
-            ]
-        );
     }
 }
