@@ -16,8 +16,9 @@ class CivilStatus
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Choice(choices={"Monsieur", "Madame", "M./Mme", "M./M.", "Mme/Mme"}, message="Veuillez sélectionner
-     * un genre parmi ceux proposés")
+     * @Assert\Choice(choices={"Monsieur", "Madame", "M./Mme", "M./M.", "Mme/Mme"},
+     *   message="Veuillez sélectionner un genre parmi ceux proposés")
+     * @Assert\Choice(callback="getCivilities")
      */
     private $civility;
 
@@ -66,6 +67,14 @@ class CivilStatus
     public function getCivility(): ?string
     {
         return $this->civility;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCivilities(): array
+    {
+        return ['Monsieur'=>'Monsieur', 'Madame'=>'Madame', 'M./Mme'=>'M./Mme', 'M./M.'=>'M./M.', 'Mme/Mme'=>'Mme/Mme'];
     }
 
     /**

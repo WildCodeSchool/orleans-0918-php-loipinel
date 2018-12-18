@@ -15,17 +15,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class CivilStatusType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('civility', ChoiceType::class, [
             'label' => 'Civilité',
-            'choices' => [
-                "Monsieur" => "Monsieur",
-                "Madame" => "Madame",
-                "M./Mme" => "M./Mme",
-                "M./M." => "M./M.",
-                "Mme/Mme" => "Mme/Mme",
-            ],
+            'choices' => $options['data']->getCivilities(),
         ]);
         $builder->add('firstName', TextType::class, [
             'label' => 'Prénom',
