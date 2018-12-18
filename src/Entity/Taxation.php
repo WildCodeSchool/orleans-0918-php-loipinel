@@ -16,9 +16,7 @@ class Taxation
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Choice(choices={"célibataire", "en concubinage", "mariés", "pacsés", "divorcé(e)"},
-     *     message="Veuillez sélectionner une situation familiale parmi celles proposées")
-     * @Assert\Choice(callback="getFamilySituations")
+     * @Assert\Choice(callback="getFamilySituations", message="Veuillez sélectionner une situation familiale parmi celles proposées")
      */
     private $familySituation;
 

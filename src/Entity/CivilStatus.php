@@ -16,9 +16,7 @@ class CivilStatus
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Choice(choices={"Monsieur", "Madame", "M./Mme", "M./M.", "Mme/Mme"},
-     *   message="Veuillez sélectionner un genre parmi ceux proposés")
-     * @Assert\Choice(callback="getCivilities")
+     * @Assert\Choice(callback="getCivilities", message="Veuillez sélectionner un genre parmi ceux proposés")
      */
     private $civility;
 
