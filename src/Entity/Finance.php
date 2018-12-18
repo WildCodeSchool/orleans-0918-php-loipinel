@@ -534,6 +534,6 @@ class Finance
      */
     public function getDurations(): array
     {
-        return ['6 ans' => 0, '9 ans' => 1, '12 ans' => 2];
+        return ['6 ans' => 6, '9 ans' => 9, '12 ans' => 12];
     }
 }
