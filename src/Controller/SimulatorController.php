@@ -55,7 +55,6 @@ class SimulatorController extends AbstractController
             'Form/finance.html.twig',
             [
                 'form' => $form->createView(),
-                'user' => $user,
             ]
         );
     }
