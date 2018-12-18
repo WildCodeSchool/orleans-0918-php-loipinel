@@ -39,7 +39,7 @@ class CivilStatusController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $session->set('civilStatus', $civilStatus);
-            return $this->redirectToRoute('fiscality_show');
+            return $this->redirectToRoute('taxation_show');
         }
 
         return $this->render(

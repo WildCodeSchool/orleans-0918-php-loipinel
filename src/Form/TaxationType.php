@@ -10,6 +10,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -33,25 +34,29 @@ class TaxationType extends AbstractType
         $builder->add('numberOfTaxShares', TextType::class, [
             'label' => "Nombre de parts fiscales",
         ]);
-        $builder->add('salaryDeclared', TextType::class, [
+        $builder->add('numberOfTaxShares', TextType::class, [
+        'label' => "Nombre de parts fiscales",
+        ]);
+        $builder->add('salaryDeclared', MoneyType::class, [
             'label' => "Salaire déclaré",
         ]);
-        $builder->add('landIncomes', TextType::class, [
+        $builder->add('landIncomes', MoneyType::class, [
             'label' => "Revenus fonciers",
         ]);
-        $builder->add('numberOfTaxShares', TextType::class, [
-            'label' => "Nombre de parts fiscales",
-        ]);
-        $builder->add('bic', TextType::class, [
+
+        $builder->add('bic', MoneyType::class, [
             'label' => "B.I.C.",
+            'help' => "Bénéfices Industriels et Commerciaux"
         ]);
-        $builder->add('bnc', TextType::class, [
+        $builder->add('bnc', MoneyType::class, [
             'label' => "B.N.C.",
+            'help' => "Bénéfices Non Commerciaux",
         ]);
-        $builder->add('ba', TextType::class, [
+        $builder->add('ba', MoneyType::class, [
             'label' => "B.A.",
+            'help' => "Bénéfices Agricoles",
         ]);
-        $builder->add('incomeTax', TextType::class, [
+        $builder->add('incomeTax', MoneyType::class, [
             'label' => "Impôt sur le revenu",
         ]);
     }

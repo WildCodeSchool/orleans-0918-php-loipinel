@@ -20,7 +20,7 @@ class TaxationController extends AbstractController
 {
     /**
      * Show all row from category's entity
-     * @Route("/fiscalité", name="taxation_show")
+     * @Route("/fiscalite", name="taxation_show")
      * @param Request $request
      * @return Response A response instance
      */
