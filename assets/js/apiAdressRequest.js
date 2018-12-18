@@ -1,7 +1,7 @@
-let zipcode = document.getElementById('finances_zipCode');
+let zipcode = document.getElementById('finance_zipCode');
 zipcode.addEventListener('input', function (e) {
-    let postalCode = $('#finances_zipCode').val();
-    $('#finances_city').empty();
+    let postalCode = $('#finance_zipCode').val();
+    $('#finance_city').empty();
 
     if (this.value.length === 5) {
         fetch("https://api-adresse.data.gouv.fr/search/?q=" + postalCode + "&limit=100")
@@ -12,7 +12,7 @@ zipcode.addEventListener('input', function (e) {
 
 function fillSelector(data, postalCode) {
 
-    let selectElt = document.getElementById('finances_city');
+    let selectElt = document.getElementById('finance_city');
     let newOptionElt = document.createElement('option');
     newOptionElt.innerText = 'Veuillez sélectionner une commune';
     newOptionElt.value='';
