@@ -29,7 +29,7 @@ class SimulatorController extends AbstractController
     const INELLIGIBLE_AREA = 'C';
 
     /**
-     * @Route("/finance", name="finance")
+     * @Route("/finances", name="finances")
      * @param Request $request
      * @param SessionInterface $session
      * @return Response
