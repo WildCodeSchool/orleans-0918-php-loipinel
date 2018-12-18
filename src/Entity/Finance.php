@@ -49,7 +49,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\Choice({6, 9, 12})
+     * @Assert\Choice(callback="getDurations")
      */
     private $duration;
 
@@ -527,5 +527,13 @@ class Finance
     public function setPropertyTax(int $propertyTax): void
     {
         $this->propertyTax = $propertyTax;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDurations(): array
+    {
+        return ['6 ans' => 0, '9 ans' => 1, '12 ans' => 2];
     }
 }

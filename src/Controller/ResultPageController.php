@@ -19,10 +19,10 @@ class ResultPageController extends AbstractController
 {
     /**
      * @param TaxBenefit $taxBenefit
-     * @param finance $finance
+     * @param Finance $finance
      * @return void
      */
-    private function injectRealEstate(TaxBenefit $taxBenefit, finance $finance) : void
+    private function injectRealEstate(TaxBenefit $taxBenefit, Finance $finance) : void
     {
         $realEstate = new RealEstateProperty();
         $realEstate->setPurchasePrice($finance->getPurchasePrice());

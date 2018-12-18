@@ -30,11 +30,7 @@ class FinanceType extends AbstractType
         ]);
         $builder->add('duration', ChoiceType::class, [
             'label' => 'Durée',
-            'choices' => [
-                '6 ans' => 6,
-                '9 ans' => 9,
-                '12 ans' => 12,
-            ],
+            'choices' => $options['data']->getDurations(),
             'multiple' => false,
             'expanded' => true,
         ]);
