@@ -8,6 +8,7 @@
 
 namespace App\Form;
 
+use App\Entity\CivilStatus;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,7 +24,7 @@ class CivilStatusType extends AbstractType
     {
         $builder->add('civility', ChoiceType::class, [
             'label' => 'Civilité',
-            'choices' => $options['data']->getCivilities(),
+            'choices' => CivilStatus::getCivilities(),
         ]);
         $builder->add('firstName', TextType::class, [
             'label' => 'Prénom',

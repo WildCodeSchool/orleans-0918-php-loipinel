@@ -99,7 +99,7 @@ class Taxation
     /**
      * @return array
      */
-    public function getFamilySituations(): array
+    public static function getFamilySituations(): array
     {
         return ['célibataire' => 'célibataire',
             'en concubinage' => 'en concubinage',

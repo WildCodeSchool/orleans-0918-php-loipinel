@@ -8,6 +8,7 @@
 
 namespace App\Form;
 
+use App\Entity\Taxation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -24,7 +25,7 @@ class TaxationType extends AbstractType
     {
         $builder->add('familySituation', ChoiceType::class, [
             'label' => 'Situation familiale',
-            'choices' => $options['data']->getFamilySituations(),
+            'choices' => Taxation::getFamilySituations(),
         ]);
         $builder->add('numberOfChildren', TextType::class, [
             'label' => "Nombre d'enfants",

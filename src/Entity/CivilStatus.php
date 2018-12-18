@@ -71,7 +71,7 @@ class CivilStatus
     /**
      * @return array
      */
-    public function getCivilities(): array
+    public static function getCivilities(): array
     {
         return ['Monsieur' => 'Monsieur',
             'Madame' => 'Madame',
