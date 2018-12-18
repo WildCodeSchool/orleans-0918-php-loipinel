@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class FiscalityType extends AbstractType
+class TaxationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

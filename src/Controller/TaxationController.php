@@ -8,41 +8,41 @@
 
 namespace App\Controller;
 
-use App\Entity\Fiscality;
-use App\Form\FiscalityType;
+use App\Entity\Taxation;
+use App\Form\TaxationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FiscalityController extends AbstractController
+class TaxationController extends AbstractController
 {
     /**
      * Show all row from category's entity
-     * @Route("/fiscality", name="fiscality_show")
+     * @Route("/fiscalité", name="taxation_show")
      * @param Request $request
      * @return Response A response instance
      */
-    public function showFiscality(Request $request, SessionInterface $session)
+    public function showTaxation(Request $request, SessionInterface $session)
     {
         $user = $this->getUser();
-        $fiscality = new Fiscality();
+        $taxation = new Taxation();
 
         $form = $this->createForm(
-            FiscalityType::class,
-            $fiscality
+            TaxationType::class,
+            $taxation
         );
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $session->set('fiscality', $fiscality);
+            $session->set('fiscalité', $taxation);
             return $this->redirectToRoute('finances');
         }
 
         return $this->render(
-            'Form/fiscality.html.twig',
+            'Form/taxation.html.twig',
             [
                 'form' => $form->createView(),
                 'user' => $user,

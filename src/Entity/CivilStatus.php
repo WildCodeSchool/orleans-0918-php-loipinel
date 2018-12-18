@@ -25,7 +25,6 @@ class CivilStatus
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Length(min = 1)
      * @Assert\Length(max = 80, maxMessage = "Ce champ ne peux contenir plus de 80 caractères.")
      */
     private $firstName;
@@ -34,7 +33,6 @@ class CivilStatus
      * @var string
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Length(min = 1)
      * @Assert\Length(max = 80,  maxMessage = "Ce champ ne peux contenir plus de 80 caractères.")
      */
     private $lastName;
