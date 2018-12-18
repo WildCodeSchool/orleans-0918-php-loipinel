@@ -8,8 +8,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Finance;
 use App\Entity\Simulator;
 use App\Entity\User;
+use App\Form\FinanceType;
 use App\Form\SimulatorType;
 use App\Service\DataJson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -27,33 +29,32 @@ class SimulatorController extends AbstractController
     const INELLIGIBLE_AREA = 'C';
 
     /**
-     * Show all row from category's entity
-     * @Route("/simulator", name="simulator_show")
+     * @Route("/finances", name="finances")
      * @param Request $request
-     * @return Response A response instance
+     * @param SessionInterface $session
+     * @return Response
      */
-    public function showSimulator(Request $request, SessionInterface $session)
+    public function showFinance(Request $request, SessionInterface $session): Response
     {
         $user = $this->getUser();
-        $simulator = new Simulator();
+        $finance = new Finance();
 
         $form = $this->createForm(
-            SimulatorType::class,
-            $simulator
+            FinanceType::class,
+            $finance
         );
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $session->set('simulator', $simulator);
+            $session->set('finance', $finance);
             return $this->redirectToRoute('result_page');
         }
 
         return $this->render(
-            'Form/simulator.html.twig',
+            'Form/finance.html.twig',
             [
                 'form' => $form->createView(),
-                'user' => $user,
             ]
         );
     }
