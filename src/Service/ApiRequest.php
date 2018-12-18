@@ -11,7 +11,6 @@ namespace App\Service;
 use GuzzleHttp\Client;
 use App\Entity\Simulator;
 
-
 class ApiRequest
 {
     /**
@@ -21,9 +20,9 @@ class ApiRequest
     public function dataLoad(Simulator $simulator)
     {
         $client = new Client();
-        $res = $client->request('GET','https://api-adresse.data.gouv.fr/search/?q='.$simulator->getCity());
+        $res = $client->request('GET', 'https://api-adresse.data.gouv.fr/search/?q='.$simulator->getCity());
         $json = $res->getBody();
-        $data = json_decode($json,true);
+        $data = json_decode($json, true);
 
         return $data;
     }
