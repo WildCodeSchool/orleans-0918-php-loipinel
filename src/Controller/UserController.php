@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\NewUserType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,19 +41,7 @@ class UserController extends AbstractController
     public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $user = new User();
-        $form = $this->get('form.factory')->createBuilder(FormType::class, $user)
-            ->add('email', TextType::class)
-            ->add('password', PasswordType::class)
-            ->add('roles', CollectionType::class, [
-                'label' => ' ',
-                'entry_type' => ChoiceType::class,
-                'entry_options' => [
-                    'label' => 'Rôle',
-                    'choices' => [
-                    'Utilisateur' => 'ROLE_USER',
-                    'Administrateur' => 'ROLE_ADMIN',
-                    ]]])
-            ->getForm();
+        $form = $this->createForm(NewUserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
