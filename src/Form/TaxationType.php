@@ -24,13 +24,7 @@ class TaxationType extends AbstractType
     {
         $builder->add('familySituation', ChoiceType::class, [
             'label' => 'Situation familiale',
-            'choices' => [
-                "célibataire" => "célibataire",
-                "en concubinage" => "en concubinage",
-                "mariés" => "mariés",
-                "pacsés" => "pacsés",
-                "divorcé(e)" => "divorcé(e)",
-            ],
+            'choices' => $options['data']->getFamilySituations(),
         ]);
         $builder->add('numberOfChildren', TextType::class, [
             'label' => "Nombre d'enfants",

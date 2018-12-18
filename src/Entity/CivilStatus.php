@@ -74,7 +74,11 @@ class CivilStatus
      */
     public function getCivilities(): array
     {
-        return ['Monsieur'=>'Monsieur', 'Madame'=>'Madame', 'M./Mme'=>'M./Mme', 'M./M.'=>'M./M.', 'Mme/Mme'=>'Mme/Mme'];
+        return ['Monsieur' => 'Monsieur',
+            'Madame' => 'Madame',
+            'M./Mme' => 'M./Mme',
+            'M./M.' => 'M./M.',
+            'Mme/Mme' => 'Mme/Mme'];
     }
 
     /**

@@ -18,6 +18,7 @@ class Taxation
      * @Assert\Type("string")
      * @Assert\Choice(choices={"célibataire", "en concubinage", "mariés", "pacsés", "divorcé(e)"},
      *     message="Veuillez sélectionner une situation familiale parmi celles proposées")
+     * @Assert\Choice(callback="getFamilySituations")
      */
     private $familySituation;
 
@@ -94,6 +95,18 @@ class Taxation
     public function setFamilySituation(string $familySituation): void
     {
         $this->familySituation = $familySituation;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFamilySituations(): array
+    {
+        return ['célibataire' => 'célibataire',
+            'en concubinage' => 'en concubinage',
+            'mariés' => 'mariés',
+            'pacsés' => 'pacsés',
+            'divorcé(e)' => 'divorcé(e)'];
     }
 
     /**
