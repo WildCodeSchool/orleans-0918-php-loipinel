@@ -11,6 +11,7 @@ namespace App\Controller;
 use App\Entity\Simulator;
 use App\Entity\User;
 use App\Form\SimulatorType;
+use App\Service\ApiRequest;
 use App\Service\DataJson;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class SimulatorController extends AbstractController
      * @param Request $request
      * @return Response A response instance
      */
-    public function showSimulator(Request $request, SessionInterface $session)
+    public function showSimulator(Request $request, SessionInterface $session, ApiRequest $service)
     {
         $user = $this->getUser();
         $simulator = new Simulator();
@@ -39,9 +40,12 @@ class SimulatorController extends AbstractController
         );
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $result = $service->dataLoad($simulator);
+            $city= $result['features'][0]['properties']['city'];
+            $simulator->setCity($city);
             $session->set('simulator', $simulator);
+
             return $this->redirectToRoute('result_page');
         }
 
