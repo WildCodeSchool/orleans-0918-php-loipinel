@@ -96,7 +96,7 @@ class UserController extends AbstractController
             $em->remove($user);
             $em->flush();
         }
-
+        
         return $this->redirectToRoute('user_index');
     }
 }
