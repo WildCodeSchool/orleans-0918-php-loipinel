@@ -30,15 +30,14 @@ class RegisterType extends AbstractType
                 'second_options' => ['label' => 'Répétez le mot de passe'],
                 'required' => true
             ])
-            ->add('roles', CollectionType::class, [
-                'label' => ' ',
-                'entry_type' => ChoiceType::class,
-                'entry_options' => [
-                    'label' => 'Rôle',
-                    'choices' => [
-                        'Utilisateur' => 'ROLE_USER',
-                        'Administrateur' => 'ROLE_ADMIN',
-                    ]]]);
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                    'Utilisateur'    => 'ROLE_USER',
+                    'Administrateur' => 'ROLE_ADMIN',
+                ],
+                'multiple'=>true,
+                'expanded'=>true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
