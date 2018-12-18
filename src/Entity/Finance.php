@@ -49,7 +49,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\Type("int")
+     * @Assert\Choice({6, 9, 12})
      */
     private $duration;
 
