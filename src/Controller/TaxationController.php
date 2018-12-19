@@ -37,7 +37,7 @@ class TaxationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $session->set('fiscalité', $taxation);
+            $session->set('taxation', $taxation);
             return $this->redirectToRoute('finances');
         }
 
