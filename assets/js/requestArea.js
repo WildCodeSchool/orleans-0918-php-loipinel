@@ -1,11 +1,11 @@
-let acquisitionDate = document.getElementById('simulator_acquisitionDate');
-let city = document.getElementById('simulator_city');
+let acquisitionDate = document.getElementById('finance_acquisitionDate');
+let city = document.getElementById('finance_city');
 
 function request(){
     if(acquisitionDate.value && city.value ){
-        let date = $('#simulator_acquisitionDate').val();
-        let cityCode = $('#simulator_city').val();
-        $('#simulator_zone').empty();
+        let date = $('#finance_acquisitionDate').val();
+        let cityCode = $('#finance_city').val();
+        $('#finance_zone').empty();
         fetch("/area/"+ date +"/"+ cityCode)
             .then((resp) => resp.json())
             .then((data)=>setArea(data))
@@ -21,6 +21,6 @@ city.addEventListener('change', function (e) {
 });
 
 function setArea(area) {
-    let selectElt = document.getElementById('simulator_zone');
+    let selectElt = document.getElementById('finance_zone');
     selectElt.value = area;
 }
