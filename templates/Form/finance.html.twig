@@ -8,6 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+
                 {{ form_start(form) }}
 
                 {{ form_row ( form.zipCode ) }}
@@ -51,6 +52,15 @@
                 {{ form_row ( form.coownershipCharges ) }}
 
                 {{ form_row ( form.propertyTax ) }}
+                <div id="overlay" class="overlay">
+                    <div id="popup" class="popup">
+                        <h2>
+                            Avertissement
+                            <span id="btnClose" class="btnClose">&times;</span>
+                        </h2>
+                        <p>Attention, le dispositif Pinel ne peut s'appliquer à un projet immobilier situé en zone C</p>
+                    </div>
+                </div>
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Calculer</button>
@@ -62,10 +72,10 @@
 
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('requestApi') }}
-    {{ encore_entry_script_tags('requestArea') }}
-{% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('requestApi') }}
+        {{ encore_entry_script_tags('requestArea') }}
+    {% endblock %}
 
-{% block footer %}{% endblock %}
+    {% block footer %}{% endblock %}
