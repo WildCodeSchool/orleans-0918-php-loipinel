@@ -8,24 +8,27 @@
 
 namespace App\Controller;
 
-use App\Entity\Simulator;
+use App\Entity\Finance;
 use App\Entity\User;
-use App\Form\SimulatorType;
+use App\Form\FinanceType;
 use App\Service\ApiAdressRequest;
 use App\Service\DataJson;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @IsGranted("ROLE_USER")
+ */
 class SimulatorController extends AbstractController
 {
     const INELLIGIBLE_AREA = 'C';
 
     /**
-     * Show all row from category's entity
-     * @Route("/simulator", name="simulator_show")
+     * @Route("/finances", name="finances")
      * @param Request $request
      * @param SessionInterface $session
      * @param ApiAdressRequest $service
@@ -35,27 +38,24 @@ class SimulatorController extends AbstractController
     public function showSimulator(Request $request, SessionInterface $session, ApiAdressRequest $service): Response
     {
         $user = $this->getUser();
-        $simulator = new Simulator();
+        $finance = new Finance();
 
         $form = $this->createForm(
-            SimulatorType::class,
-            $simulator
+            FinanceType::class,
+            $finance
         );
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $city = $service->getCity($simulator);
-            $simulator->setCity($city);
-            $session->set('simulator', $simulator);
-
+            $city = $service->getCity($finance);
+            $session->set('finance', $finance);
             return $this->redirectToRoute('result_page');
         }
 
         return $this->render(
-            'Form/simulator.html.twig',
+            'Form/finance.html.twig',
             [
                 'form' => $form->createView(),
-                'user' => $user,
             ]
         );
     }
