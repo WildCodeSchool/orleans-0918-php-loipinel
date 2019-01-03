@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{{ user.roles|join(', ') }}</td>
+                <td>{% if user.roles.0 == 'ROLE_ADMIN' %}Administrateur{% elseif user.roles.0 == 'ROLE_USER' or user.roles.0 == '' %}Utilisateur{% endif %}</td>
             </tr>
             <tr>
                 <th>LastName</th>
