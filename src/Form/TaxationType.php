@@ -12,6 +12,7 @@ use App\Entity\Taxation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -27,36 +28,40 @@ class TaxationType extends AbstractType
             'label' => 'Situation familiale',
             'choices' => Taxation::getFamilySituations(),
         ]);
-        $builder->add('numberOfChildren', TextType::class, [
+        $builder->add('numberOfChildren', NumberType::class, [
             'label' => "Nombre d'enfants",
+            'data' => 0,
         ]);
-        $builder->add('numberOfTaxShares', TextType::class, [
+        $builder->add('numberOfTaxShares', NumberType::class, [
             'label' => "Nombre de parts fiscales",
+            'data' => 1,
         ]);
-        $builder->add('numberOfTaxShares', TextType::class, [
-        'label' => "Nombre de parts fiscales",
-        ]);
+
         $builder->add('salaryDeclared', MoneyType::class, [
             'label' => "Salaire déclaré",
         ]);
         $builder->add('landIncomes', MoneyType::class, [
             'label' => "Revenus fonciers",
+            'data' => 0,
         ]);
 
         $builder->add('bic', MoneyType::class, [
             'label' => "B.I.C.",
             'help' => "Bénéfices Industriels et Commerciaux",
             'required' => false,
+            'data' => 0,
         ]);
         $builder->add('bnc', MoneyType::class, [
             'label' => "B.N.C.",
             'help' => "Bénéfices Non Commerciaux",
             'required' => false,
+            'data' => 0,
         ]);
         $builder->add('ba', MoneyType::class, [
             'label' => "B.A.",
             'help' => "Bénéfices Agricoles",
             'required' => false,
+            'data' => 0,
         ]);
         $builder->add('incomeTax', MoneyType::class, [
             'label' => "Impôt sur le revenu",

@@ -23,7 +23,6 @@ class Taxation
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(0)
      */
@@ -47,7 +46,6 @@ class Taxation
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
      */
     private $landIncomes;
