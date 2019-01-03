@@ -25,7 +25,7 @@ class Taxation
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(-1)
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $numberOfChildren;
 
