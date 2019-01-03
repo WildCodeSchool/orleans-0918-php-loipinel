@@ -36,7 +36,7 @@ class FinanceType extends AbstractType
             'expanded' => true,
         ]);
         $builder->add('surfaceArea', NumberType::class, [
-            'label' => 'Surface en M2',
+            'label' => 'Surface en M²',
             'scale' => 2,
         ]);
         $builder->add('purchasePrice', MoneyType::class, [
