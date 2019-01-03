@@ -8,11 +8,10 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Finance;
 use App\Entity\User;
 use App\Form\FinanceType;
-use App\Service\ApiAdressRequest;
+use App\Service\ApiAddressRequest;
 use App\Service\DataJson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +35,7 @@ class SimulatorController extends AbstractController
      * @return Response A response instance
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function showSimulator (
+    public function showSimulator(
         Request $request,
         SessionInterface $session,
         ApiAddressRequest $apiAddressRequest
@@ -52,7 +51,6 @@ class SimulatorController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $city = $apiAddressRequest->getCity($simulator->getCity());
             $simulator->setCity($city);
             $session->set('simulator', $simulator);
