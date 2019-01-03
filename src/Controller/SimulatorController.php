@@ -9,9 +9,8 @@
 namespace App\Controller;
 
 use App\Entity\Simulator;
-use App\Entity\User;
 use App\Form\SimulatorType;
-use App\Service\ApiAdressRequest;
+use App\Service\ApiAddressRequest;
 use App\Service\DataJson;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,11 +27,15 @@ class SimulatorController extends AbstractController
      * @Route("/simulator", name="simulator_show")
      * @param Request $request
      * @param SessionInterface $session
-     * @param ApiAdressRequest $service
+     * @param ApiAddressRequest $service
      * @return Response A response instance
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function showSimulator(Request $request, SessionInterface $session, ApiAdressRequest $service): Response
+    public function showSimulator (
+        Request $request,
+        SessionInterface $session,
+        ApiAddressRequest $apiAddressRequest
+    ): Response
     {
         $user = $this->getUser();
         $simulator = new Simulator();
@@ -44,7 +47,7 @@ class SimulatorController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $city = $service->getCity($simulator);
+            $city = $apiAddressRequest->getCity($simulator->getCity());
             $simulator->setCity($city);
             $session->set('simulator', $simulator);
 
@@ -72,9 +75,9 @@ class SimulatorController extends AbstractController
         $res = date_parse($date);
         $selectYear = $res['year'];
         $result = $service->jsonReading();
-        if (key_exists($selectYear, $result['years'])) {
+        if (array_key_exists($selectYear, $result['years'])) {
             $inseeCodes = $result['years'][$selectYear]['insee'];
-            if (key_exists($cityCode, $inseeCodes)) {
+            if (array_key_exists($cityCode, $inseeCodes)) {
                 $area = $inseeCodes[$cityCode];
             } else {
                 $area = self::INELLIGIBLE_AREA;
