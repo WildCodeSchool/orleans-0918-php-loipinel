@@ -45,6 +45,7 @@ class FinanceType extends AbstractType
         $builder->add('parkingAmount', MoneyType::class, [
             'label' => 'Montant du parking',
             'grouping' => true,
+            'data' => 0,
         ]);
         $builder->add('notaryFees', MoneyType::class, [
             'label' => 'Frais de notaire',

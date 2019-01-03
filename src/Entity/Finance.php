@@ -71,7 +71,6 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
      */
     private $parkingAmount;
