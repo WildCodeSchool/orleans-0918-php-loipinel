@@ -54,21 +54,18 @@ class Taxation
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
      */
     private $bic;
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
      */
     private $bnc;
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
      */
     private $ba;

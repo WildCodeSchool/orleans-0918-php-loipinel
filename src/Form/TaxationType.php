@@ -45,15 +45,18 @@ class TaxationType extends AbstractType
 
         $builder->add('bic', MoneyType::class, [
             'label' => "B.I.C.",
-            'help' => "Bénéfices Industriels et Commerciaux"
+            'help' => "Bénéfices Industriels et Commerciaux",
+            'required' => false,
         ]);
         $builder->add('bnc', MoneyType::class, [
             'label' => "B.N.C.",
             'help' => "Bénéfices Non Commerciaux",
+            'required' => false,
         ]);
         $builder->add('ba', MoneyType::class, [
             'label' => "B.A.",
             'help' => "Bénéfices Agricoles",
+            'required' => false,
         ]);
         $builder->add('incomeTax', MoneyType::class, [
             'label' => "Impôt sur le revenu",
