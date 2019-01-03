@@ -49,6 +49,7 @@ class Finance
 
     /**
      * @var int
+     * @Assert\NotBlank
      * @Assert\Choice(callback="getDurations")
      */
     private $duration;
