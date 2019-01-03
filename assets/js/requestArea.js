@@ -25,16 +25,10 @@ function setArea(area) {
     selectElt.value = area;
     if(area === 'C') {
         modal.style.display = 'block';
+        $(function () {
+            $('#modal').modal().close();
+        });
     }
 }
 
 let modal = document.getElementById('modal');
-let btnClose = document.getElementById('btnClose');
-
-function closePopup() {
-        modal.style.display = 'none';
-}
-
-btnClose.addEventListener('click', function(e){
-    closePopup();
-});
