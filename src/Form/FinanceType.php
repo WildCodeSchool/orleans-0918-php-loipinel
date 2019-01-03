@@ -54,6 +54,7 @@ class FinanceType extends AbstractType
         $builder->add('otherFeesAcquisition', MoneyType::class, [
             'label' => 'Autres frais d\'acquisition',
             'grouping' => true,
+            'data' => 0,
         ]);
 
         $builder->add('monthlyRent', MoneyType::class, [
@@ -73,6 +74,7 @@ class FinanceType extends AbstractType
         ]);
         $builder->add('adi', NumberType::class, [
             'label' => "A.D.I.",
+            'help' => "Assurance Décès Invalidité",
         ]);
         $builder->add('managementFees', NumberType::class, [
             'label' => "Frais de gestion",
