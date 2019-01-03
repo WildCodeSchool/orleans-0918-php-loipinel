@@ -62,6 +62,7 @@ class ResultPageController extends AbstractController
     public function pdfAction(Pdf $knpSnappyPdf, SessionInterface $session, TaxBenefit $taxBenefit)
     {
         $finance = $session->get('finance');
+        $civilStatus = $session->get('civilStatus');
 
         $this->injectRealEstate($taxBenefit, $finance);
         $taxBenefit->setRentalPeriod($finance->getDuration());
@@ -69,7 +70,7 @@ class ResultPageController extends AbstractController
 
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig', ['resultTaxBenefit' => $resultTaxBenefit,]);
-        $lastName = $finance->getLastName();
+        $lastName = $civilStatus->getLastName();
 
         return new PdfResponse(
             $knpSnappyPdf->getOutputFromHtml($html, ['user-style-sheet' => ['./build/app.css',],]),
