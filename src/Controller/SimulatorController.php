@@ -27,7 +27,7 @@ class SimulatorController extends AbstractController
      * @Route("/simulator", name="simulator_show")
      * @param Request $request
      * @param SessionInterface $session
-     * @param ApiAddressRequest $service
+     * @param ApiAddressRequest $apiAddressRequest
      * @return Response A response instance
      * @throws \GuzzleHttp\Exception\GuzzleException
      */

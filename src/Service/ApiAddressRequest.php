@@ -9,7 +9,6 @@
 namespace App\Service;
 
 use GuzzleHttp\Client;
-use App\Entity\Simulator;
 
 class ApiAddressRequest
 {
