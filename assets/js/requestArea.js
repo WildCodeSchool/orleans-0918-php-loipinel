@@ -23,22 +23,13 @@ city.addEventListener('change', function (e) {
 function setArea(area) {
     let selectElt = document.getElementById('finance_zone');
     selectElt.value = area;
-}
-
-let modal = document.getElementById('modal');
-let btnClose = document.getElementById('btnClose');
-let area = document.getElementById('finance_zone');
-
-function openPopup() {
-    if(area.value ==='C'){
+    if(area === 'C') {
         modal.style.display = 'block';
     }
 }
 
-area.addEventListener('input', function (e){
-    openPopup();
-});
-
+let modal = document.getElementById('modal');
+let btnClose = document.getElementById('btnClose');
 
 function closePopup() {
         modal.style.display = 'none';
