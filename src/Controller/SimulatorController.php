@@ -11,7 +11,7 @@ namespace App\Controller;
 use App\Entity\Simulator;
 use App\Entity\User;
 use App\Form\SimulatorType;
-use App\Service\ApiRequest;
+use App\Service\ApiAdressRequest;
 use App\Service\DataJson;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,9 +27,11 @@ class SimulatorController extends AbstractController
      * Show all row from category's entity
      * @Route("/simulator", name="simulator_show")
      * @param Request $request
+     * @param ApiAdressRequest $apiAdressRequest
      * @return Response A response instance
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function showSimulator(Request $request, SessionInterface $session, ApiRequest $service)
+    public function showSimulator(Request $request, SessionInterface $session, ApiAdressRequest $apiAdressRequest): Response
     {
         $user = $this->getUser();
         $simulator = new Simulator();
@@ -41,8 +43,7 @@ class SimulatorController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $result = $service->dataLoad($simulator);
-            $city= $result['features'][0]['properties']['city'];
+            $city = $apiAdressRequest->getCity($simulator);
             $simulator->setCity($city);
             $session->set('simulator', $simulator);
 
