@@ -91,7 +91,7 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->router->generate('simulator_show'));
+        return new RedirectResponse($this->router->generate('civilStatus_show'));
 //        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
