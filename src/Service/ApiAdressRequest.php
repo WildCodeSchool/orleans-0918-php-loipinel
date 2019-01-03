@@ -11,7 +11,6 @@ namespace App\Service;
 use GuzzleHttp\Client;
 use App\Entity\Simulator;
 
-
 class ApiAdressRequest
 {
 
@@ -48,5 +47,4 @@ class ApiAdressRequest
     {
         return $this->data = $this->dataLoad($simulator)['features'][0]['properties']['city'];
     }
-
 }

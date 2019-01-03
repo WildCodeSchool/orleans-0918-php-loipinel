@@ -31,7 +31,8 @@ class SimulatorController extends AbstractController
      * @return Response A response instance
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function showSimulator(Request $request, SessionInterface $session, ApiAdressRequest $apiAdressRequest): Response
+    public function showSimulator(Request $request, SessionInterface $session, ApiAdressRequest $apiAdressRequest):
+    Response
     {
         $user = $this->getUser();
         $simulator = new Simulator();
