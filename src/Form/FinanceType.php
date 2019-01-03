@@ -71,22 +71,27 @@ class FinanceType extends AbstractType
         ]);
         $builder->add('fundingPeriod', NumberType::class, [
             'label' => "Durée du financement",
+            'help' => "Exprimée en mois."
         ]);
         $builder->add('adi', NumberType::class, [
             'label' => "A.D.I.",
-            'help' => "Assurance Décès Invalidité",
+            'help' => "Assurance Décès Invalidité exprimée soit en pourcentage soit en euros",
         ]);
         $builder->add('managementFees', NumberType::class, [
             'label' => "Frais de gestion",
+            'help' => "Exprimés soit en pourcentage soit en euros.",
         ]);
         $builder->add('rentalFee', NumberType::class, [
             'label' => "Honoraires de location",
+            'help' => "Exprimés soit en pourcentage soit en euros.",
         ]);
         $builder->add('rentInsurance', NumberType::class, [
             'label' => "Assurance du loyer",
+            'help' => "Exprimés soit en pourcentage soit en euros.",
         ]);
         $builder->add('coownershipCharges', NumberType::class, [
             'label' => "Charges de copropriété",
+            'help' => "Exprimés soit en pourcentage soit en euros.",
         ]);
         $builder->add('propertyTax', MoneyType::class, [
             'label' => "Taxe foncière",

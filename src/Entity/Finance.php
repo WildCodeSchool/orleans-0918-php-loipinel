@@ -95,14 +95,6 @@ class Finance
      * @Assert\Type("int")
      * @Assert\GreaterThan(0)
      */
-    private $totalAmountAcquisition;
-
-    /**
-     * @var int
-     * @Assert\NotBlank
-     * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
-     */
     private $monthlyRent;
 
     // ***************************************************Financement*************************************************
