@@ -54,10 +54,7 @@ class FinanceType extends AbstractType
             'label' => 'Autres frais d\'acquisition',
             'grouping' => true,
         ]);
-        $builder->add('totalAmountAcquisition', MoneyType::class, [
-            'label' => 'Montant total de l\'acquisition',
-            'grouping' => true,
-        ]);
+
         $builder->add('monthlyRent', MoneyType::class, [
             'label' => 'Loyer mensuel',
             'grouping' => true,
