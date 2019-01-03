@@ -23,7 +23,9 @@ class FinanceType extends AbstractType
             'label' => 'Ville',
         ]);
         $builder->get('city')->resetViewTransformers();
-        $builder->add('zone', TextType::class);
+        $builder->add('zone', TextType::class, [
+            'disabled' => 'disabled',
+        ]);
         $builder->add('acquisitionDate', DateType::class, [
             'widget' => 'single_text',
             'label' => 'Date d\'acquisition',
