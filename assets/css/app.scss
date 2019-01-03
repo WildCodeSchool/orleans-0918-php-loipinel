@@ -161,7 +161,8 @@ input[type="date"]::-webkit-clear-button {
   margin-bottom: 2vw;
   padding: 1vw;
 }
-#overlay {
+
+.modal {
   position: fixed;
   left: 0;
   top: 0;
@@ -170,16 +171,7 @@ input[type="date"]::-webkit-clear-button {
   height: 100%;
   display: none;
 }
-#popup {
-  margin: 20% auto;
-  width: 45%;
-  background-color: rgba(228, 228, 228, 228);
-  border-radius: 5px;
-  box-shadow: 15px 20px 0 rgba(0, 0, 0, 0.5);
-  padding: 1em;
-}
-#btnClose {
-  float: right;
-  cursor: pointer;
-}
 
+.modal-content {
+  margin-top: 20vw;
+}

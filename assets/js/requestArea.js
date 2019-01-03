@@ -25,28 +25,25 @@ function setArea(area) {
     selectElt.value = area;
 }
 
-
-let area = document.getElementById('finance_zone');
-let overlay = document.getElementById('overlay');
+let modal = document.getElementById('modal');
 let btnClose = document.getElementById('btnClose');
+let area = document.getElementById('finance_zone');
+
+function openPopup() {
+    if(area.value ==='C'){
+        modal.style.display = 'block';
+    }
+}
 
 area.addEventListener('input', function (e){
     openPopup();
 });
 
 
-function openPopup() {
-    let area = document.getElementById('finance_zone');
-    if(area.value === 'C'){
-        overlay.style.display = 'block';
-    }
+function closePopup() {
+        modal.style.display = 'none';
 }
 
 btnClose.addEventListener('click', function(e){
     closePopup();
 });
-
-
-function closePopup() {
-    overlay.style.display = 'none';
-}
