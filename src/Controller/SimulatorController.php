@@ -28,12 +28,11 @@ class SimulatorController extends AbstractController
      * @Route("/simulator", name="simulator_show")
      * @param Request $request
      * @param SessionInterface $session
-     * @param ApiAdressRequest $apiAdressRequest
+     * @param ApiAdressRequest $service
      * @return Response A response instance
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function showSimulator(Request $request, SessionInterface $session, ApiAdressRequest $apiAdressRequest)
-    : Response
+    public function showSimulator(Request $request, SessionInterface $session, ApiAdressRequest $service): Response
     {
         $user = $this->getUser();
         $simulator = new Simulator();
@@ -45,7 +44,7 @@ class SimulatorController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $city = $apiAdressRequest->getCity($simulator);
+            $city = $service->getCity($simulator);
             $simulator->setCity($city);
             $session->set('simulator', $simulator);
 

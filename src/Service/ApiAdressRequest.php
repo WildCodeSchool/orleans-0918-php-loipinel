@@ -13,12 +13,7 @@ use App\Entity\Simulator;
 
 class ApiAdressRequest
 {
-
     private $data;
-    /**
-     * ApiRequest constructor.
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
 
 
     /**
