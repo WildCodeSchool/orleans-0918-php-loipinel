@@ -47,35 +47,36 @@ class Taxation
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $landIncomes;
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $bic;
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $bnc;
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $ba;
 
     /**
      * @var int
      * @Assert\NotBlank
+     * @Assert\GreaterThanOrEqual(0)
      * @Assert\Type("int")
      */
     private $incomeTax;

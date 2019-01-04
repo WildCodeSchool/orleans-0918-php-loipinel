@@ -6,6 +6,7 @@ use App\Entity\Finance;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -37,7 +38,7 @@ class FinanceType extends AbstractType
             'expanded' => true,
         ]);
         $builder->add('surfaceArea', NumberType::class, [
-            'label' => 'Surface en M2',
+            'label' => 'Surface en M²',
             'scale' => 2,
         ]);
         $builder->add('purchasePrice', MoneyType::class, [
@@ -47,6 +48,7 @@ class FinanceType extends AbstractType
         $builder->add('parkingAmount', MoneyType::class, [
             'label' => 'Montant du parking',
             'grouping' => true,
+            'data' => 0,
         ]);
         $builder->add('notaryFees', MoneyType::class, [
             'label' => 'Frais de notaire',
@@ -55,11 +57,9 @@ class FinanceType extends AbstractType
         $builder->add('otherFeesAcquisition', MoneyType::class, [
             'label' => 'Autres frais d\'acquisition',
             'grouping' => true,
+            'data' => 0,
         ]);
-        $builder->add('totalAmountAcquisition', MoneyType::class, [
-            'label' => 'Montant total de l\'acquisition',
-            'grouping' => true,
-        ]);
+
         $builder->add('monthlyRent', MoneyType::class, [
             'label' => 'Loyer mensuel',
             'grouping' => true,
@@ -72,23 +72,30 @@ class FinanceType extends AbstractType
             'label' => 'Apport',
             'grouping' => true,
         ]);
-        $builder->add('fundingPeriod', NumberType::class, [
+        $builder->add('fundingPeriod', IntegerType::class, [
             'label' => "Durée du financement",
+            'help' => "Exprimée en mois.",
+            'attr' => ['min' => 0,],
         ]);
         $builder->add('adi', NumberType::class, [
             'label' => "A.D.I.",
+            'help' => "Assurance Décès Invalidité exprimée en euros",
         ]);
         $builder->add('managementFees', NumberType::class, [
             'label' => "Frais de gestion",
+            'help' => "Exprimés en euros.",
         ]);
         $builder->add('rentalFee', NumberType::class, [
             'label' => "Honoraires de location",
+            'help' => "Exprimés en euros.",
         ]);
         $builder->add('rentInsurance', NumberType::class, [
             'label' => "Assurance du loyer",
+            'help' => "Exprimés en euros.",
         ]);
         $builder->add('coownershipCharges', NumberType::class, [
             'label' => "Charges de copropriété",
+            'help' => "Exprimés en euros.",
         ]);
         $builder->add('propertyTax', MoneyType::class, [
             'label' => "Taxe foncière",
