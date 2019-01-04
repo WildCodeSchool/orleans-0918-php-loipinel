@@ -9,10 +9,9 @@
 namespace App\Controller;
 
 use App\Entity\Finance;
-use App\Entity\Simulator;
 use App\Entity\User;
 use App\Form\FinanceType;
-use App\Form\SimulatorType;
+use App\Service\ApiAddressRequest;
 use App\Service\DataJson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,8 +33,11 @@ class SimulatorController extends AbstractController
      * @param SessionInterface $session
      * @return Response
      */
-    public function showFinance(Request $request, SessionInterface $session): Response
-    {
+    public function showSimulator(
+        Request $request,
+        SessionInterface $session,
+        ApiAddressRequest $apiAddressRequest
+    ): Response {
         $user = $this->getUser();
         $finance = new Finance();
 
@@ -47,6 +49,8 @@ class SimulatorController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $city = $apiAddressRequest->getCity($finance->getCity());
+            $finance->setCity($city);
             $session->set('finance', $finance);
             return $this->redirectToRoute('result_page');
         }
