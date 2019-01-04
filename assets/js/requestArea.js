@@ -8,11 +8,11 @@ function request(){
         $('#finance_zone').empty();
         fetch("/area/"+ date +"/"+ cityCode)
             .then((resp) => resp.json())
-            .then((data)=>setArea(data))
+            .then((data) => setArea(data))
     }
 }
 
-acquisitionDate.addEventListener('input', function (e){
+acquisitionDate.addEventListener('input', function (e) {
     request();
 });
 
@@ -23,4 +23,10 @@ city.addEventListener('change', function (e) {
 function setArea(area) {
     let selectElt = document.getElementById('finance_zone');
     selectElt.value = area;
+    if (area === 'C') {
+        modal.style.display = 'block';
+        $('#modal').modal().close();
+    }
 }
+
+let modal = document.getElementById('modal');
