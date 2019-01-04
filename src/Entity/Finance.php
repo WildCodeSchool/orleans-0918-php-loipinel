@@ -73,6 +73,7 @@ class Finance
     /**
      * @var int
      * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $parkingAmount;
 
@@ -87,6 +88,7 @@ class Finance
     /**
      * @var int
      * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $otherFeesAcquisition;
 
@@ -103,7 +105,7 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $borrowedAmount;
 
@@ -111,6 +113,7 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $inflow;
 
@@ -118,7 +121,7 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $fundingPeriod;
 
@@ -126,6 +129,7 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
+     * @Assert\GreaterThan(0)
      */
     private $adi;
 
