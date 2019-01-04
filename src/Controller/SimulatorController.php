@@ -39,8 +39,7 @@ class SimulatorController extends AbstractController
         Request $request,
         SessionInterface $session,
         ApiAddressRequest $apiAddressRequest
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
         $finance = new Finance();
 
