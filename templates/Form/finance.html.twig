@@ -54,11 +54,8 @@
                 {% include 'popup.html.twig' %}
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Calculer</button>
-                </div>
-
-                <div class="text-center">
-                    <input type="button" class="btn btn-primary" value="Retour" onclick="history.go(-1)">
+                    <input type="button" class="btn btn-primary" value="Précédent" onclick="history.go(-1)">
+                    <button type="submit" class="btn btn-primary">Suivant</button>
                 </div>
 
                 {{ form_end(form) }}
