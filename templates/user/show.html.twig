@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{% if user.roles[0] == 'ROLE_ADMIN' or user.roles[1] is defined %}
+                <td>{% if user.granted('ROLE_ADMIN') %}
                         Administrateur
                     {% else %}Utilisateur
                     {% endif %}
