@@ -28,7 +28,6 @@ $trashColor: #FF0000;
 $whiteColor: #FFFFFF;
 $black: #000000;
 
-
 body {
   padding-top:60px;
   font-family: BrandonText, serif;
@@ -110,6 +109,10 @@ h1
   h1 {
     font-weight: bold;
   }
+}
+
+div.pdfResult {
+  color: white;
 }
 
 a {
@@ -196,3 +199,4 @@ input[type="date"]::-webkit-clear-button {
 .modal-content {
   margin-top: 20vw;
 }
+
