@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Variable{% endblock %}
+
+{% block body %}
+    <h1>Create new Variable</h1>
+
+    {{ include('variable/_form.html.twig') }}
+
+    <a href="{{ path('variable_index') }}">back to list</a>
+{% endblock %}
