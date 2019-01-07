@@ -49,7 +49,7 @@ class SimulatorController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $city = $apiAddressRequest->getCity($finance->getCity());
+            $city = $apiAddressRequest->getCity($finance->getZipCode(), $finance->getCity());
             $finance->setCity($city);
             $session->set('finance', $finance);
 
