@@ -144,4 +144,9 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function isGranted(string $role) :bool
+    {
+        return in_array($role, $this->getRoles());
+    }
 }
