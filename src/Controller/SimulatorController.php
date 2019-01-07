@@ -50,9 +50,9 @@ class SimulatorController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $city = $apiAddressRequest->getCity($simulator->getCity());
-            $simulator->setCity($city);
-            $session->set('simulator', $simulator);
+            $city = $apiAddressRequest->getCity($finance->getCity());
+            $finance->setCity($city);
+            $session->set('finance', $finance);
 
 
             return $this->redirectToRoute('result_page');
