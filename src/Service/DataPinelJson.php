@@ -16,7 +16,7 @@ class DataPinelJson
     /**
      * @return array
      */
-    public function jsonReading(): array
+    private function jsonReading(): array
     {
         $json = file_get_contents('../Data/pinel.json');
         $result = json_decode($json, true);
@@ -24,19 +24,19 @@ class DataPinelJson
     }
 
     /**
-     * @param string $data1
-     * @param string $data2
+     * @param string $date
+     * @param string $cityCode
      * @return string
      */
-    public function getPinelArea(string $data1, string $data2): string
+    public function getPinelArea(string $date, string $cityCode): string
     {
-        $res = date_parse($data1);
+        $res = date_parse($date);
         $selectYear = $res['year'];
         $result = $this->jsonReading();
         if (array_key_exists($selectYear, $result['years'])) {
             $inseeCodes = $result['years'][$selectYear]['insee'];
-            if (array_key_exists($data2, $inseeCodes)) {
-                $area = $inseeCodes[$data2];
+            if (array_key_exists($cityCode, $inseeCodes)) {
+                $area = $inseeCodes[$cityCode];
             } else {
                 $area = self::INELLIGIBLE_AREA;
             }
