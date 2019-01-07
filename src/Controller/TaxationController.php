@@ -22,12 +22,14 @@ class TaxationController extends AbstractController
      * Show all row from category's entity
      * @Route("/fiscalite", name="taxation_show")
      * @param Request $request
+     * @param SessionInterface $session
      * @return Response A response instance
      */
     public function showTaxation(Request $request, SessionInterface $session)
     {
         $user = $this->getUser();
-        $taxation = new Taxation();
+        $taxation = $session->get('taxation') ?? (new Taxation());
+
 
         $form = $this->createForm(
             TaxationType::class,

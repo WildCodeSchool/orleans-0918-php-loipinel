@@ -41,7 +41,7 @@ class SimulatorController extends AbstractController
         ApiAddressRequest $apiAddressRequest
     ): Response {
         $user = $this->getUser();
-        $finance = new Finance();
+        $finance = $session->get('finance') ?? (new Finance());
 
         $form = $this->createForm(
             FinanceType::class,

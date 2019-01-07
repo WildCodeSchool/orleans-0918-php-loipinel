@@ -23,12 +23,13 @@ class CivilStatusController extends AbstractController
      * Show all row from category's entity
      * @Route("/etat_civil", name="civilStatus_show")
      * @param Request $request
+     * @param SessionInterface $session
      * @return Response A response instance
      */
     public function showCivilStatus(Request $request, SessionInterface $session)
     {
         $user = $this->getUser();
-        $civilStatus = new CivilStatus();
+        $civilStatus = $session->get('civilStatus') ?? (new CivilStatus());
 
         $form = $this->createForm(
             CivilStatusType::class,
