@@ -1,7 +1,13 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layoutPdf.html.twig' %}
 
 {% block body %}
-    <h1 class="bg-primary topResult">Résultat de la simulation</h1>
+    <div class="container">
+        <div class="row mb-5 bg-primary text-center">
+            <div class="col">
+                <h1 class="pdfResult">Résultat de la simulation</h1>
+            </div>
+        </div>
+    </div>
 
     {{ include('resultTable.html.twig') }}
 
