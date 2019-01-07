@@ -25,7 +25,7 @@ class FinanceType extends AbstractType
         ]);
         $builder->get('city')->resetViewTransformers();
         $builder->add('zone', TextType::class, [
-            'disabled' => 'disabled',
+            'disabled' => 'zone',
         ]);
         $builder->add('acquisitionDate', DateType::class, [
             'widget' => 'single_text',
