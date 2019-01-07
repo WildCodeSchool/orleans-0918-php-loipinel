@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Variable;
 use App\Form\VariableType;
 use App\Repository\VariableRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/variable")
+ * @IsGranted("ROLE_ADMIN")
  */
 class VariableController extends AbstractController
 {
