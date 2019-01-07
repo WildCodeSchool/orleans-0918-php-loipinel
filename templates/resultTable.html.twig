@@ -2,11 +2,11 @@
     <div class="row mb-5">
         <div class="col">
             <div class="card">
-                <div class="card-header text-center bg-light">Client</div>
-                <div class="card-body card_result bg-primary">
+                <div class="card-header text-center bg-primary">Client</div>
+                <div class="card-body card_result">
                     <p class="card-text">{{ app.session.get('civilStatus').civility }} {{ app.session.get('civilStatus').lastName }} {{ app.session.get('civilStatus').firstName }}</p>
                     <p class="card-text">{{ app.session.get('civilStatus').customerAddress }}</p>
-                    <p class="card-text">{{ app.session.get('civilStatus').customerZipCode }} {{ app.session.get('civilStatus').customerCity }}</p>
+                    <p class="card-text">{{ app.session.get('civilStatus').customerCity }}</p>
                 </div>
             </div>
         </div>
@@ -14,8 +14,8 @@
     <div class="row mb-5">
         <div class="col">
             <div class="card">
-                <div class="card-header text-center bg-light">Fiscalité</div>
-                <div class="card-body card_result bg-primary">
+                <div class="card-header text-center bg-primary">Fiscalité</div>
+                <div class="card-body card_result">
                     <p class="card-text">Situation familiale : {{ app.session.get('taxation').familySituation }}</p>
                     <p class="card-text">Nombre d'enfants : {{ app.session.get('taxation').numberOfChildren }}</p>
                     <p class="card-text">Nombre de parts fiscales : {{ app.session.get('taxation').numberOfTaxShares|number_format(1, ',', ' ') }}</p>
@@ -32,8 +32,8 @@
     <div class="row mb-5">
         <div class="col">
             <div class="card">
-                <div class="card-header text-center bg-light">Investissement</div>
-                <div class="card-body card_result bg-primary">
+                <div class="card-header text-center bg-primary">Investissement</div>
+                <div class="card-body card_result">
                     <p class="card-text">Adresse du bien : {{ app.session.get('finance').zipCode }} {{ app.session.get('finance').city }}</p>
                     <span class="badge badge-light">Zone {{ app.session.get('finance').zone }}</span>
                     <p class="card-text">Date d'acquisition : {{ app.session.get('finance').acquisitionDate|date('d/m/Y') }}</p>
@@ -52,7 +52,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header text-center">Votre avantage fiscal</div>
-                <div class="card-body bg-light">
+                <div class="card-body bg-primary">
                     <p class="card-text">Amortissement sur {{ app.session.get('finance').duration }} ans : {{ resultTaxBenefit|number_format(2, ',', ' ') }} €</p>
                 </div>
             </div>
@@ -61,8 +61,8 @@
     <div class="row mb-5">
         <div class="col">
             <div class="card">
-                <div class="card-header text-center bg-light">Frais</div>
-                <div class="card-body card_result bg-primary">
+                <div class="card-header text-center bg-primary">Frais</div>
+                <div class="card-body card_result">
                     <p class="card-text">Frais de gestion : {{ app.session.get('finance').managementFees|number_format(2, ',', ' ') }} €</p>
                     <p class="card-text">Frais de notaire : {{ app.session.get('finance').notaryFees|number_format(2, ',', ' ') }} €</p>
                     <p class="card-text">Honoraires de location : {{ app.session.get('finance').rentalFee|number_format(2, ',', ' ') }} €</p>
