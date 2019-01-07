@@ -70,7 +70,8 @@
                     <p class="card-text">Charges de copropriété : {{ app.session.get('finance').coownershipCharges|number_format(2, ',', ' ') }} €</p>
                     <p class="card-text">Taxe Foncière : {{ app.session.get('finance').propertyTax|number_format(0, ',', ' ') }} €</p>
                     <p class="card-text">Autres frais d'acquisition : {{ app.session.get('finance').otherFeesAcquisition|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Montant total de l'acquisition :  €</p>
+                    <p class="card-text">Montant total de l'acquisition : {%  set totalAmount = app.session.get('finance').purchasePrice + app.session.get('finance').notaryFees + app.session.get('finance').otherFeesAcquisition %}
+                        {{ totalAmount|number_format(2, ',', ' ') }} €</p>
                 </div>
             </div>
         </div>
