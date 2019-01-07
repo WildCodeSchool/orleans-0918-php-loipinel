@@ -23,7 +23,6 @@ class ApiAddressRequest
         $res = $client->request('GET', 'search', ['query' => ['q' => $search]]);
 
         $data = json_decode($res->getBody(), true);
-
-        return $data['features'][0]['properties']['city'];
+        return $data['features'][0]['properties']['city'] ?? '';
     }
 }
