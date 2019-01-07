@@ -18,6 +18,8 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('email', TextType::class)
+            ->add('lastName', TextType::class, ['label' => 'Nom'])
+            ->add('firstName', TextType::class, ['label' => 'Prénom'])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent être identiques',
