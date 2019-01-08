@@ -3,11 +3,13 @@
 {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
 
 {% block body %}
+
     {% include 'navBarForm.html.twig' %}
 
     <div class="container">
         <div class="row">
             <div class="col-12">
+
                 {{ form_start(form) }}
 
                 {{ form_row ( form.familySituation ) }}
@@ -31,6 +33,7 @@
                 <div class="text-center"><button type="submit" class="btn btn-primary">Suivant</button></div>
 
                 {{ form_end(form) }}
+
             </div>
         </div>
     </div>
