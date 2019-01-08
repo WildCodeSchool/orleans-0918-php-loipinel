@@ -30,15 +30,11 @@ class SimulatorController extends AbstractController
      * @Route("/finances", name="finances")
      * @param Request $request
      * @param SessionInterface $session
-     * @param ApiAddressRequest $apiAddressRequest
      * @return Response A response instance
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function showSimulator(
-        Request $request,
-        SessionInterface $session,
-        ApiAddressRequest $apiAddressRequest
-    ): Response {
+    public function showSimulator(Request $request, SessionInterface $session): Response
+    {
         $user = $this->getUser();
         $finance = new Finance();
 
