@@ -10,14 +10,14 @@ use DateTime;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
 use phpDocumentor\Reflection\Types\String_;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\TaxBenefit;
 
 /**
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")
+ * @IsGranted("ROLE_USER")
  */
 class ResultPageController extends AbstractController
 {

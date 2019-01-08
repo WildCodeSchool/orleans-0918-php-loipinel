@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -12,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ChangePasswordType;
 
 /**
- * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")
+ * @IsGranted("ROLE_USER")
  */
 class UserPasswordController extends AbstractController
 {
