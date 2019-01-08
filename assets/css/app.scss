@@ -44,7 +44,7 @@ table, th, td {
   justify-content: center;
   height: 5vh;
   max-width: 100vw;
-  margin-bottom: 7vh;
+  margin-bottom: 2vh;
   h1 {
     color: black;
     font-weight: bold;
@@ -184,4 +184,6 @@ input[type="date"]::-webkit-clear-button {
 }
 .previous {
   text-align: left;
+  margin-left: 2vh;
+  margin-bottom: 7vh;
 }
