@@ -17,12 +17,12 @@ class UserType extends AbstractType
         $builder
             ->add('email', TextType::class)
             ->add('roles', ChoiceType::class, [
-                'choices' => [
+                'choices'  => [
                     'Utilisateur'    => 'ROLE_USER',
                     'Administrateur' => 'ROLE_ADMIN',
                 ],
-                'multiple'=>true,
-                'expanded'=>true,
+                'multiple' => true,
+                'expanded' => true,
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'Nom',
@@ -30,7 +30,6 @@ class UserType extends AbstractType
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
             ]);
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

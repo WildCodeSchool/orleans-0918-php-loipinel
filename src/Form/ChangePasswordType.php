@@ -18,24 +18,23 @@ class ChangePasswordType extends AbstractType
                 'label' => 'Mot de passe actuel',
             ])
             ->add('newPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
+                'type'            => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent être identiques',
-                'options' => [
+                'options'         => [
                     'attr' => [
-                        'class' => 'password-field'
+                        'class' => 'password-field',
                     ],
                 ],
-                'first_options'  => ['label' => 'Nouveau mot de passe '],
-                'second_options' => ['label' => 'Répéter nouveau mot de passe'],
-                'required' => true,
+                'first_options'   => ['label' => 'Nouveau mot de passe '],
+                'second_options'  => ['label' => 'Répéter nouveau mot de passe'],
+                'required'        => true,
             ])
             ->add('changePassword', SubmitType::class, [
                 'label' => 'Changer le mot de passe',
-                'attr' => [
-                    'class' => 'btn btn-primary text-align-center'
-                ]
-            ])
-        ;
+                'attr'  => [
+                    'class' => 'btn btn-primary text-align-center',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

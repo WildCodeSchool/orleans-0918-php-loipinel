@@ -84,9 +84,5 @@ class UserPasswordController extends AbstractController
             'form' => $form->createView(),
             'user' => $user,
         ]);
-
-
     }
-
-
 }
