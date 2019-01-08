@@ -13,7 +13,7 @@ use App\Entity\User;
 use App\Form\FinanceType;
 use App\Service\ApiAddressRequest;
 use App\Service\DataPinelJson;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @IsGranted("ROLE_USER")
+ * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')")
  */
 class SimulatorController extends AbstractController
 {
