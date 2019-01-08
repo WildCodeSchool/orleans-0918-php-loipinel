@@ -12,7 +12,7 @@ use App\Entity\Finance;
 use App\Entity\User;
 use App\Form\FinanceType;
 use App\Service\ApiAddressRequest;
-use App\Service\DataJson;
+use App\Service\DataPinelJson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,21 +25,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class SimulatorController extends AbstractController
 {
-    const INELLIGIBLE_AREA = 'C';
 
     /**
      * @Route("/finances", name="finances")
      * @param Request $request
      * @param SessionInterface $session
-     * @param ApiAddressRequest $apiAddressRequest
      * @return Response A response instance
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function showSimulator(
-        Request $request,
-        SessionInterface $session,
-        ApiAddressRequest $apiAddressRequest
-    ): Response {
+    public function showSimulator(Request $request, SessionInterface $session): Response
+    {
         $user = $this->getUser();
         $finance = new Finance();
 
@@ -50,8 +45,6 @@ class SimulatorController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $city = $apiAddressRequest->getCity($finance->getCity());
-            $finance->setCity($city);
             $session->set('finance', $finance);
 
 
@@ -70,24 +63,12 @@ class SimulatorController extends AbstractController
      * @Route("/area/{date}/{cityCode}")
      * @param string $cityCode
      * @param string $date
-     * @param DataJson $service
+     * @param DataPinelJson $dataPinelJson
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getArea(string $cityCode, string $date, DataJson $service): Response
+    public function getArea(string $date, string $cityCode, DataPinelJson $dataPinelJson): Response
     {
-        $res = date_parse($date);
-        $selectYear = $res['year'];
-        $result = $service->jsonReading();
-        if (array_key_exists($selectYear, $result['years'])) {
-            $inseeCodes = $result['years'][$selectYear]['insee'];
-            if (array_key_exists($cityCode, $inseeCodes)) {
-                $area = $inseeCodes[$cityCode];
-            } else {
-                $area = self::INELLIGIBLE_AREA;
-            }
-        } else {
-            $area = 'Données indisponibles pour l\'année renseignée';
-        }
+        $area = $dataPinelJson->getPinelArea($date, $cityCode);
         return $this->json($area);
     }
 }
