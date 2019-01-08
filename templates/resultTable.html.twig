@@ -34,8 +34,8 @@
             <div class="card">
                 <div class="card-header text-center bg-primary">Investissement</div>
                 <div class="card-body card_result">
-                    <p class="card-text">Adresse du bien : {{ app.session.get('finance').zipCode }} {{ app.session.get('finance').city }}</p>
-                    <span class="badge badge-light">Zone {{ app.session.get('finance').zone }}</span>
+                    <p class="card-text">Adresse du bien : {{ app.session.get('finance').zipCode }} {{ city }}</p>
+                    <span class="badge badge-light">Zone {{ area }}</span>
                     <p class="card-text">Date d'acquisition : {{ app.session.get('finance').acquisitionDate|date('d/m/Y') }}</p>
                     <p class="card-text">Surface du bien : {{ app.session.get('finance').surfaceArea|number_format(2, ',', ' ') }} m<sup>2</sup></p>
                     <p class="card-text">Prix d'acquisition : {{ app.session.get('finance').purchasePrice|number_format(2, ',', ' ') }} €</p>
