@@ -1,13 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutAdmin.html.twig' %}
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
 
 {% block title %}Edit User{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+    <h1 class="bg-primary"> Editer utilisateur {{ user.firstname }} {{ user.lastname }}</h1>
 
-    <a href="{{ path('user_index') }}">back to list</a>
+    <div class="container">
 
-    {{ include('user/_delete_form.html.twig') }}
+
+        {{ include('user/_form.html.twig', {'button_label': 'Éditer'}) }}
+
+        <div class="text-right mt-3">
+            <a class="btn btn-dark text-white" href="{{ path('user_reset_password', {'user': user.id}) }}"><i class="fas fa-key"></i> Réinitialiser mot de passe</a>
+            <div class="d-inline-block">{{ include('user/_delete_form.html.twig') }}</div>
+        </div>
+
+        <a class="btn btn-light" href="{{ path('user_index') }}"><i class="fas fa-arrow-left"></i> Retour</a>
+    </div>
+
 {% endblock %}
+
