@@ -13,11 +13,12 @@ use GuzzleHttp\Client;
 class ApiAddressRequest
 {
     /**
-     * @param string $search
+     * @param string $zipcode
+     * @param string $inseeCode
      * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getCity(string $zipcode, string $inseeCode ): string
+    public function getCityApi(string $zipcode, string $inseeCode): string
     {
         $client = new Client(['base_uri' => 'https://api-adresse.data.gouv.fr']);
         $res = $client->request('GET', 'search', ['query' => ['q' => $zipcode]]);
@@ -25,8 +26,8 @@ class ApiAddressRequest
         $data = json_decode($res->getBody(), true);
 
         for ($i=0; $i<count($data['features'][$i]); $i++) {
-            if ($data['features'][$i]['properties']['citycode'] === $inseeCode){
-             return $data['features'][$i]['properties']['city'];
+            if ($data['features'][$i]['properties']['citycode'] === $inseeCode) {
+                return $data['features'][$i]['properties']['city'];
             }
         }
     }

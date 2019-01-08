@@ -4,8 +4,12 @@ namespace App\Controller;
 
 use App\Entity\finance;
 use App\Entity\RealEstateProperty;
+use App\Service\ApiAddressRequest;
+use App\Service\DataPinelJson;
+use DateTime;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
+use phpDocumentor\Reflection\Types\String_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -34,11 +38,17 @@ class ResultPageController extends AbstractController
     /**
      * @param SessionInterface $session
      * @param TaxBenefit $taxBenefit
+     * @param DataPinelJson $dataPinelJson
+     * @param ApiAddressRequest $apiAddressRequest
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \GuzzleHttp\Exception\GuzzleException
      * @Route("/resultat", name="result_page")
      */
-    public function index(SessionInterface $session, TaxBenefit $taxBenefit)
-    {
+    public function index(
+        SessionInterface $session,
+        TaxBenefit $taxBenefit,
+        DataPinelJson $dataPinelJson,
+        ApiAddressRequest $apiAddressRequest) {
         $user = $this->getUser();
         $finance = $session->get('finance');
 
@@ -46,10 +56,18 @@ class ResultPageController extends AbstractController
         $taxBenefit->setRentalPeriod($finance->getDuration());
         $resultTaxBenefit = $taxBenefit->calculateTaxBenefit();
 
+        $acquisitionDate = date_format($finance->getAcquisitionDate(), 'Y-m-d H:i:s');
+        $area = $dataPinelJson->getPinelArea($acquisitionDate, $finance->getCity());
+
+        $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
+
+
         return $this->render('result.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
             'finance' => $finance,
             'user' => $user,
+            'area' => $area,
+            'city' => $city
         ]);
     }
 
