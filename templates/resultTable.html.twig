@@ -6,7 +6,7 @@
                 <div class="card-body card_result">
                     <p class="card-text">{{ app.session.get('civilStatus').civility }} {{ app.session.get('civilStatus').lastName }} {{ app.session.get('civilStatus').firstName }}</p>
                     <p class="card-text">{{ app.session.get('civilStatus').customerAddress }}</p>
-                    <p class="card-text">{{ app.session.get('civilStatus').customerCity }}</p>
+                    <p class="card-text">{{ app.session.get('civilStatus').CustomerZipCode }} {{ app.session.get('civilStatus').customerCity }}</p>
                 </div>
             </div>
         </div>
