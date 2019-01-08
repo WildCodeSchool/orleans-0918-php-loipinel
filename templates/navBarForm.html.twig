@@ -1,0 +1,15 @@
+<div class="container-fluid navbarform">
+    <div class="row justify-content-center">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link {% if app.request.get('_route') == 'civilStatus_show' %} active {% endif %}" href="{{ path('civilStatus_show') }}">État civil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if app.request.get('_route') == 'taxation_show' %} active {% endif %}" href="{{ path('taxation_show') }}">Fiscalité</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if app.request.get('_route') == 'finances' %} active {% endif %}" href="{{ path('finances') }}">Saisie des finances</a>
+            </li>
+        </ul>
+    </div>
+</div>

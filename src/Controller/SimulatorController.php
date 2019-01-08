@@ -36,7 +36,7 @@ class SimulatorController extends AbstractController
     public function showSimulator(Request $request, SessionInterface $session): Response
     {
         $user = $this->getUser();
-        $finance = new Finance();
+        $finance = $session->get('finance') ?? (new Finance());
 
         $form = $this->createForm(
             FinanceType::class,
