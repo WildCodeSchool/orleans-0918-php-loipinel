@@ -21,11 +21,12 @@ class ChangePasswordType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent être identiques',
                 'options' => [
-                    'label' => 'Nouveau mot de passe',
                     'attr' => [
                         'class' => 'password-field'
                     ],
                 ],
+                'first_options'  => ['label' => 'Nouveau mot de passe '],
+                'second_options' => ['label' => 'Répéter nouveau mot de passe'],
                 'required' => true,
             ])
             ->add('changePassword', SubmitType::class, [

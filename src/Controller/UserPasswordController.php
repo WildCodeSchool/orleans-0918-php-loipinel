@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,4 +52,41 @@ class UserPasswordController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @isGranted("ROLE_ADMIN")
+     * @Route("/reset-password/{user}", name="user_reset_password")
+     */
+    public function reset(User $user, Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(ChangePasswordType::class)->remove('password');
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $newPlainPassword = $data['newPassword'];
+            $newEncodedPassword = $encoder->encodePassword($user, $newPlainPassword);
+            $user->setPassword($newEncodedPassword);
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('success', 'Votre mot de passe a bien été enregistré');
+
+            return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
+        }
+
+        return $this->render('security/resetPassword.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user,
+        ]);
+
+
+    }
+
+
 }
