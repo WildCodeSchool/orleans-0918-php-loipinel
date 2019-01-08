@@ -10,7 +10,7 @@
     <div class="container">
 
 
-        {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('user/_form.html.twig', {'button_label': 'Éditer'}) }}
 
         <div class="text-right mt-3">
             <a class="btn btn-dark text-white" href="{{ path('user_reset_password', {'user': user.id}) }}"><i class="fas fa-key"></i> Réinitialiser mot de passe</a>
