@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/variable")
+ * @Route("/admin/variable")
  * @IsGranted("ROLE_ADMIN")
  */
 class VariableController extends AbstractController

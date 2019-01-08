@@ -11,24 +11,29 @@ namespace App\Controller;
 use App\Entity\CivilStatus;
 use App\Entity\User;
 use App\Form\CivilStatusType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @IsGranted("ROLE_USER")
+ */
 class CivilStatusController extends AbstractController
 {
     /**
      * Show all row from category's entity
      * @Route("/etat_civil", name="civilStatus_show")
      * @param Request $request
+     * @param SessionInterface $session
      * @return Response A response instance
      */
     public function showCivilStatus(Request $request, SessionInterface $session)
     {
         $user = $this->getUser();
-        $civilStatus = new CivilStatus();
+        $civilStatus = $session->get('civilStatus') ?? (new CivilStatus());
 
         $form = $this->createForm(
             CivilStatusType::class,

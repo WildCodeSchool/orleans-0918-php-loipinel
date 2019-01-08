@@ -14,7 +14,7 @@ class VariableType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('maximumPricePerSquareMeter', IntegerType::class, ['label' => 'Prix maximum par mètre carré'])
+            ->add('maximumPricePerSquareMeter', IntegerType::class, ['label' => 'Prix maximum par m²'])
             ->add('maximumTaxBase', IntegerType::class, ['label' => 'Base fiscale maximum'])
             ->add('rateFor6Years', NumberType::class, ['label' => 'Taux pour 6 ans'])
             ->add('rateFor9Years', NumberType::class, ['label' => 'Taux pour 9 ans'])
