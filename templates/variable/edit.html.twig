@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+
+{% block body %}
+    <h1 class="variablesTitle">Editer les variables</h1>
+
+    <a href="{{ path('variable_index') }}" class="backToList"><i class="fas fa-arrow-left"></i> revenir à la liste</a>
+
+    <div class="container text-center">
+        {{ include('variable/_form.html.twig', {'button_label': 'éditer'}) }}
+    </div>
+
+{% endblock %}

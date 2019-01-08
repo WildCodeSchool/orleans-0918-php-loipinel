@@ -26,18 +26,18 @@ $colorIO: #FCA000;
 $secondaryColor: #989898;
 $trashColor: #FF0000;
 $whiteColor: #FFFFFF;
-
+$black: #000000;
 
 body {
   padding-top:60px;
   font-family: BrandonText, serif;
   font-size: 16pt;
-  color: black;
+  color: $black;
 }
 
 table, th, td {
   border-collapse: collapse;
-  border: 1px solid black;
+  border: 1px solid $black;
 }
 
 .topResult {
@@ -46,7 +46,7 @@ table, th, td {
   max-width: 100vw;
   margin-bottom: 2vh;
   h1 {
-    color: black;
+    color: $black;
     font-weight: bold;
   }
 }
@@ -111,6 +111,10 @@ h1
   }
 }
 
+div.pdfResult {
+  color: white;
+}
+
 a {
   .fa-trash-alt {
     color: $trashColor;
@@ -157,10 +161,29 @@ input[type="date"]::-webkit-clear-button {
   margin-top: 20vh;
 }
 
-.container {
+.container
+{
   margin-top: 2vw;
   margin-bottom: 2vw;
   padding: 1vw;
+}
+
+.variablesTitle {
+  color: $black;
+  margin-bottom: 8vh;
+  margin-top: 3vh;
+}
+
+.backToList {
+  margin-left: 0.75vw;
+}
+
+.table th, .table td {
+  border-top: 1px solid $black;
+}
+
+.table thead th {
+  border-bottom: 1px solid $black;
 }
 
 .modal {
@@ -176,6 +199,7 @@ input[type="date"]::-webkit-clear-button {
 .modal-content {
   margin-top: 20vw;
 }
+
 .navbarform {
   font-size: 20pt;
 }

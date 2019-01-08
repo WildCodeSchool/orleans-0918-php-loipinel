@@ -15,14 +15,18 @@
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{% if user.roles.0 == 'ROLE_ADMIN' %}Administrateur{% elseif user.roles.0 == 'ROLE_USER' or user.roles.0 == '' %}Utilisateur{% endif %}</td>
+                <td>{% if user.granted('ROLE_ADMIN') %}
+                        Administrateur
+                    {% else %}Utilisateur
+                    {% endif %}
+                </td>
             </tr>
             <tr>
-                <th>LastName</th>
+                <th>Nom</th>
                 <td>{{ user.lastName }}</td>
             </tr>
             <tr>
-                <th>FirstName</th>
+                <th>Prénom</th>
                 <td>{{ user.firstName }}</td>
             </tr>
         </tbody>

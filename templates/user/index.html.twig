@@ -22,7 +22,10 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.firstName }}</td>
-                <td>{% if user.roles.0 == 'ROLE_ADMIN' %}Administrateur{% elseif user.roles.0 == 'ROLE_USER' or user.roles.0 == '' %}Utilisateur{% endif %}</td>
+                <td>{% if user.granted('ROLE_ADMIN')%}Administrateur
+                    {% else %}Utilisateur
+                    {% endif %}
+                </td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}"><i class="fas fa-list"></i></a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}"><i class="fas fa-user-edit"></i></a>

@@ -1,7 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1 class="bg-primary topResult">Résultat de la simulation</h1>
+    <div class="container">
+        <div class="row mb-5 bg-primary text-center">
+            <div class="col">
+                <h1 class="pdfResult">Résultat de la simulation</h1>
+            </div>
+        </div>
+    </div>
 
     <div class="previous">
         <input type="button" class="btn btn-primary" value="Retour" onclick="history.go(-1)">
