@@ -15,19 +15,19 @@ class ProfileSelfUpdateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('newEmail', EmailType::class, [
+            ->add('email', EmailType::class, [
                 'required' => false,
                 'label' => 'Nouvel Email',
             ])
-            ->add('newLastName', TextType::class, [
+            ->add('lastName', TextType::class, [
                 'required' => false,
                 'label' => 'Nouveau nom',
             ])
-            ->add('newFirstName', TextType::class, [
+            ->add('firstName', TextType::class, [
                 'required' => false,
                 'label' => 'Nouveau prénom',
             ])
-            ->add('changePassword', SubmitType::class, [
+            ->add('editProfile', SubmitType::class, [
                 'label' => 'Editer mes informations',
                 'attr'  => [
                     'class' => 'btn btn-primary text-align-center',

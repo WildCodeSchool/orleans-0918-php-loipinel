@@ -27,45 +27,44 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
+            $formEmail = $form->get('email')->getData();
+            $formLastName = $form->get('lastName')->getData();
+            $formFirstName = $form->get('firstName')->getData();
 
-            if (isset($data['newEmail'])) {
-                $newEmail = $data['newEmail'];
-                $user->setEmail($newEmail);
+            if (isset($formEmail)) {
+                $user->setEmail($formEmail);
                 $em->persist($user);
                 $em->flush();
 
                 $this->addFlash('success', 'Votre adresse mail a bien été modifiée');
 
-                return $this->redirectToRoute('simulator_show');
+                return $this->redirectToRoute('civilStatus_show');
             } else {
                 $this->addFlash('danger', 'Votre adresse mail est incorrect');
             }
 
-            if (isset($data['newFirstName'])) {
-                $newFirstName = $data['newFirstName'];
-                $user->setEmail($newFirstName);
-                $em->persist($user);
-                $em->flush();
-
-                $this->addFlash('success', 'Votre prénom a bien été modifiée');
-
-                return $this->redirectToRoute('simulator_show');
-            } else {
-                $this->addFlash('danger', 'Votre prénom est incorrect');
-            }
-
-            if (isset($data['newLastName'])) {
-                $newLastName = $data['newLastName'];
-                $user->setEmail($newLastName);
+            if (isset($formLastName)) {
+                $user->setEmail($formLastName);
                 $em->persist($user);
                 $em->flush();
 
                 $this->addFlash('success', 'Votre nom a bien été modifiée');
 
-                return $this->redirectToRoute('simulator_show');
+                return $this->redirectToRoute('civilStatus_show');
             } else {
                 $this->addFlash('danger', 'Votre nom est incorrect');
+            }
+
+            if (isset($formFirstName)) {
+                $user->setEmail($formFirstName);
+                $em->persist($user);
+                $em->flush();
+
+                $this->addFlash('success', 'Votre prénom a bien été modifiée');
+
+                return $this->redirectToRoute('civilStatus_show');
+            } else {
+                $this->addFlash('danger', 'Votre prénom est incorrect');
             }
         }
 
