@@ -90,7 +90,8 @@
        {% set totalDuration = taxBenefit.rentalPeriod %}
        {% set base6 = (resultTaxBenefit / 0.12) * 0.02 %}
        {% set base9 = (resultTaxBenefit / 0.18) * 0.02 %}
-       {% set baseOver9 = (resultTaxBenefit / 0.21) * 0.01 %}
+       {% set base12Max9 = (resultTaxBenefit / 0.21) * 0.02 %}
+       {% set base12Over9 = (resultTaxBenefit / 0.21) * 0.01 %}
 
         <tr class="table-primary">
             <th scope="row">{{ app.session.get('finance').acquisitionDate|date('Y') + i}}</th>
@@ -98,10 +99,12 @@
                 <td>{{ 0 }}</td>
             {% elseif totalDuration  <= 6 %}
                 <td>{{ base6 }}</td>
-            {% elseif totalDuration > 6 and i <= 8 %}
+            {% elseif totalDuration > 6 and totalDuration <= 8 %}
                 <td>{{ base9 }}</td>
-            {% elseif i > 8 and i <= 11 %}
-                <td>{{ baseOver9 }}</td>
+            {% elseif totalDuration > 8 and i <= 8 %}
+                <td>{{ base12Max9 }}</td>
+            {% elseif totalDuration > 8 and i >= 8  and i <= 11%}
+                <td>{{ base12Over9 }}</td>
             {% endif %}
         </tr>
        {% endfor %}
