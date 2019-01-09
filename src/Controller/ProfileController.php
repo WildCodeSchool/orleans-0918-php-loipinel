@@ -45,7 +45,7 @@ class ProfileController extends AbstractController
                 $em->persist($user);
                 $em->flush();
 
-                $this->addFlash('success', 'Votre nom a bien été modifiée');
+                $this->addFlash('success', 'Votre nom a bien été modifié');
             }
 
             if (isset($formFirstName)) {
@@ -53,7 +53,7 @@ class ProfileController extends AbstractController
                 $em->persist($user);
                 $em->flush();
 
-                $this->addFlash('success', 'Votre prénom a bien été modifiée');
+                $this->addFlash('success', 'Votre prénom a bien été modifié');
             }
 
             return $this->redirectToRoute('civilStatus_show');
