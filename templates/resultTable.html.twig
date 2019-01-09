@@ -86,15 +86,22 @@
         </thead>
         <tbody>
        //Algo
-       {%  for i in  0..((taxBenefit.rentalPeriod) + 2) %}
+       {% for i in  0..((taxBenefit.rentalPeriod) + 2) %}
+       {% set totalDuration = taxBenefit.rentalPeriod %}
+       {% set base6 = (resultTaxBenefit / 0.12) * 0.02 %}
+       {% set base9 = (resultTaxBenefit / 0.18) * 0.02 %}
+       {% set baseOver9 = (resultTaxBenefit / 0.21) * 0.01 %}
+
         <tr class="table-primary">
             <th scope="row">{{ app.session.get('finance').acquisitionDate|date('Y') + i}}</th>
-            {% if i >= taxBenefit.rentalPeriod %}
+            {% if i >= totalDuration %}
                 <td>{{ 0 }}</td>
-            {% elseif  i <= 8 %}
-            <td>{{ taxBenefit.taxBase * 0.02 }}</td>
+            {% elseif totalDuration  <= 6 %}
+                <td>{{ base6 }}</td>
+            {% elseif totalDuration > 6 and i <= 8 %}
+                <td>{{ base9 }}</td>
             {% elseif i > 8 and i <= 11 %}
-                <td>{{ taxBenefit.taxBase * 0.01 }}</td>
+                <td>{{ baseOver9 }}</td>
             {% endif %}
         </tr>
        {% endfor %}
