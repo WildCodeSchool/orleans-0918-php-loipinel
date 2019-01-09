@@ -9,16 +9,31 @@
         </ul>
         <ul class="navbar-nav">
             {% if app.user.email is defined %}
-            <li>
-                <a href="{{ path('password-change') }}"><span class="nav-link username">{{ app.user.lastName }} {{ app.user.firstName }}</span></a>
-            </li>
-            <li>
-                <a href="{{ path('app_logout') }}" class="btn btn-outline-dark logout nav-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
-            </li>
+                <li class="mr-3">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-dark dropdown-toggle nav-link" data-toggle="dropdown">
+                            {% if app.user.lastName and app.user.firstName is defined %}
+                                {{ app.user.lastName }} {{ app.user.firstName }}
+                            {% else %}
+                                {{ app.user.email }}
+                            {% endif %}
+                        </button>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ path('password-change') }}"><i class="fas fa-key"></i> Modifier le mot de passe</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="{{ path('app_logout') }}" class="btn btn-outline-dark logout nav-link"><i
+                                class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                </li>
             {% else %}
-            <li>
-                <a href="{{ path('app_login') }}" class="btn btn-outline-dark logout nav-link"><i class="fas fa-sign-out-alt"></i> Connexion</a>
-            </li>
+                <li>
+                    <a href="{{ path('app_login') }}" class="btn btn-outline-dark logout nav-link"><i
+                                class="fas fa-sign-out-alt"></i> Connexion</a>
+                </li>
             {% endif %}
         </ul>
     </div>
