@@ -37,35 +37,31 @@ class ProfileController extends AbstractController
                 $em->flush();
 
                 $this->addFlash('success', 'Votre adresse mail a bien été modifiée');
-
-                return $this->redirectToRoute('civilStatus_show');
             } else {
                 $this->addFlash('danger', 'Votre adresse mail est incorrect');
             }
 
             if (isset($formLastName)) {
-                $user->setEmail($formLastName);
+                $user->setLastName($formLastName);
                 $em->persist($user);
                 $em->flush();
 
                 $this->addFlash('success', 'Votre nom a bien été modifiée');
-
-                return $this->redirectToRoute('civilStatus_show');
             } else {
                 $this->addFlash('danger', 'Votre nom est incorrect');
             }
 
             if (isset($formFirstName)) {
-                $user->setEmail($formFirstName);
+                $user->setFirstName($formFirstName);
                 $em->persist($user);
                 $em->flush();
 
                 $this->addFlash('success', 'Votre prénom a bien été modifiée');
-
-                return $this->redirectToRoute('civilStatus_show');
             } else {
                 $this->addFlash('danger', 'Votre prénom est incorrect');
             }
+
+            return $this->redirectToRoute('civilStatus_show');
         }
 
         return $this->render('profile/index.html.twig', [
