@@ -91,13 +91,13 @@
             <th scope="row">{{ app.session.get('finance').acquisitionDate|date('Y') + i}}</th>
             {% if i >= taxBenefit.rentalPeriod %}
                 <td>{{ 0 }}</td>
-            {% elseif taxBenefit.rentalPeriod <=9 %}
-            <td>{{ taxBenefit.taxBase * 0.02}}</td>
+            {% elseif  i <= 8 %}
+            <td>{{ taxBenefit.taxBase * 0.02 }}</td>
+            {% elseif i > 8 and i <= 11 %}
+                <td>{{ taxBenefit.taxBase * 0.01 }}</td>
             {% endif %}
-
         </tr>
        {% endfor %}
-
         </tbody>
     </table>
 </div>
