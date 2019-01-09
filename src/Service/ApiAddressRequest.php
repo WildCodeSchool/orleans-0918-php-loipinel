@@ -21,7 +21,7 @@ class ApiAddressRequest
     public function getCityApi(string $zipCode, string $inseeCode): string
     {
         $client = new Client();
-        $res = $client->request('GET','https://api-adresse.data.gouv.fr/search/?q='.$zipCode.'&limit=50');
+        $res = $client->request('GET', 'https://api-adresse.data.gouv.fr/search/?q='.$zipCode.'&limit=50');
 
         $data = json_decode($res->getBody(), true);
 
