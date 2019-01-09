@@ -5,18 +5,13 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse navbar-dark bg-dark" id="navbarSupportedContent">
-        <ul class="navbar-nav  mr-auto mt-2 mt-lg-0 ">
-        </ul>
+        <ul class="navbar-nav  mr-auto mt-2 mt-lg-0 "></ul>
         <ul class="navbar-nav">
-            {% if app.user.email is defined %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="mr-3">
                     <div class="dropdown">
                         <button class="btn btn-outline-dark dropdown-toggle nav-link" data-toggle="dropdown">
-                            {% if app.user.lastName and app.user.firstName is defined %}
-                                {{ app.user.lastName }} {{ app.user.firstName }}
-                            {% else %}
-                                {{ app.user.email }}
-                            {% endif %}
+                            {{ app.user.lastName }} {{ app.user.firstName }}
                         </button>
 
                         <div class="dropdown-menu">
