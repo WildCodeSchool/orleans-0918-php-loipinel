@@ -36,4 +36,9 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('apiAdressCustomer') }}
+{% endblock %}
+
 {% block footer %}{% endblock %}
