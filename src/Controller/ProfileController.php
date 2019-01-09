@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ProfileSelfUpdateType;
+use phpDocumentor\Reflection\Types\Void_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,8 +38,6 @@ class ProfileController extends AbstractController
                 $em->flush();
 
                 $this->addFlash('success', 'Votre adresse mail a bien été modifiée');
-            } else {
-                $this->addFlash('danger', 'Votre adresse mail est incorrect');
             }
 
             if (isset($formLastName)) {
@@ -47,8 +46,6 @@ class ProfileController extends AbstractController
                 $em->flush();
 
                 $this->addFlash('success', 'Votre nom a bien été modifiée');
-            } else {
-                $this->addFlash('danger', 'Votre nom est incorrect');
             }
 
             if (isset($formFirstName)) {
@@ -57,8 +54,6 @@ class ProfileController extends AbstractController
                 $em->flush();
 
                 $this->addFlash('success', 'Votre prénom a bien été modifiée');
-            } else {
-                $this->addFlash('danger', 'Votre prénom est incorrect');
             }
 
             return $this->redirectToRoute('civilStatus_show');
