@@ -65,6 +65,7 @@ class ResultPageController extends AbstractController
 
         return $this->render('result.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
+            'taxBenefit' => $taxBenefit,
             'finance' => $finance,
             'user' => $user,
             'area' => $area,

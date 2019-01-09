@@ -80,25 +80,24 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Type</th>
-            <th scope="col">Column heading</th>
-            <th scope="col">Column heading</th>
-            <th scope="col">Column heading</th>
+            <th scope="col">Années</th>
+            <th scope="col">Amortissement annuel</th>
         </tr>
         </thead>
         <tbody>
+       //Algo
+       {%  for i in  0..((taxBenefit.rentalPeriod) + 2) %}
         <tr class="table-primary">
-            <th scope="row">Primary</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
+            <th scope="row">{{ app.session.get('finance').acquisitionDate|date('Y') + i}}</th>
+            {% if i >= taxBenefit.rentalPeriod %}
+                <td>{{ 0 }}</td>
+            {% elseif taxBenefit.rentalPeriod <=9 %}
+            <td>{{ taxBenefit.taxBase * 0.02}}</td>
+            {% endif %}
+
         </tr>
-        <tr class="table-light">
-            <th scope="row">Light</th>
-            <td>Column content</td>
-            <td>Column content</td>
-            <td>Column content</td>
-        </tr>
+       {% endfor %}
+
         </tbody>
     </table>
 </div>
