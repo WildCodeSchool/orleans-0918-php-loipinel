@@ -22,7 +22,7 @@ function fillSelector(data, postalCode) {
         if (!cities.hasOwnProperty(cityData.properties.citycode) && (cityData.properties.citycode !== postalCode)){
             cities[cityData.properties.citycode] = cityData.properties.city;
             let newOptionElt = document.createElement('option');
-            newOptionElt.innerText = cityData.properties.postcode + ' ' + cityData.properties.city;
+            newOptionElt.innerText = cityData.properties.city;
             selectElt.appendChild(newOptionElt);
         }
     }
