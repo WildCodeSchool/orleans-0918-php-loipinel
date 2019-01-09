@@ -14,7 +14,7 @@
 
                 {{ form_row ( form.zipCode ) }}
 
-                {{ form_row ( form.city ) }}
+                {{ form_row ( form.city, {'attr':{'data-insee':app.session.get('finance').city ?? ''} } ) }}
 
                 {{ form_row ( form.acquisitionDate ) }}
 
