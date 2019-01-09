@@ -20,6 +20,7 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('requestApi', './assets/js/apiAdressRequest.js')
     .addEntry('requestArea','./assets/js/requestArea.js')
+    .addEntry('apiAdressCustomer','./assets/js/apiAdressCustomer.js')
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()

@@ -38,8 +38,9 @@ class CivilStatusType extends AbstractType
         $builder->add('customerZipCode', TextType::class, [
             'label' => 'Code Postal',
         ]);
-        $builder->add('customerCity', TextType::class, [
+        $builder->add('customerCity', ChoiceType::class, [
             'label' => 'Ville',
         ]);
+        $builder->get('customerCity')->resetViewTransformers();
     }
 }
