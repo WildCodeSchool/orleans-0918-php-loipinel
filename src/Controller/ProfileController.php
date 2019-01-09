@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\ProfileSelfUpdateType;
 use phpDocumentor\Reflection\Types\Void_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -23,7 +24,7 @@ class ProfileController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $form = $this->createForm(ProfileSelfUpdateType::class);
+        $form = $this->createForm(ProfileSelfUpdateType::class, $user);
 
         $form->handleRequest($request);
 
