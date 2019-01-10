@@ -35,25 +35,20 @@ class ProfileController extends AbstractController
                 $user->setEmail($formEmail);
                 $em->persist($user);
                 $em->flush();
-
-                $this->addFlash('success', 'Votre adresse mail a bien été modifiée');
             }
 
             if (isset($formLastName)) {
                 $user->setLastName($formLastName);
                 $em->persist($user);
                 $em->flush();
-
-                $this->addFlash('success', 'Votre nom a bien été modifié');
             }
 
             if (isset($formFirstName)) {
                 $user->setFirstName($formFirstName);
                 $em->persist($user);
                 $em->flush();
-
-                $this->addFlash('success', 'Votre prénom a bien été modifié');
             }
+            $this->addFlash('success', 'Vos informations ont bien été modifiées');
 
             return $this->redirectToRoute('civilStatus_show');
         }
