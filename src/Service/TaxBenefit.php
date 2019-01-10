@@ -90,6 +90,35 @@ class TaxBenefit
     }
 
     /**
+     * Calcule l'avantage fiscal annuel en se basant sur l'avantage fiscal total et la durée du plan
+     * @return int
+     */
+    public function taxBenefitByYear() : array
+    {
+        $this->setTaxBase($this->calculateTaxBase());
+
+        if ($this->taxBase > $this->getVariable()->getMaximumTaxBase()) {
+            $taxBase = $this->getVariable()->getMaximumTaxBase();
+        } else {
+            $taxBase = $this->taxBase;
+        }
+
+        $taxBenefitByYear = [];
+        if (//durée égale ou infèrieure à 9) {
+
+        if (//durée égale à 12) {
+            for ($i=0; $i < //duréePlan; $i++){
+                $taxBenefitByYear[] = $taxBase * //0.02;
+            }
+            for ($i=0; $i < 3; $i++){
+                $taxBenefitByYear[] = 0;
+            }
+        }
+
+        return $taxBenefitByYear;
+    }
+
+    /**
      * @return int
      */
     public function getRentalPeriod(): int
@@ -115,7 +144,7 @@ class TaxBenefit
         return $this->realEstate;
     }
 
-    /**
+    /*
      * @param RealEstateProperty $realEstate
      * @return TaxBenefit
      */
