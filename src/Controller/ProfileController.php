@@ -27,27 +27,7 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $formEmail = $form->get('email')->getData();
-            $formLastName = $form->get('lastName')->getData();
-            $formFirstName = $form->get('firstName')->getData();
-
-            if (isset($formEmail)) {
-                $user->setEmail($formEmail);
-                $em->persist($user);
-                $em->flush();
-            }
-
-            if (isset($formLastName)) {
-                $user->setLastName($formLastName);
-                $em->persist($user);
-                $em->flush();
-            }
-
-            if (isset($formFirstName)) {
-                $user->setFirstName($formFirstName);
-                $em->persist($user);
-                $em->flush();
-            }
+            $em->flush();
             $this->addFlash('success', 'Vos informations ont bien été modifiées');
 
             return $this->redirectToRoute('civilStatus_show');
