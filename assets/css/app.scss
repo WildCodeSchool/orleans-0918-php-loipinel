@@ -82,13 +82,13 @@ table {
 .username {
   white-space: nowrap;
   margin-right: 1vw;
-  color: white;
+  color: $whiteColor;
 }
 
 .projet {
   white-space: nowrap;
   font-family: Projet IO, serif;
-  color: white;
+  color: $whiteColor;
   span {
     color: $colorIO;
   }
@@ -117,7 +117,7 @@ h1
 }
 
 div.pdfResult {
-  color: white;
+  color: $whiteColor;
 }
 
 a {
