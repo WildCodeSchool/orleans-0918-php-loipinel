@@ -68,8 +68,7 @@ class Variable
     private $percentForEqualOrUnderNine;
 
 
-    public function getId(): ?int
-
+    /**
      * @return mixed
      */
     public function getId()
