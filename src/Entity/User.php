@@ -29,9 +29,7 @@ class User implements UserInterface
      * )
      * @Assert\Email
      * @Assert\UniqueEntity
-     * @Assert\Type(
-     *     type="string",
-     * )
+     * @Assert\Type("string")
      */
     private $email;
 
@@ -39,9 +37,7 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      * @Assert\NotBlank
      * @Assert\NotNull
-     * @Assert\Type(
-     *     type="string",
-     * )
+     * @Assert\Type("string")
      */
     private $roles = [];
 
@@ -57,17 +53,13 @@ class User implements UserInterface
      *      maxMessage = "Votre mot de passe est trop long"
      * )
      * @Assert\UserPassword
-     * @Assert\Type(
-     *     type="string",
-     * )
+     * @Assert\Type("string")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Type(
-     *     type="string",
-     * )
+     * @Assert\Type("string")
      * @Assert\NotBlank
      * @Assert\NotNull
      */
@@ -75,9 +67,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Type(
-     *     type="string",
-     * )
+     * @Assert\Type("string",)
      * @Assert\NotBlank
      * @Assert\NotNull
      */
