@@ -41,6 +41,12 @@ class Variable
      */
     private $rateFor12Years;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $percentForEqualOrUnderNine;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,5 +110,21 @@ class Variable
         $this->rateFor12Years = $rateFor12Years;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPercentForEqualOrUnderNine()
+    {
+        return $this->percentForEqualOrUnderNine;
+    }
+
+    /**
+     * @param mixed $percentForEqualOrUnderNine
+     */
+    public function setPercentForEqualOrUnderNine($percentForEqualOrUnderNine): void
+    {
+        $this->percentForEqualOrUnderNine = $percentForEqualOrUnderNine;
     }
 }
