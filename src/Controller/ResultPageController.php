@@ -63,7 +63,8 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
-        $rate = $variableRepository->findOneBy([]);
+        $taxBenefitByYear = $taxBenefit->taxBenefitByYear();
+
 
         return $this->render('result.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
@@ -72,7 +73,8 @@ class ResultPageController extends AbstractController
             'user' => $user,
             'area' => $area,
             'city' => $city,
-            'rate' => $rate
+            'taxBenefitByYear' => $taxBenefitByYear,
+
         ]);
     }
 

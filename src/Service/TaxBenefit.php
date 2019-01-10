@@ -66,7 +66,7 @@ class TaxBenefit
 
     /**
      * Calcule l'avantage fiscal en se basant sur la base fiscale et la durée
-     * @return int
+     * @return float
      */
     public function calculateTaxBenefit() : float
     {
@@ -91,7 +91,7 @@ class TaxBenefit
 
     /**
      * Calcule l'avantage fiscal annuel en se basant sur l'avantage fiscal total et la durée du plan
-     * @return int
+     * @return array
      */
     public function taxBenefitByYear() : array
     {
@@ -113,12 +113,12 @@ class TaxBenefit
             for ($i=1; $i <=9; $i++){
                 $taxBenefitByYear[] = $taxBase *($this->getVariable()->getPercentForEqualOrUnderNine());
             }
-            for ($i=0; $i < 2; $i++){
+            for ($i=0; $i < 3; $i++){
             $taxBenefitByYear[] = $taxBase *($this->getVariable()->getPercentForEqualOrUnderNine())/2;
             }
-            for ($i=0; $i < 2; $i++){
-                $taxBenefitByYear[] = 0;
-            }
+        }
+        for ($i=0; $i < 3; $i++){
+            $taxBenefitByYear[] = 0;
         }
 
         return $taxBenefitByYear;

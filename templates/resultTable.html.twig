@@ -85,26 +85,12 @@
         </tr>
         </thead>
         <tbody>
-       {% set totalDuration = taxBenefit.rentalPeriod %}
-       {% for i in  0..(totalDuration + 2) %}
-           {% set base6 = (resultTaxBenefit / rate.rateFor6years) * 0.02 %}
-           {% set base9 = (resultTaxBenefit / rate.rateFor9Years) * 0.02 %}
-           {% set base12Max9 = (resultTaxBenefit / rate.rateFor12Years) * 0.02 %}
-           {% set base12Over9 = (resultTaxBenefit / rate.rateFor12Years) * 0.01 %}
-
+       {% for result in taxBenefitByYear %}
+       {% set startPeriod = app.session.get('finance').acquisitionDate|date('Y') - 1 %}
         <tr class="table-primary">
-            <th scope="row">{{ app.session.get('finance').acquisitionDate|date('Y') + i }}</th>
-                {% if i >= totalDuration %}
-                    <td>{{ 0 }}</td>
-                {% elseif totalDuration  <= 6 %}
-                    <td>{{ base6 }}</td>
-                {% elseif totalDuration > 6 and totalDuration <= 8 %}
-                    <td>{{ base9 }}</td>
-                {% elseif totalDuration > 8 and i <= 8 %}
-                    <td>{{ base12Max9 }}</td>
-                {% elseif totalDuration > 8 and i >= 8  and i <= 11%}
-                    <td>{{ base12Over9 }}</td>
-                {% endif %}
+            <th scope="row">{{ startPeriod + loop.index }}</th>
+            <th> {{ result }} </th>
+
         </tr>
        {% endfor %}
         </tbody>
