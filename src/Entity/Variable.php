@@ -72,7 +72,6 @@ class Variable
      * @return mixed
      */
     public function getId()
-
     {
         return $this->id;
     }
