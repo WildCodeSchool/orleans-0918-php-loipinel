@@ -17,15 +17,15 @@ class ProfileSelfUpdateType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'required' => false,
-                'label' => 'Nouvel Email',
+                'label' => 'Email',
             ])
             ->add('lastName', TextType::class, [
                 'required' => false,
-                'label' => 'Nouveau nom',
+                'label' => 'Nom',
             ])
             ->add('firstName', TextType::class, [
                 'required' => false,
-                'label' => 'Nouveau prénom',
+                'label' => 'Prénom',
             ])
             ->add('editProfile', SubmitType::class, [
                 'label' => 'Editer mes informations',
