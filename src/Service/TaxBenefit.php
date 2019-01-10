@@ -110,14 +110,14 @@ class TaxBenefit
             }
         }
         if (($this->getRentalPeriod()) == 12) {
-            for ($i=1; $i <=9; $i++){
+            for ($i=1; $i <=9; $i++) {
                 $taxBenefitByYear[] = $taxBase *($this->getVariable()->getPercentForEqualOrUnderNine());
             }
-            for ($i=0; $i < 3; $i++){
-            $taxBenefitByYear[] = $taxBase *($this->getVariable()->getPercentForEqualOrUnderNine())/2;
+            for ($i=0; $i < 3; $i++) {
+                $taxBenefitByYear[] = $taxBase *($this->getVariable()->getPercentForEqualOrUnderNine())/2;
             }
         }
-        for ($i=0; $i < 3; $i++){
+        for ($i=0; $i < 3; $i++) {
             $taxBenefitByYear[] = 0;
         }
 
