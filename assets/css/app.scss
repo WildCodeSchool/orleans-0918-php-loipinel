@@ -29,6 +29,8 @@ $whiteColor: #FFFFFF;
 $black: #000000;
 $cardColor: #f3fbfa;
 $resultColor: #5fd3bc;
+$backgroundCard: #f3fbfa;
+$backgroundZone: #bababa;
 
 body {
   padding-top:60px;
@@ -212,7 +214,7 @@ input[type="date"]::-webkit-clear-button {
   font-size: 18pt;
 }
 .previousForm {
-  color: white;
+  color: $whiteColor;
 }
 .card-header {
   color:  $resultColor;
@@ -225,9 +227,9 @@ input[type="date"]::-webkit-clear-button {
 }
 .card {
   border: none;
-  background-color: #f3fbfa;
+  background-color: $backgroundCard;
 }
 .zone {
-  background-color: #bababa;
+  background-color: $backgroundZone;
   color: $whiteColor;
 }
