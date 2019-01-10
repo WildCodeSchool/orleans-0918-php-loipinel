@@ -1,14 +1,23 @@
 let zipcode = document.getElementById('finance_zipCode');
+
+window.addEventListener('load', function (e) {
+    getInseeCode();
+});
+
 zipcode.addEventListener('input', function (e) {
+    getInseeCode()
+});
+
+function getInseeCode() {
     let postalCode = $('#finance_zipCode').val();
     $('#finance_city').empty();
 
-    if (this.value.length === 5) {
+    if (postalCode.length === 5) {
         fetch("https://api-adresse.data.gouv.fr/search/?q=" + postalCode + "&limit=100")
             .then((resp) => resp.json())
             .then((data) => fillSelector(data.features, postalCode))
     }
-});
+}
 
 function fillSelector(data, postalCode) {
 
@@ -27,6 +36,9 @@ function fillSelector(data, postalCode) {
 
             selectElt.appendChild(newOptionElt);
         }
+    }
 
+    if(selectElt.dataset.insee) {
+        selectElt.value =selectElt.dataset.insee;
     }
 }
