@@ -105,8 +105,8 @@
        {% for result in taxBenefitByYear %}
        {% set startPeriod = app.session.get('finance').acquisitionDate|date('Y') %}
         <tr class="table-primary">
-            <th scope="row">{{ startPeriod + loop.index0 }}</th>
-            <th> {{ result }} </th>
+            <th scope="row">{{ startPeriod + loop.index0 }} </th>
+            <th> {{ result }} € </th>
 
         </tr>
        {% endfor %}
