@@ -85,6 +85,7 @@ class ResultPageController extends AbstractController
      * @param TaxBenefit $taxBenefit
      * @param DataPinelJson $dataPinelJson
      * @param ApiAddressRequest $apiAddressRequest
+     * @param VariableRepository $variableRepository
      * @return PdfResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -93,7 +94,8 @@ class ResultPageController extends AbstractController
         SessionInterface $session,
         TaxBenefit $taxBenefit,
         DataPinelJson $dataPinelJson,
-        ApiAddressRequest $apiAddressRequest
+        ApiAddressRequest $apiAddressRequest,
+        VariableRepository $variableRepository
     ) {
         $finance = $session->get('finance');
         $civilStatus = $session->get('civilStatus');
@@ -107,11 +109,15 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
+        $rate = $variableRepository->findOneBy(['id' => 1]);
+
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
+            'taxBenefit' => $taxBenefit,
             'area' => $area,
-            'city' => $city
+            'city' => $city,
+            'rate' => $rate
         ]);
         $lastName = $civilStatus->getLastName();
 
