@@ -26,9 +26,7 @@ class User implements UserInterface
      * @Assert\NotBlank
      * @Assert\NotNull
      * @Assert\Length(
-     *      min = 10,
      *      max = 180,
-     *      minMessage = "Votre email est trop court",
      *      maxMessage = "Votre email est trop long"
      * )
      * @Assert\Email
@@ -52,7 +50,7 @@ class User implements UserInterface
      * @Assert\Length(
      *      min = 6,
      *      max = 180,
-     *      minMessage = "Votre mot de passe est trop court",
+     *      minMessage = "Votre mot de passe ne doit faire moins de {{min}} caractères",
      *      maxMessage = "Votre mot de passe est trop long"
      * )
      * @SecurityAssert\UserPassword(
