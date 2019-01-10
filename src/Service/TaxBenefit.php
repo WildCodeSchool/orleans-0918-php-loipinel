@@ -105,10 +105,11 @@ class TaxBenefit
 
         $taxBenefitByYear = [];
         $totalRate = $this->ratesByDuration()[$this->getRentalPeriod()];
-        $ratePerYear = $totalRate / (($totalRate/2)*100);
+        $ratePerYear = ($totalRate * 2) / 21;
+        $taxBenefit = $taxBase * $this->ratesByDuration()[$this->getRentalPeriod()];
         if (($this->getRentalPeriod()) <= 9) {
             for ($i = 1; $i <= ($this->getRentalPeriod()); $i++) {
-                $taxBenefitByYear[] = $taxBase * $ratePerYear;
+                $taxBenefitByYear[] = $taxBenefit / $this->getRentalPeriod();
             }
         }
         if (($this->getRentalPeriod()) == 12) {
