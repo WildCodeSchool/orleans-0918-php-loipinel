@@ -115,7 +115,7 @@ class Variable
     /**
      * @return mixed
      */
-    public function getPercentForEqualOrUnderNine()
+    public function getPercentForEqualOrUnderNine(): ?float
     {
         return $this->percentForEqualOrUnderNine;
     }
