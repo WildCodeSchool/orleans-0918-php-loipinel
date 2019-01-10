@@ -37,7 +37,7 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      * @Assert\NotBlank
      * @Assert\NotNull
-     * @Assert\Type("string")
+     * @Assert\Type("array")
      */
     private $roles = [];
 
