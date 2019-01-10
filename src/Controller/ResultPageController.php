@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\finance;
 use App\Entity\RealEstateProperty;
+use App\Repository\VariableRepository;
 use App\Service\ApiAddressRequest;
 use App\Service\DataPinelJson;
 use DateTime;
@@ -40,6 +41,7 @@ class ResultPageController extends AbstractController
      * @param TaxBenefit $taxBenefit
      * @param DataPinelJson $dataPinelJson
      * @param ApiAddressRequest $apiAddressRequest
+     * @param VariableRepository $variableRepository
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @Route("/resultat", name="result_page")
@@ -48,7 +50,8 @@ class ResultPageController extends AbstractController
         SessionInterface $session,
         TaxBenefit $taxBenefit,
         DataPinelJson $dataPinelJson,
-        ApiAddressRequest $apiAddressRequest
+        ApiAddressRequest $apiAddressRequest,
+        VariableRepository $variableRepository
     ) {
         $user = $this->getUser();
         $finance = $session->get('finance');
@@ -62,6 +65,7 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
+        $rate = $variableRepository->findOneBy(['id' => 1]);
 
         return $this->render('result.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
@@ -69,7 +73,8 @@ class ResultPageController extends AbstractController
             'finance' => $finance,
             'user' => $user,
             'area' => $area,
-            'city' => $city
+            'city' => $city,
+            'rate' => $rate
         ]);
     }
 
