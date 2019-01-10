@@ -19,134 +19,163 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 180,
+     *      minMessage = "Votre email est trop court",
+     *      maxMessage = "Votre email est trop long"
+     * )
+     * @Assert\Email
+     * @Assert\UniqueEntity
+     * @Assert\Type(
+     *     type="string",
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Type(
+     *     type="string",
+     * )
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 180,
+     *      minMessage = "Votre mot de passe est trop court",
+     *      maxMessage = "Votre mot de passe est trop long"
+     * )
+     * @Assert\UserPassword
+     * @Assert\Type(
+     *     type="string",
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Type(
+     *     type="string",
+     * )
+     * @Assert\NotBlank
+     * @Assert\NotNull
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Type(
+     *     type="string",
+     * )
+     * @Assert\NotBlank
+     * @Assert\NotNull
      */
     private $firstName;
 
-    public function getId(): ?int
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
+     * @return mixed
      */
-    public function getUsername(): string
+    public function getRoles()
     {
-        return (string) $this->email;
+        return $this->roles;
     }
 
     /**
-     * @see UserInterface
+     * @param mixed $roles
      */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
+    public function setRoles($roles): void
     {
         $this->roles = $roles;
-
-        return $this;
     }
 
     /**
-     * @see UserInterface
+     * @return string
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
-    public function setPassword(string $password): self
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-
-        return $this;
     }
 
     /**
-     * @see UserInterface
+     * @return mixed
      */
-    public function getSalt()
-    {
-        // not needed when using the "bcrypt" algorithm in security.yaml
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
-    public function getLastName(): ?string
+    public function getLastName()
     {
         return $this->lastName;
     }
 
-    public function setLastName(?string $lastName): self
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
     {
         $this->lastName = $lastName;
-
-        return $this;
     }
 
-    public function getFirstName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
     {
         return $this->firstName;
     }
 
-    public function setFirstName(?string $firstName): self
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
     {
         $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function isGranted(string $role) :bool
-    {
-        return in_array($role, $this->getRoles());
     }
 }
