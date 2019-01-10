@@ -20,7 +20,7 @@ class Variable
      * @ORM\Column(type="integer")
      * @Assert\NotBlank
      * @Assert\NotNull
-     * @Assert\Integer
+     * @Assert\Type("integer")
      * @Assert\GreaterThan(0)
      */
     private $maximumPricePerSquareMeter;
@@ -29,7 +29,7 @@ class Variable
      * @ORM\Column(type="integer")
      * @Assert\NotBlank
      * @Assert\NotNull
-     * @Assert\Integer
+     * @Assert\Type("integer")
      * @Assert\GreaterThan(0)
      */
     private $maximumTaxBase;
@@ -38,7 +38,7 @@ class Variable
      * @ORM\Column(type="float")
      * @Assert\NotBlank
      * @Assert\NotNull
-     * @Assert\Float
+     * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
     private $rateFor6Years;
@@ -47,7 +47,7 @@ class Variable
      * @ORM\Column(type="float")
      * @Assert\NotBlank
      * @Assert\NotNull
-     * @Assert\Float
+     * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
     private $rateFor9Years;
@@ -56,7 +56,7 @@ class Variable
      * @ORM\Column(type="float")
      * @Assert\NotBlank
      * @Assert\NotNull
-     * @Assert\Float
+     * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
     private $rateFor12Years;
