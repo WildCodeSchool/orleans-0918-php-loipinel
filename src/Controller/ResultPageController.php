@@ -7,10 +7,8 @@ use App\Entity\RealEstateProperty;
 use App\Repository\VariableRepository;
 use App\Service\ApiAddressRequest;
 use App\Service\DataPinelJson;
-use DateTime;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
-use phpDocumentor\Reflection\Types\String_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -65,7 +63,7 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
-        $rate = $variableRepository->findOneBy();
+        $rate = $variableRepository->findOneBy([]);
 
         return $this->render('result.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
@@ -109,7 +107,7 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
-        $rate = $variableRepository->findOneBy();
+        $rate = $variableRepository->findOneBy([]);
 
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig', [
