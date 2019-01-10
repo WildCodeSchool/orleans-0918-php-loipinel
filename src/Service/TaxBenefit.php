@@ -104,13 +104,19 @@ class TaxBenefit
         }
 
         $taxBenefitByYear = [];
-        if (//durée égale ou infèrieure à 9) {
-
-        if (//durée égale à 12) {
-            for ($i=0; $i < //duréePlan; $i++){
-                $taxBenefitByYear[] = $taxBase * //0.02;
+        if (($this->getRentalPeriod()) <= 9) {
+            for ($i = 1; $i <= ($this->getRentalPeriod()); $i++) {
+                $taxBenefitByYear[] = $taxBase * ($this->getVariable()->getPercentForEqualOrUnderNine());
             }
-            for ($i=0; $i < 3; $i++){
+        }
+        if (($this->getRentalPeriod()) == 12) {
+            for ($i=1; $i <=9; $i++){
+                $taxBenefitByYear[] = $taxBase *($this->getVariable()->getPercentForEqualOrUnderNine());
+            }
+            for ($i=0; $i < 2; $i++){
+            $taxBenefitByYear[] = $taxBase *($this->getVariable()->getPercentForEqualOrUnderNine())/2;
+            }
+            for ($i=0; $i < 2; $i++){
                 $taxBenefitByYear[] = 0;
             }
         }
