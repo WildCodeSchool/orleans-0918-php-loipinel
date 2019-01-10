@@ -27,7 +27,7 @@ class User implements UserInterface
      * @Assert\NotNull
      * @Assert\Length(
      *      max = 180,
-     *      maxMessage = "Votre email est trop long"
+     *      maxMessage = "Votre adresse mail est trop longue"
      * )
      * @Assert\Email
      * @Assert\Type("string")
