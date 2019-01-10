@@ -56,7 +56,7 @@ class User implements UserInterface
      *      maxMessage = "Votre mot de passe est trop long"
      * )
      * @SecurityAssert\UserPassword(
-     *     message = "Mot de passe actuel inccorect"
+     *     message = "Mot de passe actuel inccorrect"
      * )
      * @Assert\Type("string")
      */
