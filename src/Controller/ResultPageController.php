@@ -109,7 +109,7 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
-        $rate = $variableRepository->findOneBy([]);
+        $taxBenefitByYear = $taxBenefit->taxBenefitByYear();
 
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig', [
@@ -117,7 +117,7 @@ class ResultPageController extends AbstractController
             'taxBenefit' => $taxBenefit,
             'area' => $area,
             'city' => $city,
-            'rate' => $rate
+            'taxBenefitByYear' => $taxBenefitByYear
         ]);
         $lastName = $civilStatus->getLastName();
 
