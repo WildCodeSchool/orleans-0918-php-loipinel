@@ -69,8 +69,8 @@
     <div class="row mb-5">
         <div class="col">
             <div class="card">
-                <div class="card-header text-center">Votre avantage fiscal</div>
-                <div class="card-body bg-primary">
+                <div class="card-header bg-primary text-center">Votre avantage fiscal</div>
+                <div class="card-body bg-secondary">
                     <p class="card-text">Amortissement sur {{ app.session.get('finance').duration }} ans : {{ resultTaxBenefit|number_format(2, ',', ' ') }} €</p>
                 </div>
             </div>
