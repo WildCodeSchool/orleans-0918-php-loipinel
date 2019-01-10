@@ -27,6 +27,8 @@ $secondaryColor: #989898;
 $trashColor: #FF0000;
 $whiteColor: #FFFFFF;
 $black: #000000;
+$cardColor: #f3fbfa;
+$resultColor: #5fd3bc;
 
 body {
   padding-top:60px;
@@ -107,6 +109,7 @@ h1
 
 .pdfTitle {
   h1 {
+    color: $resultColor;
     font-weight: bold;
   }
 }
@@ -207,4 +210,24 @@ input[type="date"]::-webkit-clear-button {
 .previous {
   text-align: left;
   font-size: 18pt;
+}
+.previousForm {
+  color: white;
+}
+.card-header {
+  color:  $resultColor;
+  border: none;
+  font-size: 18pt;
+  font-weight: bold;
+}
+.result {
+  background-color:$resultColor;
+}
+.card {
+  border: none;
+  background-color: #f3fbfa;
+}
+.zone {
+  background-color: #bababa;
+  color: $whiteColor;
 }
