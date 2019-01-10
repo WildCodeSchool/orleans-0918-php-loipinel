@@ -65,7 +65,7 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
-        $rate = $variableRepository->findOneBy(['id' => 1]);
+        $rate = $variableRepository->findOneBy();
 
         return $this->render('result.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
@@ -109,7 +109,7 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
-        $rate = $variableRepository->findOneBy(['id' => 1]);
+        $rate = $variableRepository->findOneBy();
 
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig', [
