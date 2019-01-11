@@ -130,8 +130,7 @@ class TaxBenefit
                 $taxBenefitByYear[] = 0;
             }
             return $taxBenefitByYear;
-        }
-        else {
+        } else {
             return $taxBenefitByYear = [];
         }
     }
