@@ -93,4 +93,23 @@
             </div>
         </div>
     </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Années</th>
+            <th scope="col">Amortissement annuel</th>
+        </tr>
+        </thead>
+        <tbody>
+       {% for result in taxBenefitByYear %}
+       {% set startPeriod = app.session.get('finance').acquisitionDate|date('Y') %}
+        <tr class="table-primary">
+            <th scope="row">{{ startPeriod + loop.index0 }} </th>
+            <th> {{ result }} € </th>
+
+        </tr>
+       {% endfor %}
+        </tbody>
+    </table>
 </div>

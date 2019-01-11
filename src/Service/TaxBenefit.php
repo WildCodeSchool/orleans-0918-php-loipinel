@@ -66,7 +66,7 @@ class TaxBenefit
 
     /**
      * Calcule l'avantage fiscal en se basant sur la base fiscale et la durée
-     * @return int
+     * @return float
      */
     public function calculateTaxBenefit() : float
     {
@@ -87,6 +87,44 @@ class TaxBenefit
         }
 
         return $taxBenefit;
+    }
+
+    /**
+     * Calcule l'avantage fiscal annuel en se basant sur l'avantage fiscal total et la durée du plan
+     * @return array
+     */
+    public function taxBenefitByYear() : array
+    {
+        $this->setTaxBase($this->calculateTaxBase());
+
+        if ($this->taxBase > $this->getVariable()->getMaximumTaxBase()) {
+            $taxBase = $this->getVariable()->getMaximumTaxBase();
+        } else {
+            $taxBase = $this->taxBase;
+        }
+
+        $taxBenefitByYear = [];
+        $totalRate = $this->ratesByDuration()[$this->getRentalPeriod()];
+        $ratePerYear = ($totalRate * 2) / 21;
+        $taxBenefit = $taxBase * $this->ratesByDuration()[$this->getRentalPeriod()];
+        if (($this->getRentalPeriod()) <= 9) {
+            for ($i = 1; $i <= ($this->getRentalPeriod()); $i++) {
+                $taxBenefitByYear[] = $taxBenefit / $this->getRentalPeriod();
+            }
+        }
+        if (($this->getRentalPeriod()) == 12) {
+            for ($i=1; $i <=9; $i++) {
+                $taxBenefitByYear[] = $taxBase *$ratePerYear;
+            }
+            for ($i=0; $i < 3; $i++) {
+                $taxBenefitByYear[] = $taxBase *($ratePerYear/2);
+            }
+        }
+        for ($i=0; $i < 3; $i++) {
+            $taxBenefitByYear[] = 0;
+        }
+
+        return $taxBenefitByYear;
     }
 
     /**
@@ -115,7 +153,7 @@ class TaxBenefit
         return $this->realEstate;
     }
 
-    /**
+    /*
      * @param RealEstateProperty $realEstate
      * @return TaxBenefit
      */
