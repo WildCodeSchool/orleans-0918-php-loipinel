@@ -158,7 +158,7 @@ class Finance
      * @Assert\Type("float")
      * @Assert\GreaterThan(
      *     value="0",
-     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      */
     private $managementFees;
 
@@ -168,7 +168,7 @@ class Finance
      * @Assert\Type("float")
      * @Assert\GreaterThan(
      *     value="0",
-     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      */
     private $rentalFee;
 
@@ -178,7 +178,7 @@ class Finance
      * @Assert\Type("float")
      * @Assert\GreaterThan(
      *     value="0",
-     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      */
     private $rentInsurance;
 
@@ -188,7 +188,7 @@ class Finance
      * @Assert\Type("float")
      * @Assert\GreaterThan(
      *     value="0",
-     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      */
     private $coownershipCharges;
 
@@ -198,7 +198,7 @@ class Finance
      * @Assert\Type("int")
      * @Assert\GreaterThan(
      *     value="0",
-     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      */
     private $propertyTax;
 
