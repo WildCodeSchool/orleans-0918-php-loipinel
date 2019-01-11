@@ -91,7 +91,7 @@ class Taxation
      * @var int
      * @Assert\GreaterThanOrEqual(
      *     value="0",
-     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}"))
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      */
