@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -52,9 +51,6 @@ class User implements UserInterface
      *      max = 180,
      *      minMessage = "Votre mot de passe ne doit faire moins de {{min}} caractères",
      *      maxMessage = "Votre mot de passe est trop long"
-     * )
-     * @SecurityAssert\UserPassword(
-     *     message = "Mot de passe actuel incorrect"
      * )
      * @Assert\Type("string")
      */
