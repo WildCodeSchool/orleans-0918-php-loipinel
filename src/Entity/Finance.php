@@ -57,7 +57,9 @@ class Finance
     /**
      * @var float
      * @Assert\NotBlank
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      * @Assert\Type("float")
      */
     private $surfaceArea;
@@ -65,7 +67,9 @@ class Finance
     /**
      * @var int
      * @Assert\NotBlank
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      * @Assert\Type("int")
      */
     private $purchasePrice;
@@ -73,7 +77,9 @@ class Finance
     /**
      * @var int
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $parkingAmount;
 
@@ -81,14 +87,18 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      */
     private $notaryFees;
 
     /**
      * @var int
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $otherFeesAcquisition;
 
@@ -96,7 +106,9 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      */
     private $monthlyRent;
 
@@ -105,7 +117,9 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $borrowedAmount;
 
@@ -113,7 +127,9 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $inflow;
 
@@ -121,7 +137,9 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $fundingPeriod;
 
@@ -129,7 +147,9 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
      */
     private $adi;
 
@@ -138,7 +158,9 @@ class Finance
      * @var float
      * @Assert\NotBlank
      * @Assert\Type("float")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
      */
     private $managementFees;
 
@@ -146,7 +168,9 @@ class Finance
      * @var float
      * @Assert\NotBlank
      * @Assert\Type("float")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
      */
     private $rentalFee;
 
@@ -154,7 +178,9 @@ class Finance
      * @var float
      * @Assert\NotBlank
      * @Assert\Type("float")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
      */
     private $rentInsurance;
 
@@ -162,7 +188,9 @@ class Finance
      * @var float
      * @Assert\NotBlank
      * @Assert\Type("float")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
      */
     private $coownershipCharges;
 
@@ -170,7 +198,9 @@ class Finance
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThan(
+     *     value="0",
+     *     message="La valeur renseignée doit être supérieure à {{ compared_value }}"
      */
     private $propertyTax;
 

@@ -25,7 +25,9 @@ class Taxation
      * @var int
      * @Assert\NotBlank
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $numberOfChildren;
 
@@ -33,14 +35,18 @@ class Taxation
      * @var float
      * @Assert\NotBlank
      * @Assert\Type("float")
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $numberOfTaxShares;
 
     /**
      * @var float
      * @Assert\NotBlank
-     * @Assert\GreaterThan(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      * @Assert\Type("float")
      */
     private $salaryDeclared;
@@ -48,35 +54,45 @@ class Taxation
     /**
      * @var int
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $landIncomes;
 
     /**
      * @var int
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $bic;
 
     /**
      * @var int
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $bnc;
 
     /**
      * @var int
      * @Assert\Type("int")
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
      */
     private $ba;
 
     /**
      * @var int
      * @Assert\NotBlank
-     * @Assert\GreaterThanOrEqual(0)
+     * @Assert\GreaterThanOrEqual(
+     *     value="0",
+     *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}"))
      * @Assert\Type("int")
      */
     private $incomeTax;
@@ -92,7 +108,7 @@ class Taxation
     /**
      * @param string $familySituation
      */
-    public function setFamilySituation(string $familySituation): void
+    public function setFamilySituation(?string $familySituation): void
     {
         $this->familySituation = $familySituation;
     }
@@ -120,7 +136,7 @@ class Taxation
     /**
      * @param int $numberOfChildren
      */
-    public function setNumberOfChildren(int $numberOfChildren): void
+    public function setNumberOfChildren(?int $numberOfChildren): void
     {
         $this->numberOfChildren = $numberOfChildren;
     }
@@ -136,7 +152,7 @@ class Taxation
     /**
      * @param float $numberOfTaxShares
      */
-    public function setNumberOfTaxShares(float $numberOfTaxShares): void
+    public function setNumberOfTaxShares(?float $numberOfTaxShares): void
     {
         $this->numberOfTaxShares = $numberOfTaxShares;
     }
@@ -152,7 +168,7 @@ class Taxation
     /**
      * @param float $salaryDeclared
      */
-    public function setSalaryDeclared(float $salaryDeclared): void
+    public function setSalaryDeclared(?float $salaryDeclared): void
     {
         $this->salaryDeclared = $salaryDeclared;
     }
@@ -168,7 +184,7 @@ class Taxation
     /**
      * @param int $landIncomes
      */
-    public function setLandIncomes(int $landIncomes): void
+    public function setLandIncomes(?int $landIncomes): void
     {
         $this->landIncomes = $landIncomes;
     }
@@ -184,7 +200,7 @@ class Taxation
     /**
      * @param int $bic
      */
-    public function setBic(int $bic): void
+    public function setBic(?int $bic): void
     {
         $this->bic = $bic;
     }
@@ -200,7 +216,7 @@ class Taxation
     /**
      * @param int $bnc
      */
-    public function setBnc(int $bnc): void
+    public function setBnc(?int $bnc): void
     {
         $this->bnc = $bnc;
     }
@@ -216,7 +232,7 @@ class Taxation
     /**
      * @param int $ba
      */
-    public function setBa(int $ba): void
+    public function setBa(?int $ba): void
     {
         $this->ba = $ba;
     }
@@ -232,7 +248,7 @@ class Taxation
     /**
      * @param int $incomeTax
      */
-    public function setIncomeTax(int $incomeTax): void
+    public function setIncomeTax(?int $incomeTax): void
     {
         $this->incomeTax = $incomeTax;
     }
