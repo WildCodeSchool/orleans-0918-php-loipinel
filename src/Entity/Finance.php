@@ -2,25 +2,23 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="FinanceRepository")
+ * Class Finance
+ * @package App\Entity
  */
 class Finance
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
      */
     private $id;
 
     // ***************************************************Investissement***********************************************
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Regex("/[0-9]/")
      * @Assert\Length(min = 5)
      * @Assert\Length(max = 5, maxMessage = "Ce champ ne peux contenir plus de 5 chiffres.")
@@ -29,47 +27,47 @@ class Finance
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      */
     private $city;
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      */
     private $zone;
 
     /**
      * @var \DateTime
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("\DateTime")
      */
     private $acquisitionDate;
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Choice(callback="getDurations")
      */
     private $duration;
 
     /**
      * @var float
-     * @Assert\NotBlank
      * @Assert\GreaterThan(
      *     value="0",
      *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      */
     private $surfaceArea;
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\GreaterThan(
      *     value="0",
      *     message="La valeur renseignée doit être supérieure à {{ compared_value }}")
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      */
     private $purchasePrice;
@@ -85,7 +83,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThan(
      *     value="0",
@@ -104,7 +102,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThan(
      *     value="0",
@@ -115,7 +113,7 @@ class Finance
     // ***************************************************Financement*************************************************
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(
      *     value="0",
@@ -125,7 +123,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(
      *     value="0",
@@ -135,7 +133,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(
      *     value="0",
@@ -145,7 +143,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThan(
      *     value="0",
@@ -156,7 +154,7 @@ class Finance
     // ***************************************************Frais***************************************************
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(
      *     value="0",
@@ -166,7 +164,7 @@ class Finance
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(
      *     value="0",
@@ -176,7 +174,7 @@ class Finance
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(
      *     value="0",
@@ -186,7 +184,7 @@ class Finance
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(
      *     value="0",
@@ -196,7 +194,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThan(
      *     value="0",
@@ -241,7 +239,7 @@ class Finance
     /**
      * @param string $city
      */
-    public function setCity(string $city): void
+    public function setCity(string $city = null): void
     {
         $this->city = $city;
     }
@@ -273,7 +271,7 @@ class Finance
     /**
      * @param \DateTime $acquisitionDate
      */
-    public function setAcquisitionDate(\DateTime $acquisitionDate): void
+    public function setAcquisitionDate(?\DateTime $acquisitionDate): void
     {
         $this->acquisitionDate = $acquisitionDate;
     }

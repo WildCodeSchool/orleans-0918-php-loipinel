@@ -14,7 +14,7 @@ class Taxation
 {
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      * @Assert\Choice(callback="getFamilySituations",
      *     message="Veuillez sélectionner une situation familiale parmi celles proposées")
@@ -23,7 +23,7 @@ class Taxation
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(
      *     value="0",
@@ -33,7 +33,7 @@ class Taxation
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThanOrEqual(
      *     value="0",
@@ -43,10 +43,10 @@ class Taxation
 
     /**
      * @var float
-     * @Assert\NotBlank
      * @Assert\GreaterThanOrEqual(
      *     value="0",
      *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}")
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      */
     private $salaryDeclared;
@@ -89,10 +89,10 @@ class Taxation
 
     /**
      * @var int
-     * @Assert\NotBlank
      * @Assert\GreaterThanOrEqual(
      *     value="0",
      *     message="La valeur renseignée doit être égale ou supérieure à {{ compared_value }}"))
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      */
     private $incomeTax;
@@ -120,8 +120,8 @@ class Taxation
     {
         return ['célibataire' => 'célibataire',
             'en concubinage' => 'en concubinage',
-            'mariés' => 'mariés',
-            'pacsés' => 'pacsés',
+            'marié(e)' => 'marié(e)',
+            'pacsé(e)' => 'pacsé(e)',
             'divorcé(e)' => 'divorcé(e)'];
     }
 

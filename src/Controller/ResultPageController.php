@@ -4,12 +4,11 @@ namespace App\Controller;
 
 use App\Entity\finance;
 use App\Entity\RealEstateProperty;
+use App\Repository\VariableRepository;
 use App\Service\ApiAddressRequest;
 use App\Service\DataPinelJson;
-use DateTime;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
-use phpDocumentor\Reflection\Types\String_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -40,6 +39,7 @@ class ResultPageController extends AbstractController
      * @param TaxBenefit $taxBenefit
      * @param DataPinelJson $dataPinelJson
      * @param ApiAddressRequest $apiAddressRequest
+     * @param VariableRepository $variableRepository
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @Route("/resultat", name="result_page")
@@ -48,7 +48,8 @@ class ResultPageController extends AbstractController
         SessionInterface $session,
         TaxBenefit $taxBenefit,
         DataPinelJson $dataPinelJson,
-        ApiAddressRequest $apiAddressRequest
+        ApiAddressRequest $apiAddressRequest,
+        VariableRepository $variableRepository
     ) {
         $user = $this->getUser();
         $finance = $session->get('finance');
@@ -62,13 +63,18 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
+        $taxBenefitByYear = $taxBenefit->taxBenefitByYear();
+
 
         return $this->render('result.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
+            'taxBenefit' => $taxBenefit,
             'finance' => $finance,
             'user' => $user,
             'area' => $area,
-            'city' => $city
+            'city' => $city,
+            'taxBenefitByYear' => $taxBenefitByYear,
+
         ]);
     }
 
@@ -79,6 +85,7 @@ class ResultPageController extends AbstractController
      * @param TaxBenefit $taxBenefit
      * @param DataPinelJson $dataPinelJson
      * @param ApiAddressRequest $apiAddressRequest
+     * @param VariableRepository $variableRepository
      * @return PdfResponse
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -87,7 +94,8 @@ class ResultPageController extends AbstractController
         SessionInterface $session,
         TaxBenefit $taxBenefit,
         DataPinelJson $dataPinelJson,
-        ApiAddressRequest $apiAddressRequest
+        ApiAddressRequest $apiAddressRequest,
+        VariableRepository $variableRepository
     ) {
         $finance = $session->get('finance');
         $civilStatus = $session->get('civilStatus');
@@ -101,11 +109,15 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
+        $taxBenefitByYear = $taxBenefit->taxBenefitByYear();
+
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig', [
             'resultTaxBenefit' => $resultTaxBenefit,
+            'taxBenefit' => $taxBenefit,
             'area' => $area,
-            'city' => $city
+            'city' => $city,
+            'taxBenefitByYear' => $taxBenefitByYear
         ]);
         $lastName = $civilStatus->getLastName();
 

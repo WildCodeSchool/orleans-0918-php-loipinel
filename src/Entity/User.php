@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity("email")
  */
 class User implements UserInterface
 {
@@ -19,134 +22,182 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Length(
+     *      max = 180,
+     *      maxMessage = "Votre adresse mail est trop longue"
+     * )
+     * @Assert\Email
+     * @Assert\Type("string")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Type("array")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 180,
+     *      minMessage = "Votre mot de passe ne doit faire moins de {{min}} caractères",
+     *      maxMessage = "Votre mot de passe est trop long"
+     * )
+     * @Assert\Type("string")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Type("string")
+     * @Assert\NotBlank
+     * @Assert\NotNull
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Type("string",)
+     * @Assert\NotBlank
+     * @Assert\NotNull
      */
     private $firstName;
 
+    /**
+     * @return mixed
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
+     * @return mixed
      */
-    public function getUsername(): string
+    public function getRoles()
     {
-        return (string) $this->email;
+        return $this->roles;
     }
 
     /**
-     * @see UserInterface
+     * @param mixed $roles
      */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
+    public function setRoles($roles): void
     {
         $this->roles = $roles;
-
-        return $this;
     }
 
     /**
-     * @see UserInterface
+     * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
-    public function setPassword(string $password): self
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-
-        return $this;
     }
 
     /**
-     * @see UserInterface
+     * @return mixed
      */
-    public function getSalt()
-    {
-        // not needed when using the "bcrypt" algorithm in security.yaml
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
     public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
-    public function setLastName(?string $lastName): self
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
     {
         $this->lastName = $lastName;
-
-        return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    public function setFirstName(?string $firstName): self
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
     {
         $this->firstName = $firstName;
-
-        return $this;
     }
 
-    public function isGranted(string $role) :bool
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
     {
-        return in_array($role, $this->getRoles());
+        // TODO: Implement getSalt() method.
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
     }
 }

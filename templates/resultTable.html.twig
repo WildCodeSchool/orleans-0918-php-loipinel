@@ -1,8 +1,8 @@
-<div class="container w-50">
+<div class="container cardResult">
     <div class="row mb-5">
         <div class="col">
             <div class="card">
-                <div class="card-header text-center bg-primary">Client</div>
+                <div class="card-header text-center">CLIENT</div>
                 <div class="card-body card_result">
                     <p class="card-text">{{ app.session.get('civilStatus').civility }} {{ app.session.get('civilStatus').lastName }} {{ app.session.get('civilStatus').firstName }}</p>
                     <p class="card-text">{{ app.session.get('civilStatus').customerAddress }}</p>
@@ -12,15 +12,18 @@
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col">
+        <div class="col-6">
             <div class="card">
-                <div class="card-header text-center bg-primary">Fiscalité</div>
+                <div class="card-header text-center">FISCALITÉ</div>
                 <div class="card-body card_result">
                     <p class="card-text">Situation familiale : {{ app.session.get('taxation').familySituation }}</p>
                     <p class="card-text">Nombre d'enfants : {{ app.session.get('taxation').numberOfChildren }}</p>
-                    <p class="card-text">Nombre de parts fiscales : {{ app.session.get('taxation').numberOfTaxShares|number_format(1, ',', ' ') }}</p>
-                    <p class="card-text">Salaire déclaré : {{ app.session.get('taxation').salaryDeclared|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Revenu foncier : {{ app.session.get('taxation').landIncomes|number_format(0, ',', ' ') }} €</p>
+                    <p class="card-text">Nombre de parts fiscales
+                        : {{ app.session.get('taxation').numberOfTaxShares|number_format(1, ',', ' ') }}</p>
+                    <p class="card-text">Salaire déclaré
+                        : {{ app.session.get('taxation').salaryDeclared|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Revenu foncier
+                        : {{ app.session.get('taxation').landIncomes|number_format(0, ',', ' ') }} €</p>
                     <p class="card-text">BIC : {{ app.session.get('taxation').bic }} €</p>
                     <p class="card-text">BNC : {{ app.session.get('taxation').bnc }} €</p>
                     <p class="card-text">BA : {{ app.session.get('taxation').ba }} €</p>
@@ -28,21 +31,26 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row mb-5">
-        <div class="col">
+        <div class="col-6">
             <div class="card">
-                <div class="card-header text-center bg-primary">Investissement</div>
+                <div class="card-header text-center">INVESTISSEMENT</div>
                 <div class="card-body card_result">
-                    <p class="card-text">Adresse du bien : {{ app.session.get('finance').zipCode }} {{ city }}</p>
-                    <span class="badge badge-light">Zone {{ area }}</span>
-                    <p class="card-text">Date d'acquisition : {{ app.session.get('finance').acquisitionDate|date('d/m/Y') }}</p>
-                    <p class="card-text">Surface du bien : {{ app.session.get('finance').surfaceArea|number_format(2, ',', ' ') }} m<sup>2</sup></p>
-                    <p class="card-text">Prix d'acquisition : {{ app.session.get('finance').purchasePrice|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Montant du parking : {{ app.session.get('finance').parkingAmount|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Loyer mensuel : {{ app.session.get('finance').monthlyRent|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Apport : {{ app.session.get('finance').inflow|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Durée du financement : {{ app.session.get('finance').fundingPeriod|number_format(0, ',', ' ') }} mois </p>
+                    <p class="card-text">Adresse du bien : {{ app.session.get('finance').zipCode }} {{ city }} <span
+                                class="zone">Zone {{ area }}</span></p>
+                    <p class="card-text">Date d'acquisition
+                        : {{ app.session.get('finance').acquisitionDate|date('d/m/Y') }}</p>
+                    <p class="card-text">Surface du bien
+                        : {{ app.session.get('finance').surfaceArea|number_format(2, ',', ' ') }} m<sup>2</sup></p>
+                    <p class="card-text">Prix d'acquisition
+                        : {{ app.session.get('finance').purchasePrice|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Montant du parking
+                        : {{ app.session.get('finance').parkingAmount|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Loyer mensuel
+                        : {{ app.session.get('finance').monthlyRent|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Apport : {{ app.session.get('finance').inflow|number_format(2, ',', ' ') }}
+                        €</p>
+                    <p class="card-text">Durée du financement
+                        : {{ app.session.get('finance').fundingPeriod|number_format(0, ',', ' ') }} mois </p>
                     <p class="card-text">A.D.I. : {{ app.session.get('finance').adi|number_format(2, ',', ' ') }} €</p>
                 </div>
             </div>
@@ -51,16 +59,24 @@
     <div class="row mb-5">
         <div class="col">
             <div class="card">
-                <div class="card-header text-center bg-primary">Frais</div>
+                <div class="card-header text-center">FRAIS</div>
                 <div class="card-body card_result">
-                    <p class="card-text">Frais de gestion : {{ app.session.get('finance').managementFees|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Frais de notaire : {{ app.session.get('finance').notaryFees|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Honoraires de location : {{ app.session.get('finance').rentalFee|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Assurance du loyer : {{ app.session.get('finance').rentInsurance|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Charges de copropriété : {{ app.session.get('finance').coownershipCharges|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Taxe Foncière : {{ app.session.get('finance').propertyTax|number_format(0, ',', ' ') }} €</p>
-                    <p class="card-text">Autres frais d'acquisition : {{ app.session.get('finance').otherFeesAcquisition|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">Montant total de l'acquisition : {%  set totalAmount = app.session.get('finance').purchasePrice + app.session.get('finance').notaryFees + app.session.get('finance').otherFeesAcquisition %}
+                    <p class="card-text">Frais de gestion
+                        : {{ app.session.get('finance').managementFees|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Frais de notaire
+                        : {{ app.session.get('finance').notaryFees|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Honoraires de location
+                        : {{ app.session.get('finance').rentalFee|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Assurance du loyer
+                        : {{ app.session.get('finance').rentInsurance|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Charges de copropriété
+                        : {{ app.session.get('finance').coownershipCharges|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Taxe Foncière
+                        : {{ app.session.get('finance').propertyTax|number_format(0, ',', ' ') }} €</p>
+                    <p class="card-text">Autres frais d'acquisition
+                        : {{ app.session.get('finance').otherFeesAcquisition|number_format(2, ',', ' ') }} €</p>
+                    <p class="card-text">Montant total de l'acquisition
+                        : {% set totalAmount = app.session.get('finance').purchasePrice + app.session.get('finance').notaryFees + app.session.get('finance').otherFeesAcquisition %}
                         {{ totalAmount|number_format(2, ',', ' ') }} €</p>
                 </div>
             </div>
@@ -69,11 +85,31 @@
     <div class="row mb-5">
         <div class="col">
             <div class="card">
-                <div class="card-header text-center">Votre avantage fiscal</div>
-                <div class="card-body bg-primary">
-                    <p class="card-text">Amortissement sur {{ app.session.get('finance').duration }} ans : {{ resultTaxBenefit|number_format(2, ',', ' ') }} €</p>
+                <div class="card-header text-center">VOTRE AVANTAGE FISCAL</div>
+                <div class="card-body bg-secondary">
+                    <p class="card-text">Amortissement sur {{ app.session.get('finance').duration }} ans
+                        : {{ resultTaxBenefit|number_format(2, ',', ' ') }} €</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Années</th>
+            <th scope="col">Amortissement annuel</th>
+        </tr>
+        </thead>
+        <tbody>
+       {% for result in taxBenefitByYear %}
+       {% set startPeriod = app.session.get('finance').acquisitionDate|date('Y') %}
+        <tr class="table-primary">
+            <th scope="row">{{ startPeriod + loop.index0 }} </th>
+            <th> {{ result }} € </th>
+
+        </tr>
+       {% endfor %}
+        </tbody>
+    </table>
 </div>
