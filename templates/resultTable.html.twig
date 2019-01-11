@@ -88,12 +88,14 @@
                 <div class="card-header text-center">VOTRE AVANTAGE FISCAL</div>
                 <div class="card-body bg-secondary">
                     <p class="card-text">Amortissement sur {{ app.session.get('finance').duration }} ans
-                        : {{ resultTaxBenefit|number_format(2, ',', ' ') }} €</p>
+                        : {% if area != "C" %}
+                        {{ resultTaxBenefit|number_format(2, ',', ' ') }}
+                        {%  else %} 0 {% endif %}€</p>
                 </div>
             </div>
         </div>
     </div>
-
+    {% if area != "C" %}
     <table class="table table-hover">
         <thead>
         <tr>
@@ -112,4 +114,5 @@
        {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 </div>
