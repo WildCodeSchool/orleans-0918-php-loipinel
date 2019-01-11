@@ -109,7 +109,7 @@ class ResultPageController extends AbstractController
 
         $city = $apiAddressRequest->getCityApi($finance->getZipCode(), $finance->getCity());
 
-        $taxBenefitByYear = $taxBenefit->taxBenefitByYear($finance);
+        $taxBenefitByYear = $taxBenefit->taxBenefitByYear($dataPinelJson, $finance);
 
         /* creating the pdf from html page */
         $html = $this->renderView('resume.html.twig', [
