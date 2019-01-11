@@ -14,7 +14,7 @@ class Taxation
 {
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      * @Assert\Choice(callback="getFamilySituations",
      *     message="Veuillez sélectionner une situation familiale parmi celles proposées")
@@ -23,7 +23,7 @@ class Taxation
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(0)
      */
@@ -31,7 +31,7 @@ class Taxation
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
@@ -39,7 +39,7 @@ class Taxation
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\GreaterThan(0)
      * @Assert\Type("float")
      */
@@ -75,7 +75,7 @@ class Taxation
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\GreaterThanOrEqual(0)
      * @Assert\Type("int")
      */
@@ -104,8 +104,8 @@ class Taxation
     {
         return ['célibataire' => 'célibataire',
             'en concubinage' => 'en concubinage',
-            'mariés' => 'mariés',
-            'pacsés' => 'pacsés',
+            'marié(e)' => 'marié(e)',
+            'pacsé(e)' => 'pacsé(e)',
             'divorcé(e)' => 'divorcé(e)'];
     }
 

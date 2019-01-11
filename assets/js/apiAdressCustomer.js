@@ -1,14 +1,23 @@
 let zipcode = document.getElementById('civil_status_customerZipCode');
+
+window.addEventListener('load', function (e) {
+    getCity();
+});
+
 zipcode.addEventListener('input', function (e) {
+    getCity();
+});
+
+function getCity() {
     let postalCode = $('#civil_status_customerZipCode').val();
     $('#civil_status_customerCity').empty();
 
-    if (this.value.length === 5) {
+    if (postalCode.length === 5) {
         fetch("https://api-adresse.data.gouv.fr/search/?q=" + postalCode + "&limit=100")
             .then((resp) => resp.json())
             .then((data) => fillSelector(data.features, postalCode))
     }
-});
+}
 
 function fillSelector(data, postalCode) {
 
@@ -25,5 +34,8 @@ function fillSelector(data, postalCode) {
             newOptionElt.innerText = cityData.properties.city;
             selectElt.appendChild(newOptionElt);
         }
+    }
+    if(selectElt.dataset.city) {
+        selectElt.value =selectElt.dataset.city;
     }
 }

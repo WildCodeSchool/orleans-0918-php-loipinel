@@ -42,7 +42,7 @@ class UserPasswordController extends AbstractController
 
                 $this->addFlash('success', 'Votre mot de passe a bien été enregistré');
 
-                return $this->redirectToRoute('simulator_show');
+                return $this->redirectToRoute('civilStatus_show');
             } else {
                 $this->addFlash('danger', 'Mot de passe actuel incorrect');
             }

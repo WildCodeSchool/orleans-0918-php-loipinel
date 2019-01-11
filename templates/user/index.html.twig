@@ -22,7 +22,7 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.lastName }}</td>
                     <td>{{ user.firstName }}</td>
-                    <td>{% if user.granted('ROLE_ADMIN') %}Administrateur
+                    <td>{% if "ROLE_ADMIN" in user.roles %}Administrateur
                         {% else %}Utilisateur
                         {% endif %}
                     </td>

@@ -27,9 +27,13 @@ $secondaryColor: #989898;
 $trashColor: #FF0000;
 $whiteColor: #FFFFFF;
 $black: #000000;
+$cardColor: #f3fbfa;
+$resultColor: #5fd3bc;
+$backgroundCard: #f3fbfa;
+$backgroundZone: #bababa;
 
 body {
-  padding-top:60px;
+  padding-top: 60px;
   font-family: BrandonText, serif;
   font-size: 16pt;
   color: $black;
@@ -45,6 +49,7 @@ table, th, td {
   height: 5vh;
   max-width: 100vw;
   margin-bottom: 2vh;
+
   h1 {
     color: $black;
     font-weight: bold;
@@ -78,28 +83,28 @@ table {
 .username {
   white-space: nowrap;
   margin-right: 1vw;
-  color: white;
+  color: $whiteColor;
 }
 
 .projet {
   white-space: nowrap;
   font-family: Projet IO, serif;
-  color: white;
+  color: $whiteColor;
+
   span {
     color: $colorIO;
   }
 }
 
 a:hover {
-  text-decoration:none;
+  text-decoration: none;
 }
 
 .navbar.bg-dark {
   background-image: none;
 }
 
-h1
-{
+h1 {
   text-align: center;
   color: $whiteColor;
   padding: 0.3vw;
@@ -107,12 +112,13 @@ h1
 
 .pdfTitle {
   h1 {
+    color: $resultColor;
     font-weight: bold;
   }
 }
 
 div.pdfResult {
-  color: white;
+  color: $whiteColor;
 }
 
 a {
@@ -158,11 +164,10 @@ input[type="date"]::-webkit-clear-button {
 }
 
 .resetPassword {
-  margin-top: 20vh;
+  margin-top: 10vh;
 }
 
-.container
-{
+.container {
   margin-top: 2vw;
   margin-bottom: 2vw;
   padding: 1vw;
@@ -200,11 +205,40 @@ input[type="date"]::-webkit-clear-button {
 
 .navbarform {
   font-size: 20pt;
+  margin-top: 5pt;
 }
+
 .btn-primary {
   font-size: 17pt;
 }
+
 .previous {
   text-align: left;
   font-size: 18pt;
+}
+
+.previousForm {
+  color: $whiteColor;
+}
+
+.result {
+  background-color: $resultColor;
+}
+
+.cardResult {
+  .card {
+    border: none;
+    background-color: $backgroundCard;
+    .card-header {
+      color: $resultColor;
+      border: none;
+      font-size: 18pt;
+      font-weight: bold;
+    }
+  }
+}
+
+.zone {
+  background-color: $backgroundZone;
+  color: $whiteColor;
 }
