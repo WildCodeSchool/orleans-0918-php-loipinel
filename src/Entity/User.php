@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -53,9 +52,6 @@ class User implements UserInterface
      *      minMessage = "Votre mot de passe ne doit faire moins de {{min}} caractères",
      *      maxMessage = "Votre mot de passe est trop long"
      * )
-     * @SecurityAssert\UserPassword(
-     *     message = "Mot de passe actuel incorrect"
-     * )
      * @Assert\Type("string")
      */
     private $password;
@@ -79,7 +75,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -95,7 +91,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -127,7 +123,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -143,7 +139,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
@@ -159,7 +155,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
