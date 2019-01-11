@@ -104,8 +104,8 @@ class Taxation
     {
         return ['célibataire' => 'célibataire',
             'en concubinage' => 'en concubinage',
-            'mariés' => 'mariés',
-            'pacsés' => 'pacsés',
+            'marié(e)' => 'marié(e)',
+            'pacsé(e)' => 'pacsé(e)',
             'divorcé(e)' => 'divorcé(e)'];
     }
 
