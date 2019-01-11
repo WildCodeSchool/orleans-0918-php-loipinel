@@ -79,7 +79,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -95,7 +95,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -127,7 +127,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -143,7 +143,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getLastName()
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
@@ -159,7 +159,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getFirstName()
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
