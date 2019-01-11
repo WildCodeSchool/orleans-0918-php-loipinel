@@ -14,7 +14,7 @@ class CivilStatus
 {
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      * @Assert\Choice(callback="getCivilities",
      *      message="Veuillez sélectionner un genre parmi ceux proposés")
@@ -23,7 +23,7 @@ class CivilStatus
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      * @Assert\Length(max = 80, maxMessage = "Ce champ ne peux contenir plus de 80 caractères.")
      */
@@ -31,7 +31,7 @@ class CivilStatus
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      * @Assert\Length(max = 80,  maxMessage = "Ce champ ne peux contenir plus de 80 caractères.")
      */
@@ -39,14 +39,14 @@ class CivilStatus
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      */
     private $customerAddress;
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Regex("/[0-9]/")
      * @Assert\Length(min = 5, maxMessage = "Ce champ ne peux contenir moins de 5 chiffres.")
      * @Assert\Length(max = 5, maxMessage = "Ce champ ne peux contenir plus de 5 chiffres.")
@@ -55,7 +55,7 @@ class CivilStatus
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      */
     private $customerCity;
