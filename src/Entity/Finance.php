@@ -4,8 +4,15 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class Finance
+ * @package App\Entity
+ */
 class Finance
 {
+    /**
+     * @var int
+     */
     private $id;
 
     // ***************************************************Investissement***********************************************
