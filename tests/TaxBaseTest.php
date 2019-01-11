@@ -3,18 +3,37 @@
 namespace Tests;
 
 use App\Entity\RealEstateProperty;
+use App\Entity\Variable;
 use App\Repository\VariableRepository;
 use App\Service\TaxBenefit;
+use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\Common\Persistence\ObjectRepository;
 use PHPUnit\Framework\TestCase;
 
 class TaxBaseTest extends TestCase
 {
+    private $variableRepository;
+
+    public function setUp()
+    {
+        $this->variableRepository = $this->createMock(VariableRepository::class);
+
+        $variable = new Variable();
+        $variable->setMaximumTaxBase(10);
+        $variable->setMaximumPricePerSquareMeter(1);
+
+        $this->variableRepository->expects($this->any())
+            ->method('findOneBy')
+            ->willReturn($variable);
+
+    }
     public function testBaseUnderMax()
     {
+
         $realEstateProperty = new RealEstateProperty();
         $realEstateProperty->setSurfaceArea(100);
         $realEstateProperty->setPurchasePrice(400000);
-        $taxBenefit = new TaxBenefit();
+        $taxBenefit = new TaxBenefit($this->variableRepository);
         $taxBenefit->setRealEstate($realEstateProperty);
         $this->assertEquals(400000, $taxBenefit->calculateTaxBase());
 
@@ -47,7 +66,7 @@ class TaxBaseTest extends TestCase
         $realEstateProperty = new RealEstateProperty();
         $realEstateProperty->setSurfaceArea(100);
         $realEstateProperty->setPurchasePrice(1000000);
-        $taxBenefit = new TaxBenefit($this->getVariable());
+        $taxBenefit = new TaxBenefit($this->variableRepository);
         $taxBenefit->setRealEstate($realEstateProperty);
         $this->assertEquals(550000, $taxBenefit->calculateTaxBase());
 
@@ -78,7 +97,7 @@ class TaxBaseTest extends TestCase
         $realEstateProperty = new RealEstateProperty();
         $realEstateProperty->setSurfaceArea(25.75);
         $realEstateProperty->setPurchasePrice(125000);
-        $taxBenefitResult = new TaxBenefit($this->getVariable());
+        $taxBenefitResult = new TaxBenefit($this->variableRepository);
         $taxBenefitResult->setRentalPeriod(12);
         $taxBenefitResult->setRealEstate($realEstateProperty);
         $this->assertEquals(26250, $taxBenefitResult->calculateTaxBenefit());
@@ -101,7 +120,7 @@ class TaxBaseTest extends TestCase
         $realEstateProperty = new RealEstateProperty();
         $realEstateProperty->setSurfaceArea(100);
         $realEstateProperty->setPurchasePrice(1000000);
-        $taxBenefitResult = new TaxBenefit($this->getVariable());
+        $taxBenefitResult = new TaxBenefit($this->variableRepository);
         $taxBenefitResult->setRealEstate($realEstateProperty);
         $taxBenefitResult->setRentalPeriod(12);
         $this->assertEquals(63000, $taxBenefitResult->calculateTaxBenefit());
