@@ -35,7 +35,7 @@
             <div class="card">
                 <div class="card-header text-center">INVESTISSEMENT</div>
                 <div class="card-body card_result">
-                    <p class="card-text">Adresse du bien: {{ app.session.get('finance').zipCode }} {{ city }} <span
+                    <p class="card-text">Adresse du bien : {{ app.session.get('finance').zipCode }} {{ city }} <span
                                 class="zone">Zone {{ area }}</span></p>
                     <p class="card-text">Date d'acquisition
                         : {{ app.session.get('finance').acquisitionDate|date('d/m/Y') }}</p>
