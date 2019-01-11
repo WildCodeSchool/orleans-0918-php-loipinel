@@ -211,7 +211,7 @@ class Finance
     /**
      * @param string $city
      */
-    public function setCity(string $city): void
+    public function setCity(string $city = null): void
     {
         $this->city = $city;
     }

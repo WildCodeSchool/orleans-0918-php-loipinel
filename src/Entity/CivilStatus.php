@@ -163,7 +163,7 @@ class CivilStatus
     /**
      * @param string $customerCity
      */
-    public function setCustomerCity(string $customerCity): void
+    public function setCustomerCity(string $customerCity = null): void
     {
         $this->customerCity = $customerCity;
     }
