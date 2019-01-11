@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use App\Entity\Finance;
+use App\Service\DataPinelJson;
 use App\Entity\RealEstateProperty;
 use App\Repository\VariableRepository;
 
@@ -45,9 +47,9 @@ class TaxBenefit
     private function ratesByDuration()
     {
         return $tableOfRatesByDuration = [
-        6 => $this->getVariable()->getRateFor6years(),
-        9 => $this->getVariable()->getRateFor9years(),
-        12 => $this->getVariable()->getRateFor12years(),
+            6 => $this->getVariable()->getRateFor6years(),
+            9 => $this->getVariable()->getRateFor9years(),
+            12 => $this->getVariable()->getRateFor12years(),
         ];
     }
 
@@ -91,9 +93,11 @@ class TaxBenefit
 
     /**
      * Calcule l'avantage fiscal annuel en se basant sur l'avantage fiscal total et la durée du plan
+     * @param \App\Service\DataPinelJson $dataPinelJson
+     * @param Finance $finance
      * @return array
      */
-    public function taxBenefitByYear() : array
+    public function taxBenefitByYear(DataPinelJson $dataPinelJson, Finance $finance) : array
     {
         $this->setTaxBase($this->calculateTaxBase());
 
@@ -102,29 +106,34 @@ class TaxBenefit
         } else {
             $taxBase = $this->taxBase;
         }
+        $acquisitionDate = date_format($finance->getAcquisitionDate(), 'Y-m-d H:i:s');
+        if ($dataPinelJson->getPinelArea($acquisitionDate, $finance->getCity()) != "C") {
+            $taxBenefitByYear = [];
 
-        $taxBenefitByYear = [];
-        $totalRate = $this->ratesByDuration()[$this->getRentalPeriod()];
-        $ratePerYear = ($totalRate * 2) / 21;
-        $taxBenefit = $taxBase * $this->ratesByDuration()[$this->getRentalPeriod()];
-        if (($this->getRentalPeriod()) <= 9) {
-            for ($i = 1; $i <= ($this->getRentalPeriod()); $i++) {
-                $taxBenefitByYear[] = $taxBenefit / $this->getRentalPeriod();
+            $totalRate = $this->ratesByDuration()[$this->getRentalPeriod()];
+            $ratePerYear = ($totalRate * 2) / 21;
+            $taxBenefit = $taxBase * $this->ratesByDuration()[$this->getRentalPeriod()];
+            if (($this->getRentalPeriod()) <= 9) {
+                for ($i = 1; $i <= ($this->getRentalPeriod()); $i++) {
+                    $taxBenefitByYear[] = $taxBenefit / $this->getRentalPeriod();
+                }
             }
-        }
-        if (($this->getRentalPeriod()) == 12) {
-            for ($i=1; $i <=9; $i++) {
-                $taxBenefitByYear[] = $taxBase *$ratePerYear;
+            if (($this->getRentalPeriod()) == 12) {
+                for ($i = 1; $i <= 9; $i++) {
+                    $taxBenefitByYear[] = $taxBase * $ratePerYear;
+                }
+                for ($i = 0; $i < 3; $i++) {
+                    $taxBenefitByYear[] = $taxBase * ($ratePerYear / 2);
+                }
             }
-            for ($i=0; $i < 3; $i++) {
-                $taxBenefitByYear[] = $taxBase *($ratePerYear/2);
+            for ($i = 0; $i < 3; $i++) {
+                $taxBenefitByYear[] = 0;
             }
+            return $taxBenefitByYear;
         }
-        for ($i=0; $i < 3; $i++) {
-            $taxBenefitByYear[] = 0;
+        else {
+            return $taxBenefitByYear = [];
         }
-
-        return $taxBenefitByYear;
     }
 
     /**
