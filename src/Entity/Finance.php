@@ -20,7 +20,7 @@ class Finance
     // ***************************************************Investissement***********************************************
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Regex("/[0-9]/")
      * @Assert\Length(min = 5)
      * @Assert\Length(max = 5, maxMessage = "Ce champ ne peux contenir plus de 5 chiffres.")
@@ -29,34 +29,34 @@ class Finance
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("string")
      */
     private $city;
 
     /**
      * @var string
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      */
     private $zone;
 
     /**
      * @var \DateTime
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("\DateTime")
      */
     private $acquisitionDate;
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Choice(callback="getDurations")
      */
     private $duration;
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\GreaterThan(0)
      * @Assert\Type("float")
      */
@@ -64,7 +64,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\GreaterThan(0)
      * @Assert\Type("int")
      */
@@ -79,7 +79,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThan(0)
      */
@@ -94,7 +94,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThan(0)
      */
@@ -103,7 +103,7 @@ class Finance
     // ***************************************************Financement*************************************************
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(0)
      */
@@ -111,7 +111,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(0)
      */
@@ -119,7 +119,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThanOrEqual(0)
      */
@@ -127,7 +127,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThan(0)
      */
@@ -136,7 +136,7 @@ class Finance
     // ***************************************************Frais***************************************************
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
@@ -144,7 +144,7 @@ class Finance
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
@@ -152,7 +152,7 @@ class Finance
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
@@ -160,7 +160,7 @@ class Finance
 
     /**
      * @var float
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("float")
      * @Assert\GreaterThan(0)
      */
@@ -168,7 +168,7 @@ class Finance
 
     /**
      * @var int
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez remplir ce Champ")
      * @Assert\Type("int")
      * @Assert\GreaterThan(0)
      */
@@ -243,7 +243,7 @@ class Finance
     /**
      * @param \DateTime $acquisitionDate
      */
-    public function setAcquisitionDate(\DateTime $acquisitionDate): void
+    public function setAcquisitionDate(?\DateTime $acquisitionDate): void
     {
         $this->acquisitionDate = $acquisitionDate;
     }
