@@ -12,6 +12,4 @@ require('../css/app.scss');
 var $ = require('jquery');
 require('bootstrap');
 
-const logoPath = require('../images/favicon.ico');
-
-var html = `<img src="${logoPath}">`;
+require('../images/favicon.ico');
