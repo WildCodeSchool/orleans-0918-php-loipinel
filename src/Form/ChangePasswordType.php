@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ChangePasswordType extends AbstractType
 {
@@ -16,7 +18,8 @@ class ChangePasswordType extends AbstractType
         $builder
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe actuel',
-            ])
+                ])
+
             ->add('newPassword', RepeatedType::class, [
                 'type'            => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent être identiques',
@@ -25,10 +28,29 @@ class ChangePasswordType extends AbstractType
                         'class' => 'password-field',
                     ],
                 ],
-                'first_options'   => ['label' => 'Nouveau mot de passe '],
-                'second_options'  => ['label' => 'Répéter nouveau mot de passe'],
+                'first_options'   => ['label' => 'Nouveau mot de passe ', 'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de 6 caractères',
+                        'max' => 180
+                    ]),
+                ],],
+                'second_options'  => ['label' => 'Répéter nouveau mot de passe', 'constraints' => [
+        new NotBlank([
+            'message' => 'Please enter a password',
+        ]),
+        new Length([
+            'min' => 6,
+            'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de 6 caractères',
+            'max' => 180
+        ]),
+        ],],
                 'required'        => true,
-            ])
+                ])
+
             ->add('changePassword', SubmitType::class, [
                 'label' => 'Changer le mot de passe',
                 'attr'  => [
