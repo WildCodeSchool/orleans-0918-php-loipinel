@@ -40,37 +40,45 @@ class FinanceType extends AbstractType
         $builder->add('surfaceArea', NumberType::class, [
             'label' => 'Surface en M²',
             'scale' => 2,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('purchasePrice', MoneyType::class, [
             'label' => 'Prix d\'achat',
             'grouping' => true,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('parkingAmount', MoneyType::class, [
             'label' => 'Montant du parking',
             'grouping' => true,
             'data' => 0,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('notaryFees', MoneyType::class, [
             'label' => 'Frais de notaire',
             'grouping' => true,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('otherFeesAcquisition', MoneyType::class, [
             'label' => 'Autres frais d\'acquisition',
             'grouping' => true,
             'data' => 0,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
 
         $builder->add('monthlyRent', MoneyType::class, [
             'label' => 'Loyer mensuel',
             'grouping' => true,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('borrowedAmount', MoneyType::class, [
             'label' => "Montant emprunté",
             'grouping' => true,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('inflow', MoneyType::class, [
             'label' => 'Apport',
             'grouping' => true,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('fundingPeriod', IntegerType::class, [
             'label' => "Durée du financement",
@@ -80,25 +88,31 @@ class FinanceType extends AbstractType
         $builder->add('adi', NumberType::class, [
             'label' => "A.D.I.",
             'help' => "Assurance Décès Invalidité exprimée en euros",
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('managementFees', NumberType::class, [
             'label' => "Frais de gestion",
             'help' => "Exprimés en euros.",
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('rentalFee', NumberType::class, [
             'label' => "Honoraires de location",
             'help' => "Exprimés en euros.",
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('rentInsurance', NumberType::class, [
             'label' => "Assurance du loyer",
             'help' => "Exprimés en euros.",
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('coownershipCharges', NumberType::class, [
             'label' => "Charges de copropriété",
             'help' => "Exprimés en euros.",
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('propertyTax', MoneyType::class, [
             'label' => "Taxe foncière",
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->getForm();
     }
