@@ -31,6 +31,8 @@ $cardColor: #f3fbfa;
 $resultColor: #5fd3bc;
 $backgroundCard: #f3fbfa;
 $backgroundZone: #bababa;
+$colorAvantage: #E0E0E0;
+
 
 body {
   padding-top: 60px;
@@ -241,4 +243,7 @@ input[type="date"]::-webkit-clear-button {
 .zone {
   background-color: $backgroundZone;
   color: $whiteColor;
+}
+.avantage {
+  background-color: $colorAvantage;
 }

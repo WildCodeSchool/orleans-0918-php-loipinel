@@ -14,7 +14,8 @@
 
         <div class="text-right mt-3">
             <a class="btn btn-dark text-white" href="{{ path('user_reset_password', {'user': user.id}) }}"><i class="fas fa-key"></i> Réinitialiser mot de passe</a>
-            <div class="d-inline-block">{{ include('user/_delete_form.html.twig') }}</div>
+            {% if app.user != user %}<div class="d-inline-block">{{ include('user/_delete_form.html.twig') }}</div>
+            {% endif %}
         </div>
 
         <a class="btn btn-light" href="{{ path('user_index') }}"><i class="fas fa-arrow-left"></i> Retour</a>
