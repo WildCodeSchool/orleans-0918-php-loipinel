@@ -34,7 +34,7 @@ class ChangePasswordType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de 6 caractères',
+                        'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de {{ limit }} caractères',
                         'max' => 180
                     ]),
                 ],],
@@ -44,7 +44,7 @@ class ChangePasswordType extends AbstractType
                 ]),
                 new Length([
                     'min' => 6,
-                    'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de 6 caractères',
+                    'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de {{ limit }} caractères',
                     'max' => 180
                 ]),
                 ],],
