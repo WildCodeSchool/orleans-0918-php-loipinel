@@ -86,7 +86,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header text-center">VOTRE AVANTAGE FISCAL</div>
-                <div class="card-body bg-secondary">
+                <div class="card-body avantage">
                     <p class="card-text">Amortissement sur {{ app.session.get('finance').duration }} ans
                         :  {% if not taxBenefitByYear is empty %}
                         {{ resultTaxBenefit|number_format(2, ',', ' ') }}
