@@ -30,7 +30,7 @@ class ChangePasswordType extends AbstractType
                 ],
                 'first_options'   => ['label' => 'Nouveau mot de passe ', 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Merci de renseigner un mot de passe.',
                     ]),
                     new Length([
                         'min' => 6,
@@ -40,7 +40,7 @@ class ChangePasswordType extends AbstractType
                 ],],
                 'second_options'  => ['label' => 'Répéter nouveau mot de passe', 'constraints' => [
                 new NotBlank([
-                'message' => 'Please enter a password',
+                'message' => 'Merci de renseigner un mot de passe.',
                 ]),
         new Length([
             'min' => 6,
