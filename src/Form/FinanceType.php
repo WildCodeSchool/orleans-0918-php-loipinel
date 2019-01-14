@@ -73,7 +73,7 @@ class FinanceType extends AbstractType
         $builder->add('borrowedAmount', MoneyType::class, [
             'label' => "Montant emprunté",
             'grouping' => true,
-            'invalid_message' => 'Ce champ ne peu contenir que des chiffres' ,
+            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
         ]);
         $builder->add('inflow', MoneyType::class, [
             'label' => 'Apport',
