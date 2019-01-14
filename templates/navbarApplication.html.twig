@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {% if app.request.get('_route') == 'civilStatus_show' %} active {% endif %}" href="{{ path('civilStatus_show') }}">Simulateur</a>
+                <a class="nav-link {% if app.request.get('_route') == 'civilStatus_show' or app.request.get('_route') == 'taxation_show' or app.request.get('_route') == 'finances' %} active {% endif %}" href="{{ path('civilStatus_show') }}">Simulateur</a>
             </li>
             {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item">
