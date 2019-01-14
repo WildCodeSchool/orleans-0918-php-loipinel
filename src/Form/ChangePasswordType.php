@@ -42,11 +42,11 @@ class ChangePasswordType extends AbstractType
                 new NotBlank([
                 'message' => 'Merci de renseigner un mot de passe.',
                 ]),
-        new Length([
-            'min' => 6,
-            'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de 6 caractères',
-            'max' => 180
-        ]),
+                new Length([
+                    'min' => 6,
+                    'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de 6 caractères',
+                    'max' => 180
+                ]),
                 ],],
                 'required'        => true,
                 ])
