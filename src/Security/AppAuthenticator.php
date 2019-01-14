@@ -74,7 +74,7 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('L\'e-mail est obligatoire.');
+            throw new CustomUserMessageAuthenticationException('Le couple identifiant/mot de passe est inconnu');
         }
 
         return $user;
