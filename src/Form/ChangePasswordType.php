@@ -39,15 +39,15 @@ class ChangePasswordType extends AbstractType
                     ]),
                 ],],
                 'second_options'  => ['label' => 'Répéter nouveau mot de passe', 'constraints' => [
-        new NotBlank([
-            'message' => 'Please enter a password',
-        ]),
+                new NotBlank([
+                'message' => 'Please enter a password',
+                ]),
         new Length([
             'min' => 6,
             'minMessage' => 'Votre nouveau mot de passe ne doit pas faire moins de 6 caractères',
             'max' => 180
         ]),
-        ],],
+                ],],
                 'required'        => true,
                 ])
 
