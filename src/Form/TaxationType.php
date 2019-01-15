@@ -36,17 +36,17 @@ class TaxationType extends AbstractType
         ]);
         $builder->add('numberOfTaxShares', NumberType::class, [
             'label' => "Nombre de parts fiscales",
-            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
+            'invalid_message' => 'Ce champ ne doit contenir que des chiffres' ,
         ]);
 
         $builder->add('salaryDeclared', MoneyType::class, [
             'label' => "Salaire déclaré",
-            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
+            'invalid_message' => 'Ce champ ne doit contenir que des chiffres' ,
         ]);
         $builder->add('landIncomes', MoneyType::class, [
             'label' => "Revenus fonciers",
             'data' => 0,
-            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
+            'invalid_message' => 'Ce champ ne doit contenir que des chiffres' ,
 
         ]);
 
@@ -55,25 +55,25 @@ class TaxationType extends AbstractType
             'help' => "Bénéfices Industriels et Commerciaux",
             'required' => false,
             'data' => 0,
-            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
+            'invalid_message' => 'Ce champ ne doit contenir que des chiffres' ,
         ]);
         $builder->add('bnc', MoneyType::class, [
             'label' => "B.N.C.",
             'help' => "Bénéfices Non Commerciaux",
             'required' => false,
             'data' => 0,
-            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
+            'invalid_message' => 'Ce champ ne doit contenir que des chiffres' ,
         ]);
         $builder->add('ba', MoneyType::class, [
             'label' => "B.A.",
             'help' => "Bénéfices Agricoles",
             'required' => false,
             'data' => 0,
-            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
+            'invalid_message' => 'Ce champ ne doit contenir que des chiffres' ,
         ]);
         $builder->add('incomeTax', MoneyType::class, [
             'label' => "Impôt sur le revenu",
-            'invalid_message' => 'Ce champ ne peut contenir que des chiffres' ,
+            'invalid_message' => 'Ce champ ne doit contenir que des chiffres' ,
         ]);
     }
 }
