@@ -84,7 +84,7 @@ class UserController extends AbstractController
     {
         if ($this->getUser() === $user) {
             $this->addFlash(
-                'notice',
+                'danger',
                 'Cette action est impossible !'
             );
         } else {
@@ -93,8 +93,7 @@ class UserController extends AbstractController
                 $em->remove($user);
                 $em->flush();
             }
-
-            return $this->redirectToRoute('user_index');
         }
+        return $this->redirectToRoute('user_index');
     }
 }
