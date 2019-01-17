@@ -58,14 +58,6 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_show", methods="GET")
-     */
-    public function show(User $user): Response
-    {
-        return $this->render('user/show.html.twig', ['user' => $user]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, User $user): Response
@@ -92,7 +84,7 @@ class UserController extends AbstractController
     {
         if ($this->getUser() === $user) {
             $this->addFlash(
-                'notice',
+                'danger',
                 'Cette action est impossible !'
             );
         } else {
@@ -101,8 +93,7 @@ class UserController extends AbstractController
                 $em->remove($user);
                 $em->flush();
             }
-
-            return $this->redirectToRoute('user_index');
         }
+        return $this->redirectToRoute('user_index');
     }
 }
