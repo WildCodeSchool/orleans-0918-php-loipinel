@@ -35,6 +35,9 @@
             {% endfor %}
             </tbody>
         </table>
+        {{ form_start(form) }}
+        {{ form_row(form.jsonFile) }}
+        {{ form_end(form) }}
     </div>
 
 {% endblock %}

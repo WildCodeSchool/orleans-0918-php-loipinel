@@ -62,6 +62,9 @@ class Variable
      */
     private $rateFor12Years;
 
+
+    private $jsonFile;
+
     /**
      * @return mixed
      */
@@ -157,4 +160,17 @@ class Variable
     {
         $this->rateFor12Years = $rateFor12Years;
     }
+
+    public function getJsonFile(): ?string
+    {
+        return $this->jsonFile;
+    }
+
+    public function setJsonFile(string $jsonFile): self
+    {
+        $this->jsonFile = $jsonFile;
+
+        return $this;
+    }
+
 }
