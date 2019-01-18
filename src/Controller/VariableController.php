@@ -21,38 +21,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class VariableController extends AbstractController
 {
     /**
-     * @Route("/", name="variable_index", methods="GET")
+     * @Route("/", name="variable_index", methods="GET|POST")
      */
-    public function index(VariableRepository $variableRepository): Response
-    {
-        return $this->render('variable/index.html.twig', ['variables' => $variableRepository->findAll()]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
-     */
-    public function edit(Request $request, Variable $variable): Response
-    {
-        $form = $this->createForm(VariableType::class, $variable);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('variable_index', ['id' => $variable->getId()]);
-        }
-
-        return $this->render('variable/edit.html.twig', [
-            'variable' => $variable,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/json", name="json_index")
-
-     */
-    public function uploadJsonFile(Request $request, VariableRepository $variableRepository): Response
+    public function index(Request $request, VariableRepository $variableRepository): Response
     {
         $uploadJson = new UploadJson();
         $formJson = $this->createForm(JsonFileType::class, $uploadJson);
@@ -74,13 +45,30 @@ class VariableController extends AbstractController
             // updates the 'brochure' property to store the PDF file name
             // instead of its contents
             $uploadJson->setJsonFile($fileName);
+        }
+            return $this->render('variable/index.html.twig', [
+                'form' => $formJson->createView(),
+                'variables' => $variableRepository->findAll()
+            ]);
+    }
 
-            // ... persist the $product variable or any other work
+    /**
+     * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
+     */
+    public function edit(Request $request, Variable $variable): Response
+    {
+        $form = $this->createForm(VariableType::class, $variable);
+        $form->handleRequest($request);
 
-            return $this->redirect($this->generateUrl('variable_index'));
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('variable_index', ['id' => $variable->getId()]);
         }
 
-        return $this->render('variable/index.html.twig', [
-            'form' => $formJson->createView(),'variables' => $variableRepository->findAll()]);
+        return $this->render('variable/edit.html.twig', [
+            'variable' => $variable,
+            'form' => $form->createView(),
+        ]);
     }
 }
