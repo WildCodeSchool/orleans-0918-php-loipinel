@@ -2,9 +2,15 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class UploadJson
 {
-
+    /**
+     * @Assert\File
+     *
+     *
+     */
     private $jsonFile;
 
 
