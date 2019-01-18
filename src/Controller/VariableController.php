@@ -47,6 +47,7 @@ class VariableController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/json", name="json_index")
 
@@ -54,12 +55,12 @@ class VariableController extends AbstractController
     public function uploadJsonFile(Request $request, VariableRepository $variableRepository): Response
     {
         $uploadJson = new UploadJson();
-        $form = $this->createForm(JsonFileType::class, $uploadJson);
-        $form->handleRequest($request);
+        $formJson = $this->createForm(JsonFileType::class, $uploadJson);
+        $formJson->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($formJson->isSubmitted() && $formJson->isValid()) {
             $file = $uploadJson->getJsonFile();
-            $fileName = 'bidule.json';
+            $fileName = 'pinel.json';
 
             try {
                 $file->move(
@@ -80,6 +81,6 @@ class VariableController extends AbstractController
         }
 
         return $this->render('variable/index.html.twig', [
-            'form' => $form->createView(),'variables' => $variableRepository->findAll()]);
+            'form' => $formJson->createView(),'variables' => $variableRepository->findAll()]);
     }
 }
