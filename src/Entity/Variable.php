@@ -63,8 +63,6 @@ class Variable
     private $rateFor12Years;
 
 
-    private $jsonFile;
-
     /**
      * @return mixed
      */

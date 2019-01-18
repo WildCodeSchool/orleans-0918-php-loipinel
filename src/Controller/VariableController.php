@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Variable;
+use App\Entity\UploadJson;
 use App\Form\JsonFileType;
 use App\Form\VariableType;
 use App\Repository\VariableRepository;
@@ -48,21 +49,18 @@ class VariableController extends AbstractController
     }
     /**
      * @Route("/json", name="json_index")
+
      */
     public function uploadJsonFile(Request $request, VariableRepository $variableRepository): Response
     {
-        $variable = new Variable();
-        $form = $this->createForm(JsonFileType::class, $variable);
+        $uploadJson = new UploadJson();
+        $form = $this->createForm(JsonFileType::class, $uploadJson);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $file stores the uploaded PDF file
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            $file = $variable->getJsonFile();
-
+            $file = $uploadJson->getJsonFile();
             $fileName = 'bidule.json';
 
-            // Move the file to the directory where brochures are stored
             try {
                 $file->move(
                     $this->getParameter('jsonFile_directory'),
@@ -74,11 +72,11 @@ class VariableController extends AbstractController
 
             // updates the 'brochure' property to store the PDF file name
             // instead of its contents
-            $variable->setJsonFile($fileName);
+            $uploadJson->setJsonFile($fileName);
 
             // ... persist the $product variable or any other work
 
-            return $this->redirect($this->generateUrl('finances'));
+            return $this->redirect($this->generateUrl('variable_index'));
         }
 
         return $this->render('variable/index.html.twig', [
