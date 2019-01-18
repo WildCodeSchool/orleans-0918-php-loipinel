@@ -42,9 +42,8 @@ class VariableController extends AbstractController
                 // ... handle exception if something happens during file upload
             }
 
-            // updates the 'brochure' property to store the PDF file name
-            // instead of its contents
             $uploadJson->setJsonFile($fileName);
+            $this->addFlash('success', 'Votre fichier a bien été enregistré !');
         }
             return $this->render('variable/index.html.twig', [
                 'form' => $formJson->createView(),
