@@ -33,7 +33,7 @@ class VariableController extends AbstractController
             $file = $uploadJson->getJsonFile();
 
             if (mime_content_type($file->getRealPath()) == "text/plain") {
-                $fileName = 'pinel.json';
+                $fileName = $this->getParameter('jsonFile_name');
 
                 try {
                     $file->move(
