@@ -39,7 +39,7 @@ class VariableController extends AbstractController
                     $fileName
                 );
             } catch (FileException $e) {
-                // ... handle exception if something happens during file upload
+                $this->addFlash('danger', 'Un problème est survenu, veuillez rééssayer !');
             }
 
             $uploadJson->setJsonFile($fileName);

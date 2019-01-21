@@ -7,9 +7,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class UploadJson
 {
     /**
-     * @Assert\File
-     *
-     *
+     * @Assert\NotBlank
+     * @Assert\File(
+     *     mimeTypes = {"application/json"},
+     *     mimeTypesMessage = "Votre fichier n'est pas au format .json !"
+     * )
      */
     private $jsonFile;
 
