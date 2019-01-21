@@ -52,24 +52,23 @@ class VariableController extends AbstractController
     }
 
 
-        /**
-         * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
-         */
-        public
-        function edit(Request $request, Variable $variable): Response
-        {
+    /**
+    * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
+    */
+    public function edit(Request $request, Variable $variable): Response
+    {
             $form = $this->createForm(VariableType::class, $variable);
             $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid()) {
-                $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
 
-                return $this->redirectToRoute('variable_index', ['id' => $variable->getId()]);
-            }
-
-            return $this->render('variable/edit.html.twig', [
-                'variable' => $variable,
-                'form' => $form->createView(),
-            ]);
+            return $this->redirectToRoute('variable_index', ['id' => $variable->getId()]);
         }
+
+        return $this->render('variable/edit.html.twig', [
+               'variable' => $variable,
+               'form' => $form->createView(),
+              ]);
     }
+}
