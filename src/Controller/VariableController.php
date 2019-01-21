@@ -44,35 +44,32 @@ class VariableController extends AbstractController
 
             $uploadJson->setJsonFile($fileName);
             $this->addFlash('success', 'Votre fichier a bien été enregistré !');
-
-            return $this->render('variable/index.html.twig', [
-                'form' => $formJson->createView(),
-                'variables' => $variableRepository->findAll()
-            ]);
-        } else {
-            $this->addFlash('danger', 'Le fichier n\'est pas au format .json !');
-            return $this->redirectToRoute('variable_index');
         }
-    }
-
-
-    /**
-     * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
-     */
-    public function edit(Request $request, Variable $variable): Response
-    {
-        $form = $this->createForm(VariableType::class, $variable);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('variable_index', ['id' => $variable->getId()]);
-        }
-
-        return $this->render('variable/edit.html.twig', [
-            'variable' => $variable,
-            'form' => $form->createView(),
+        return $this->render('variable/index.html.twig', [
+            'form' => $formJson->createView(),
+            'variables' => $variableRepository->findAll()
         ]);
     }
-}
+
+
+        /**
+         * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
+         */
+        public
+        function edit(Request $request, Variable $variable): Response
+        {
+            $form = $this->createForm(VariableType::class, $variable);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('variable_index', ['id' => $variable->getId()]);
+            }
+
+            return $this->render('variable/edit.html.twig', [
+                'variable' => $variable,
+                'form' => $form->createView(),
+            ]);
+        }
+    }
