@@ -31,35 +31,30 @@ class VariableController extends AbstractController
 
         if ($formJson->isSubmitted() && $formJson->isValid()) {
             $file = $uploadJson->getJsonFile();
+            $fileName = $this->getParameter('jsonFile_name');
 
-            if (mime_content_type($file->getRealPath()) == "text/plain") {
-                $fileName = $this->getParameter('jsonFile_name');
-
-                try {
-                    $file->move(
-                        $this->getParameter('jsonFile_directory'),
-                        $fileName
-                    );
-                } catch (FileException $e) {
-                    $this->addFlash('danger', 'Un problème est survenu, veuillez rééssayer !');
-                }
-
-                $uploadJson->setJsonFile($fileName);
-                $this->addFlash('success', 'Votre fichier a bien été enregistré !');
-
-                return $this->render('variable/index.html.twig', [
-                    'form' => $formJson->createView(),
-                    'variables' => $variableRepository->findAll()
-                ]);
-            } else {
-                $this->addFlash('danger', 'Le fichier n\'est pas au format .json !');
-                return $this->redirectToRoute('variable_index');
+            try {
+                $file->move(
+                    $this->getParameter('jsonFile_directory'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                $this->addFlash('danger', 'Un problème est survenu, veuillez rééssayer !');
             }
+
+            $uploadJson->setJsonFile($fileName);
+            $this->addFlash('success', 'Votre fichier a bien été enregistré !');
+
+            return $this->render('variable/index.html.twig', [
+                'form' => $formJson->createView(),
+                'variables' => $variableRepository->findAll()
+            ]);
+        } else {
+            $this->addFlash('danger', 'Le fichier n\'est pas au format .json !');
+            return $this->redirectToRoute('variable_index');
         }
-        return $this->render('variable/index.html.twig', [
-            'form' => $formJson->createView(),
-            'variables' => $variableRepository->findAll()]);
     }
+
 
     /**
      * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
