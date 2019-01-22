@@ -62,6 +62,7 @@ class Variable
      */
     private $rateFor12Years;
 
+
     /**
      * @return mixed
      */

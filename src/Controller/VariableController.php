@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Variable;
+use App\Entity\UploadJson;
+use App\Form\JsonFileType;
 use App\Form\VariableType;
 use App\Repository\VariableRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,20 +21,44 @@ use Symfony\Component\Routing\Annotation\Route;
 class VariableController extends AbstractController
 {
     /**
-     * @Route("/", name="variable_index", methods="GET")
+     * @Route("/", name="variable_index", methods="GET|POST")
      */
-    public function index(VariableRepository $variableRepository): Response
+    public function index(Request $request, VariableRepository $variableRepository): Response
     {
-        return $this->render('variable/index.html.twig', ['variables' => $variableRepository->findAll()]);
+        $uploadJson = new UploadJson();
+        $formJson = $this->createForm(JsonFileType::class, $uploadJson);
+        $formJson->handleRequest($request);
+
+        if ($formJson->isSubmitted() && $formJson->isValid()) {
+            $file = $uploadJson->getJsonFile();
+            $fileName = $this->getParameter('jsonFile_name');
+
+            try {
+                $file->move(
+                    $this->getParameter('jsonFile_directory'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                $this->addFlash('danger', 'Un problème est survenu, veuillez rééssayer !');
+            }
+
+            $uploadJson->setJsonFile($fileName);
+            $this->addFlash('success', 'Votre fichier a bien été enregistré !');
+        }
+        return $this->render('variable/index.html.twig', [
+            'form' => $formJson->createView(),
+            'variables' => $variableRepository->findAll()
+        ]);
     }
 
+
     /**
-     * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
-     */
+    * @Route("/{id}/edit", name="variable_edit", methods="GET|POST")
+    */
     public function edit(Request $request, Variable $variable): Response
     {
-        $form = $this->createForm(VariableType::class, $variable);
-        $form->handleRequest($request);
+            $form = $this->createForm(VariableType::class, $variable);
+            $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -40,8 +67,8 @@ class VariableController extends AbstractController
         }
 
         return $this->render('variable/edit.html.twig', [
-            'variable' => $variable,
-            'form' => $form->createView(),
-        ]);
+               'variable' => $variable,
+               'form' => $form->createView(),
+              ]);
     }
 }
