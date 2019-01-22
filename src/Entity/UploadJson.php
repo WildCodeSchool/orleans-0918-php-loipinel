@@ -8,8 +8,9 @@ class UploadJson
 {
     /**
      * @Assert\NotBlank
-     * mimeTypes = {"application/json", "text/plain"},
-     * mimeTypesMessage = "Votre fichier n'est pas au format .json"
+     * @Assert\File(
+     *     mimeTypes = {"application/json", "text/plain"},
+     *     mimeTypesMessage = "Votre fichier n'est pas au format .json")
      */
     private $jsonFile;
 
